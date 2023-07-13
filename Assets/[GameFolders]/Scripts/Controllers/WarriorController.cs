@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(WarriorHealthController))]
 public class WarriorController : MonoBehaviour
 {
     public WarriorData warriorData;
@@ -32,7 +33,6 @@ public class WarriorController : MonoBehaviour
     }
     private void CheckEnemy()
     {
-        float attackRange = warriorData.AttackRange;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange, LayerMask.GetMask("Enemy"));
 
         float closestDistance = Mathf.Infinity;
@@ -69,7 +69,7 @@ public class WarriorController : MonoBehaviour
         {
             attackTimer += Time.deltaTime;
 
-            if (attackTimer >= warriorData.AttackRate)
+            if (attackTimer >= attackRate)
             {
                 Attack();
             }

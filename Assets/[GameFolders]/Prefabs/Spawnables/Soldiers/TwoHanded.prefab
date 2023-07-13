@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 6718588461118409735}
   - component: {fileID: -2777703674716329886}
   - component: {fileID: -8012126927504887831}
+  - component: {fileID: 5847876366135163979}
   m_Layer: 6
   m_Name: TwoHanded
   m_TagString: Player
@@ -325,6 +326,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warriorData: {fileID: 11400000, guid: 5c5a2c78d96009641919fbe6c5a4abfc, type: 2}
+--- !u!136 &5847876366135163979
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718588461118902311}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!1 &7915026842311831794
 GameObject:
   m_ObjectHideFlags: 0

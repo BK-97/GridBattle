@@ -14,6 +14,8 @@ namespace GridSystem.Controllers
         public Transform mousePointer;
         [SerializeField]
         private LayerMask gridLayerMask;
+        [SerializeField]
+        private LayerMask GroundLayerMask;
 
         private static GameObject takenObject;
         private static object lockObject = new object();
@@ -30,7 +32,7 @@ namespace GridSystem.Controllers
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, float.MaxValue,GroundLayerMask))
             {
                 mousePointer.position = hit.point;
             }

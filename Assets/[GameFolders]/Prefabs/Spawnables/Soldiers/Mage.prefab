@@ -1958,6 +1958,7 @@ GameObject:
   - component: {fileID: 9186795781410057772}
   - component: {fileID: -2096272588034058093}
   - component: {fileID: -7409566672021784209}
+  - component: {fileID: 8061193141572093199}
   m_Layer: 6
   m_Name: Mage
   m_TagString: Player
@@ -2006,3 +2007,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warriorData: {fileID: 11400000, guid: 3e8f52add1cc09746a0ed08688575526, type: 2}
+--- !u!136 &8061193141572093199
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9186795781410484748}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.25, z: 0}
