@@ -1910,7 +1910,7 @@ GameObject:
   - component: {fileID: 1197619119}
   - component: {fileID: 1197619118}
   - component: {fileID: 1197619117}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3319,19 +3319,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1511480989076111631, guid: 8c05831c8aafd0f4ea0b3e51cfc5ea00,
-        type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1511480989082885023, guid: 8c05831c8aafd0f4ea0b3e51cfc5ea00,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1511480989524725408, guid: 8c05831c8aafd0f4ea0b3e51cfc5ea00,
-        type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1511480989524725465, guid: 8c05831c8aafd0f4ea0b3e51cfc5ea00,
