@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RangerData
   m_EditorClassIdentifier: 
   EnemyType: 1
-  Health: 0
-  AttackRange: 0
-  AttackRate: 0
-  Damage: 0
-  MoveSpeed: 0
+  Health: 5
+  AttackRange: 3
+  AttackRate: 1
+  Damage: 1
+  MoveSpeed: 2
