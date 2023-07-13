@@ -43,11 +43,13 @@ namespace GridSystem
             gridObject.transform.SetParent(objectArea);
             gridObject.transform.localPosition = Vector3.zero;
             gridObject.transform.localRotation = Quaternion.identity;
+            gridObject.GetComponent<GridObject>().GridActive();
             hasObject = true;
         }
 
         public override void RemoveObject()
         {
+            gridObject.GetComponent<GridObject>().GridDeactive();
             gridObject = null;
             hasObject = false;
         }
