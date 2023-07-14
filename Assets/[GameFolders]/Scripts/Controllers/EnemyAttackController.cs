@@ -9,6 +9,7 @@ public class EnemyAttackController : MonoBehaviour
     private int damage;
     bool canAttack;
     IDamagable closestTarget;
+    public LayerMask attackableLayers;
     public void DataSet(EnemyData data)
     {
         attackRate = data.AttackRate;
@@ -18,7 +19,7 @@ public class EnemyAttackController : MonoBehaviour
 
     public bool CheckEnemy()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange, LayerMask.GetMask("Warrior"));
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange, attackableLayers);
 
         float closestDistance = Mathf.Infinity;
         closestTarget = null;
