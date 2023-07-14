@@ -38,7 +38,6 @@ public class EnemyAttackController : MonoBehaviour
             }
         }
         return false;
-
     }
 
     private void Attack()

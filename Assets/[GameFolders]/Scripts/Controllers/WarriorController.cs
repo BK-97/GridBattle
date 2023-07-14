@@ -7,8 +7,8 @@ public class WarriorController : MonoBehaviour
 {
     public WarriorData warriorData;
     private int damage;
-    private int attackRate;
-    private int attackRange;
+    private float attackRate;
+    private float attackRange;
 
     private bool canAttack;
     private IDamagable closestTarget;
@@ -19,43 +19,14 @@ public class WarriorController : MonoBehaviour
     {
         healthController = GetComponent<WarriorHealthController>();
         animatorController = GetComponentInChildren<WarriorAnimatorController>();
-        SetDatas();
-    }
-    private void SetDatas()
-    {
-        healthController.SetHealth(warriorData.Health);
-        damage = warriorData.Damage;
-        attackRate = warriorData.AttackRate;
-        attackRange = warriorData.AttackRange;
-        canAttack = true;
+        SetDatas(warriorData);
     }
     private void Update()
     {
-        if(canAttack)
+        if (canAttack)
             CheckEnemyWithRaycast();
     }
-    private void CheckEnemy()
-    {
-        Collider[] hitColliders = Physics.OverlapSphere(raycastMuzzle.position, attackRange, LayerMask.GetMask("Enemy"));
-
-        float closestDistance = Mathf.Infinity;
-        closestTarget = null;
-
-        foreach (Collider hitCollider in hitColliders)
-        {
-            IDamagable damagable = hitCollider.GetComponent<IDamagable>();
-            if (damagable != null)
-            {
-                float distance = Vector3.Distance(transform.position, hitCollider.gameObject.transform.position);
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestTarget = damagable;
-                    AttackTimer();
-                }
-            }
-        }
-    }
+    #region AttackMethods
     private void CheckEnemyWithRaycast()
     {
         RaycastHit hitInfo;
@@ -71,7 +42,6 @@ public class WarriorController : MonoBehaviour
             else
                 attackTimer = 999;
         }
-
     }
     public void Attack()
     {
@@ -97,7 +67,11 @@ public class WarriorController : MonoBehaviour
             }
         }
     }
-    
+    #endregion
+    public void UpgradeWarrior()
+    {
+
+    }
     public void ControllerOff()
     {
         canAttack = false;
@@ -107,5 +81,13 @@ public class WarriorController : MonoBehaviour
     {
         canAttack = true;
         isAttacking = false;
+    }
+    public void SetDatas(WarriorData currentData)
+    {
+        healthController.SetHealth(warriorData.Health);
+        damage = warriorData.Damage;
+        attackRate = warriorData.AttackRate;
+        attackRange = warriorData.AttackRange;
+        canAttack = true;
     }
 }

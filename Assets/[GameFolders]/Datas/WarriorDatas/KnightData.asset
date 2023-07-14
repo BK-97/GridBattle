@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f1f5d62fbcba954fb62645874e7f351, type: 3}
+  m_Script: {fileID: 11500000, guid: 05a20c967b0518e4e83f06d78b7ba93a, type: 3}
   m_Name: KnightData
   m_EditorClassIdentifier: 
   WarriorType: 0
-  Health: 15
+  Health: 10
   AttackRange: 1
   AttackRate: 2
   Damage: 5
