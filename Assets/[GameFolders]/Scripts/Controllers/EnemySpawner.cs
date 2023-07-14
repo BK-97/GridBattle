@@ -24,13 +24,20 @@ public class WaveData
 }
 public class EnemySpawner : MonoBehaviour
 {
+    #region Params
     [SerializeField]
     private List<WaveData> waves;
     private int currentWave = 0;
-
+    #endregion
     private void Start()
     {
         StartSpawning();
+    }
+    #region SpawnMethods
+    public void StartSpawning()
+    {
+        currentWave = 0;
+        StartCoroutine(SpawnWave());
     }
     private IEnumerator SpawnWave()
     {
@@ -79,9 +86,9 @@ public class EnemySpawner : MonoBehaviour
         var go=Instantiate(spawnObject, transform.position, transform.rotation, transform);
         float posX = GetRandomNumber();
         go.transform.position = new Vector3(posX,go.transform.position.y,go.transform.position.z);
-
-        
     }
+    #endregion
+    #region Helpers
     private float GetRandomNumber()
     {
         float[] possibleValues = new float[] { -1.5f, -0.5f, 0.5f, 1.5f };
@@ -89,10 +96,5 @@ public class EnemySpawner : MonoBehaviour
 
         return possibleValues[randomIndex];
     }
-
-    public void StartSpawning()
-    {
-        currentWave = 0;
-        StartCoroutine(SpawnWave());
-    }
+    #endregion
 }

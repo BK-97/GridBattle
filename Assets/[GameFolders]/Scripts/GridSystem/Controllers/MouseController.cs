@@ -25,9 +25,13 @@ namespace GridSystem.Controllers
         {
             Grid gridGet = GetMouseOverGrid();
             if (gridGet != null)
+            {
                 currentGrid = gridGet;
+            }
             else
+            {
                 currentGrid = null;
+            }
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -58,7 +62,12 @@ namespace GridSystem.Controllers
                 {
                     if (takenObject != null)
                     {
-                        return;
+                        if(CheckIfUpgradable())
+                        {
+                            currentGrid.gridObject.GetComponent<WarriorController>().UpgradeWarrior();
+                            Destroy(takenObject);
+                            return;
+                        }
                     }
                     else
                     {
@@ -94,6 +103,17 @@ namespace GridSystem.Controllers
 
         #endregion
         #region Helpers
+        private bool CheckIfUpgradable()
+        {
+            WarriorController gridWarrior = currentGrid.gridObject.GetComponent<WarriorController>();
+            WarriorController pointerWarrior = takenObject.GetComponent<WarriorController>();
+            if(pointerWarrior.warriorData.WarriorType==gridWarrior.warriorData.WarriorType)
+            {
+                if (pointerWarrior.currentLevel == gridWarrior.currentLevel)
+                    return true;
+            }
+            return false;
+        }
         private bool CheckIfGrid()
         {
             if (currentGrid == null)

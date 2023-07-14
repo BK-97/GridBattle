@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class WarriorAnimatorController : MonoBehaviour
 {
+    #region Params
     public Animator animator;
     private WarriorController warriorController;
+    #endregion
     private void Start()
     {
         warriorController = GetComponentInParent<WarriorController>();
     }
-    public void AttackAnim()
-    {
-        animator.SetBool("Attack",true);
-    }
+    #region AnimationEventMethods
     public void AttackEvent()
     {
         warriorController.Attack();
@@ -23,6 +22,12 @@ public class WarriorAnimatorController : MonoBehaviour
         animator.SetBool("Attack", false);
         warriorController.AttackEnd();
     }
+    #endregion
+    #region AnimationMethods
+    public void AttackAnim()
+    {
+        animator.SetBool("Attack", true);
+    }
     public void MoveAnim()
     {
 
@@ -31,4 +36,5 @@ public class WarriorAnimatorController : MonoBehaviour
     {
 
     }
+    #endregion
 }

@@ -34,7 +34,6 @@ namespace GridSystem
             gridPos = pos;
             Material[] sharedMats = middleObject.GetComponent<MeshRenderer>().sharedMaterials;
             starterMat = sharedMats[0];
-
         }
 
         public override void AddObject(GameObject gridGameObject)
@@ -66,7 +65,6 @@ namespace GridSystem
             else
                 MouseOverEmptyGrid();
         }
-
         public override void OnMouseExit()
         {
             MouseIsAway();

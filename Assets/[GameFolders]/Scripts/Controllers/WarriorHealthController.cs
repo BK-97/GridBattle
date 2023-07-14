@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class WarriorHealthController : MonoBehaviour,IDamagable
 {
+    #region Params
     public Slider healthBar;
     private int health;
+    #endregion
+    #region IDamagableMethods
     public void Die()
     {
         health = 0;
@@ -31,4 +34,5 @@ public class WarriorHealthController : MonoBehaviour,IDamagable
             healthBar.value = health;
         }
     }
+    #endregion
 }

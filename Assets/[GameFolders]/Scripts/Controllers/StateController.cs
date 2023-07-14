@@ -24,27 +24,30 @@ public class StateController : MonoBehaviour
     public MoveState moveState=new MoveState();
     public AttackState attackState=new AttackState();
     #endregion
-    
+    #region MonoBehaviourMethods
     private void Start()
     {
         SetDatas();
         ChangeState(idleState);
     }
+    private void Update()
+    {
+        if (currentState != null)
+            currentState.UpdateState(this);
+    }
+    #endregion
+    #region MyMethods
     private void SetDatas()
     {
         AttackController.DataSet(enemyData);
         MovementController.SetSpeed(enemyData.MoveSpeed);
         HealthController.SetHealth(enemyData.Health);
     }
-    private void Update()
-    {
-        if(currentState!=null)
-            currentState.UpdateState(this);
-    }
+
     public void ChangeState(BaseState newState)
     {
         currentState = newState;
         currentState.EnterState(this);
     }
-
+    #endregion
 }

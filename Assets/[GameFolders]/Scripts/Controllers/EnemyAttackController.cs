@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class EnemyAttackController : MonoBehaviour
 {
+    #region Params
     private int attackRate;
     private int attackRange;
     private int damage;
     bool canAttack;
     IDamagable closestTarget;
+    #endregion
+    #region SetMethods
     public void DataSet(EnemyData data)
     {
         attackRate = data.AttackRate;
         attackRange = data.AttackRange;
         damage = data.Damage;
     }
-
+    #endregion
+    #region CheckMethods
     public bool CheckEnemy()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange, LayerMask.GetMask("Warrior"));
@@ -39,7 +43,8 @@ public class EnemyAttackController : MonoBehaviour
         }
         return false;
     }
-
+    #endregion
+    #region AttackMethods
     private void Attack()
     {
         isAttacking = true;
@@ -62,4 +67,5 @@ public class EnemyAttackController : MonoBehaviour
             }
         }
     }
+    #endregion
 }

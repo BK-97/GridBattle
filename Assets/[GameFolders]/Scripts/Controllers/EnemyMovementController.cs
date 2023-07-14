@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class EnemyMovementController : MonoBehaviour
 {
+    #region Params
     private int moveSpeed;
     public bool canMove;
+    #endregion
+    #region SetMethods
     public void SetSpeed(int speed)
     {
         moveSpeed = speed;
         canMove = true;
     }
+    #endregion
+    #region MoveMethods
     public void Move()
     {
         if (!CheckForwardIsEmpty())
@@ -19,6 +24,8 @@ public class EnemyMovementController : MonoBehaviour
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 
     }
+    #endregion
+    #region CheckMethods
     private bool CheckForwardIsEmpty()
     {
         RaycastHit hitInfo;
@@ -30,4 +37,5 @@ public class EnemyMovementController : MonoBehaviour
         else
             return true;
     }
+    #endregion
 }

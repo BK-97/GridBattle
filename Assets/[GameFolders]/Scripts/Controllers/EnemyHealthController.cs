@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class EnemyHealthController : MonoBehaviour, IDamagable
 {
+    #region Params
     private int currentHealth;
     public Slider healthBar;
+    #endregion
+    #region IDamagableMethods
     public void Die()
     {
         currentHealth = 0;
@@ -33,4 +36,5 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
             Die();
         }
     }
+    #endregion
 }

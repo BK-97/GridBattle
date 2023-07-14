@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KnightUpgrade : LevelUpgradeBase
 {
+    #region OverrideMethods
     protected override void CalculateData(int currentLevel)
     {
         if (currentLevel == 2 || currentLevel == 5 || currentLevel == 8)
@@ -19,5 +20,5 @@ public class KnightUpgrade : LevelUpgradeBase
             upgradedRate += 0.5f;
         }
     }
-
+    #endregion
 }

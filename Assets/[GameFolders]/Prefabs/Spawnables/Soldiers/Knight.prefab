@@ -2398,6 +2398,7 @@ GameObject:
   - component: {fileID: 5089485492158554422}
   - component: {fileID: 2773530626630494112}
   - component: {fileID: -6097277285635720151}
+  - component: {fileID: -6705613168673503133}
   m_Layer: 6
   m_Name: Knight
   m_TagString: Player
@@ -2447,6 +2448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warriorData: {fileID: 11400000, guid: b7f51aa4c3100214187a0176257a5c57, type: 2}
+  currentLevel: 0
   raycastMuzzle: {fileID: 3155667426109372541}
 --- !u!114 &2773530626630494112
 MonoBehaviour:
@@ -2475,6 +2477,18 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &-6705613168673503133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6455139829038195398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0e9e4a2192d3c4d9180967bacd9f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8852933225843813998
 GameObject:
   m_ObjectHideFlags: 0

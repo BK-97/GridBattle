@@ -5,19 +5,25 @@ using UnityEngine;
 [RequireComponent(typeof(WarriorHealthController))]
 public class WarriorController : MonoBehaviour
 {
+    #region Params
     public WarriorData warriorData;
     private int damage;
     private float attackRate;
     private float attackRange;
 
+    public int currentLevel;
     private bool canAttack;
     private IDamagable closestTarget;
     private WarriorHealthController healthController;
     private WarriorAnimatorController animatorController;
+    private LevelUpgradeBase levelUpBase;
     public Transform raycastMuzzle;
+    #endregion
+    #region MonoBehaviourMethods
     private void Start()
     {
         healthController = GetComponent<WarriorHealthController>();
+        levelUpBase = GetComponent<LevelUpgradeBase>();
         animatorController = GetComponentInChildren<WarriorAnimatorController>();
         SetDatas(warriorData);
     }
@@ -26,6 +32,7 @@ public class WarriorController : MonoBehaviour
         if (canAttack)
             CheckEnemyWithRaycast();
     }
+    #endregion
     #region AttackMethods
     private void CheckEnemyWithRaycast()
     {
@@ -68,9 +75,11 @@ public class WarriorController : MonoBehaviour
         }
     }
     #endregion
+    #region MyMethods
     public void UpgradeWarrior()
     {
-
+        currentLevel++;
+        levelUpBase.Upgrade(currentLevel, warriorData);
     }
     public void ControllerOff()
     {
@@ -84,10 +93,12 @@ public class WarriorController : MonoBehaviour
     }
     public void SetDatas(WarriorData currentData)
     {
-        healthController.SetHealth(warriorData.Health);
-        damage = warriorData.Damage;
-        attackRate = warriorData.AttackRate;
-        attackRange = warriorData.AttackRange;
+        healthController.SetHealth(currentData.Health);
+        damage = currentData.Damage;
+        attackRate = currentData.AttackRate;
+        attackRange = currentData.AttackRange;
+        currentLevel = currentData.warriorLevel;
         canAttack = true;
     }
+    #endregion
 }
