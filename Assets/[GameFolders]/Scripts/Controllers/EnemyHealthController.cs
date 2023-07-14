@@ -23,14 +23,14 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
 
     public void TakeDamage(int damage)
     {
-        if(currentHealth-damage<=0)
-        {
-            Die();
-        }
-        else
+        if(currentHealth-damage>0)
         {
             currentHealth -= damage;
             healthBar.value = currentHealth;
+        }
+        else
+        {
+            Die();
         }
     }
 }

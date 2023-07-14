@@ -20,6 +20,7 @@ public class WaveData
 {
     public List<CustomData> WaveOrder;
     public float WaveTimer;
+    public float NextWaveWaitTime;
 }
 public class EnemySpawner : MonoBehaviour
 {
@@ -64,9 +65,14 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("Next Wave");
-            //StartCoroutine(SpawnWave());
+            StartCoroutine(WaitForNextWave());
         }
+    }
+    private IEnumerator WaitForNextWave()
+    {
+        yield return new WaitForSeconds(waves[currentWave-1].NextWaveWaitTime);
+        StartCoroutine(SpawnWave());
+
     }
     private void InstantiateObject(GameObject spawnObject)
     {

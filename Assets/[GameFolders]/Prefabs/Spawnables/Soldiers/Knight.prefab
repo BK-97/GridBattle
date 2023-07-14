@@ -451,6 +451,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &3134500810969199190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3155667426109372541}
+  m_Layer: 6
+  m_Name: Raycast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3155667426109372541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134500810969199190}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.61, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4681256521129565185}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4681256521129984001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,6 +2031,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681256521129565185}
   - component: {fileID: 4681256521139385223}
+  - component: {fileID: 3468301556769508132}
   m_Layer: 6
   m_Name: Knight
   m_TagString: Untagged
@@ -2023,6 +2055,7 @@ Transform:
   - {fileID: 6216352792686175738}
   - {fileID: 6305356068756467437}
   - {fileID: 4681256521129565197}
+  - {fileID: 3155667426109372541}
   m_Father: {fileID: 6455139829038169830}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2046,6 +2079,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3468301556769508132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681256521129984481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac429ee73540c8e4b9bd5abc482c30b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4681256521139385223}
 --- !u!1 &4681256521129984483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,6 +2447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warriorData: {fileID: 11400000, guid: b7f51aa4c3100214187a0176257a5c57, type: 2}
+  raycastMuzzle: {fileID: 3155667426109372541}
 --- !u!114 &2773530626630494112
 MonoBehaviour:
   m_ObjectHideFlags: 0

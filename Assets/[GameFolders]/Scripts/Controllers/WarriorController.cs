@@ -13,9 +13,12 @@ public class WarriorController : MonoBehaviour
     private bool canAttack;
     private IDamagable closestTarget;
     private WarriorHealthController healthController;
+    private WarriorAnimatorController animatorController;
+    public Transform raycastMuzzle;
     private void Start()
     {
         healthController = GetComponent<WarriorHealthController>();
+        animatorController = GetComponentInChildren<WarriorAnimatorController>();
         SetDatas();
     }
     private void SetDatas()
@@ -29,11 +32,11 @@ public class WarriorController : MonoBehaviour
     private void Update()
     {
         if(canAttack)
-            CheckEnemy();
+            CheckEnemyWithRaycast();
     }
     private void CheckEnemy()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange, LayerMask.GetMask("Enemy"));
+        Collider[] hitColliders = Physics.OverlapSphere(raycastMuzzle.position, attackRange, LayerMask.GetMask("Enemy"));
 
         float closestDistance = Mathf.Infinity;
         closestTarget = null;
@@ -53,16 +56,34 @@ public class WarriorController : MonoBehaviour
             }
         }
     }
-    private void Attack()
+    private void CheckEnemyWithRaycast()
     {
-        isAttacking = true;
-        attackTimer = 0f;
-        closestTarget.TakeDamage(damage);
-        isAttacking = false;
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(raycastMuzzle.position, raycastMuzzle.forward, out hitInfo, attackRange, LayerMask.GetMask("Enemy")))
+        {
+            IDamagable damagable = hitInfo.collider.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                closestTarget = damagable;
+                AttackTimer();
+            }
+            else
+                attackTimer = 999;
+        }
 
     }
+    public void Attack()
+    {
+        closestTarget.TakeDamage(damage);
+    }
+    public void AttackEnd()
+    {
+        attackTimer = 0f;
+        isAttacking = false;
+    }
     bool isAttacking;
-    float attackTimer;
+    float attackTimer=999;
     private void AttackTimer()
     {
         if (!isAttacking)
@@ -71,10 +92,12 @@ public class WarriorController : MonoBehaviour
 
             if (attackTimer >= attackRate)
             {
-                Attack();
+                animatorController.AttackAnim();
+                isAttacking = true;
             }
         }
     }
+    
     public void ControllerOff()
     {
         canAttack = false;

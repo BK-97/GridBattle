@@ -13,8 +13,21 @@ public class EnemyMovementController : MonoBehaviour
     }
     public void Move()
     {
+        if (!CheckForwardIsEmpty())
+            return;
         if(canMove)
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-    }
 
+    }
+    private bool CheckForwardIsEmpty()
+    {
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 2, LayerMask.GetMask("Enemy")))
+        {
+            return false;
+        }
+        else
+            return true;
+    }
 }
