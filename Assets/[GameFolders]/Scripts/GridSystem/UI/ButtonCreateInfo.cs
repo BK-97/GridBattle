@@ -7,7 +7,8 @@ namespace GridSystem.UI
     {
         #region Params
         public GameObject spawnPrefab;
-
+        [SerializeField]
+        private int spawnCost;
         private TextMeshProUGUI textMesh;
         #endregion
         #region Methods
@@ -16,9 +17,11 @@ namespace GridSystem.UI
             textMesh = GetComponentInChildren<TextMeshProUGUI>();
             textMesh.text = spawnPrefab.name;
         }
-        public void GiveSpawnPrefabInfo()
+        public void InvokeSpawnPrefab()
         {
-            SpawnManager.Instance.CreatePrefab(spawnPrefab);
+            if (ExchangeManager.Instance.UseCurrency(CurrencyType.Coin,spawnCost))
+                SpawnManager.Instance.CreatePrefab(spawnPrefab);
+
         }
         #endregion
     }
