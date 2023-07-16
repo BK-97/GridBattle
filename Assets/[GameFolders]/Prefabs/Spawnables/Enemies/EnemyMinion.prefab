@@ -347,7 +347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
-  raycastPoint: {fileID: 2359833124646635879}
 --- !u!114 &1511480989524725467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,6 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 243e3321a4a635540b7da563c2cb7a17, type: 2}
+  raycastPoint: {fileID: 2359833124646635879}
 --- !u!136 &1511480989524725408
 CapsuleCollider:
   m_ObjectHideFlags: 0

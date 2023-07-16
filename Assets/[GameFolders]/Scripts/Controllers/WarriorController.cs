@@ -38,11 +38,12 @@ public class WarriorController : MonoBehaviour
     {
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(raycastMuzzle.position, raycastMuzzle.forward, out hitInfo, attackRange, LayerMask.GetMask("Enemy")))
+        if (Physics.Raycast(raycastMuzzle.position, raycastMuzzle.forward, out hitInfo, attackRange+0.1f, LayerMask.GetMask("Enemy")))
         {
             IDamagable damagable = hitInfo.collider.GetComponent<IDamagable>();
             if (damagable != null)
             {
+                Debug.Log("WarriorAttack");
                 closestTarget = damagable;
                 AttackTimer();
             }

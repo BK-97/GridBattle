@@ -10,6 +10,9 @@ public class StateController : MonoBehaviour
     #region Datas
     public EnemyData enemyData;
     #endregion
+    #region Params
+    public Transform raycastPoint;
+    #endregion
     #region GetSet
     private EnemyAttackController attackController;
     public EnemyAttackController AttackController { get { return (attackController == null) ? attackController = GetComponent<EnemyAttackController>() : attackController; } }

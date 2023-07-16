@@ -7,7 +7,8 @@ public class EnemyMovementController : MonoBehaviour
     #region Params
     private int moveSpeed;
     public bool canMove;
-    public Transform raycastPoint;
+    private StateController stateController;
+    public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
     #endregion
     #region SetMethods
     public void SetSpeed(int speed)
@@ -31,7 +32,7 @@ public class EnemyMovementController : MonoBehaviour
     {
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(raycastPoint.position, raycastPoint.forward, out hitInfo, 1, LayerMask.GetMask("Enemy")))
+        if (Physics.Raycast(StateController.raycastPoint.position, StateController.raycastPoint.forward, out hitInfo, 1, LayerMask.GetMask("Enemy")))
         {
             return false;
         }

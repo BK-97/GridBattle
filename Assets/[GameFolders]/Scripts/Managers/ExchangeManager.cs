@@ -18,6 +18,8 @@ public class ExchangeManager: Singleton<ExchangeManager>
     }
     private void Start()
     {
+        PlayerPrefs.SetInt(PlayerPrefsKeys.CurrentCoin,300);
+        Debug.Log("For Test Purposes Set Coin 300");
         currencyDictionary[CurrencyType.Coin] = PlayerPrefs.GetInt(PlayerPrefsKeys.CurrentCoin, 300);
 
     }

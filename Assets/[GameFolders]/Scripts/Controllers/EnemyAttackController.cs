@@ -10,6 +10,9 @@ public class EnemyAttackController : MonoBehaviour
     private int damage;
     bool canAttack;
     IDamagable closestTarget;
+    public LayerMask attackableLayers;
+    private StateController stateController;
+    public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
     #endregion
     #region SetMethods
     public void DataSet(EnemyData data)
@@ -22,26 +25,25 @@ public class EnemyAttackController : MonoBehaviour
     #region CheckMethods
     public bool CheckEnemy()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange, LayerMask.GetMask("Warrior"));
+        RaycastHit hitInfo;
 
-        float closestDistance = Mathf.Infinity;
-        closestTarget = null;
-
-        foreach (Collider hitCollider in hitColliders)
+        if (Physics.Raycast(StateController.raycastPoint.position, StateController.raycastPoint.forward, out hitInfo, attackRange, attackableLayers))
         {
-            IDamagable damagable = hitCollider.GetComponent<IDamagable>();
+            IDamagable damagable = hitInfo.collider.GetComponent<IDamagable>();
             if (damagable != null)
             {
-                float distance = Vector3.Distance(transform.position, hitCollider.gameObject.transform.position);
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestTarget = damagable;
-                    return true;
-                }
+                Debug.Log("EnemyAttack");
+
+                closestTarget = damagable;
+                AttackTimer();
+                return true;
+
             }
+            else
+                attackTimer = 999;
         }
         return false;
+
     }
     #endregion
     #region AttackMethods
