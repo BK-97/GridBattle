@@ -16,7 +16,7 @@ public class BaseHealth : MonoBehaviour, IDamagable
     public void Die()
     {
         SetHealth(0);
-        Debug.Log("Game End!!!!");
+        GameManager.OnStageLoose.Invoke();
     }
 
     public void SetHealth(int healthCount)
