@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &103765192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   - WaveOrder:
     - Enemy: {fileID: 1511480989524725465, guid: 8c05831c8aafd0f4ea0b3e51cfc5ea00,
         type: 3}
-      SpawnCount: 2
+      SpawnCount: 10
     WaveTimer: 2
     NextWaveWaitTime: 5
   - WaveOrder:
