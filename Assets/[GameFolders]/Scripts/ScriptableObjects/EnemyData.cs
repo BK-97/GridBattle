@@ -12,4 +12,7 @@ public class EnemyData : ScriptableObject
     public int AttackRate;
     public int Damage;
     public int MoveSpeed;
+
+    public CurrencyType currencyType=CurrencyType.Coin;
+    public int cost;
 }

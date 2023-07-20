@@ -8,10 +8,16 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
     #region Params
     private int currentHealth;
     public Slider healthBar;
+    private StateController stateController;
+    public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
     #endregion
     #region IDamagableMethods
     public void Die()
     {
+        var go = Instantiate(ExchangeManager.Instance.coinPrefab, transform.position, Quaternion.identity);
+        go.transform.position = transform.position;
+        go.GetComponent<CoinUp>().SetInfo(StateController.enemyData.cost, StateController.enemyData.currencyType);
+
         currentHealth = 0;
         healthBar.value = currentHealth;
         Destroy(gameObject);

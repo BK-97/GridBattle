@@ -12,6 +12,8 @@ public class ExchangeManager: Singleton<ExchangeManager>
 {
     private Dictionary<CurrencyType, int> currencyDictionary;
     public DictonaryEvent OnCurrencyChange = new DictonaryEvent();
+    public Transform UITransform;
+    public GameObject coinPrefab;
     public ExchangeManager()
     {
         currencyDictionary = new Dictionary<CurrencyType, int>();
@@ -50,7 +52,7 @@ public class ExchangeManager: Singleton<ExchangeManager>
         }
     }
 
-    public void AddCurrency(CurrencyType currencyType, int amount)
+    public void AddCurrency(CurrencyType currencyType,int amount)
     {
         if (currencyDictionary.ContainsKey(currencyType))
         {

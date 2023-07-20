@@ -18,3 +18,4 @@ MonoBehaviour:
   AttackRate: 1
   Damage: 1
   MoveSpeed: 2
+  cost: 50

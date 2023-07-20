@@ -333,6 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47476d2ed584a3b49998218f11b65cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CoinPrefab: {fileID: 1076947625176626014, guid: cced78183e1de30489d065eee7bb4a1a,
+    type: 3}
   healthBar: {fileID: 1511480989076111631}
 --- !u!114 &1511480989524725412
 MonoBehaviour:
