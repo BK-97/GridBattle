@@ -17,10 +17,6 @@ public class GameManager : Singleton<GameManager>
     public static UnityEvent OnStageLoose = new UnityEvent();
     #endregion
     #region MonoBehaviourMethods
-    private void Start()
-    {
-        OnGameStart.Invoke();
-    }
     private void OnEnable()
     {
         OnGameStart.AddListener(GameStarted);
@@ -41,7 +37,13 @@ public class GameManager : Singleton<GameManager>
     #region MyMethods
     private void GameStarted()
     {
-
+        OnSpawnSessionStart.Invoke();
+        StartCoroutine(WaitForBattleSession());
+    }
+    private IEnumerator WaitForBattleSession()
+    {
+        yield return new WaitForSeconds(5);
+        OnBattleSessionStart.Invoke();
     }
     private void WinGame()
     {

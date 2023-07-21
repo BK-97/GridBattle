@@ -25,6 +25,7 @@ public class EnemyAttackController : MonoBehaviour
     #region CheckMethods
     public bool CheckEnemy()
     {
+
         RaycastHit hitInfo;
 
         if (Physics.Raycast(StateController.raycastPoint.position, StateController.raycastPoint.forward, out hitInfo, attackRange, attackableLayers))
@@ -32,15 +33,13 @@ public class EnemyAttackController : MonoBehaviour
             IDamagable damagable = hitInfo.collider.GetComponent<IDamagable>();
             if (damagable != null)
             {
-                Debug.Log("EnemyAttack");
-
                 closestTarget = damagable;
                 AttackTimer();
                 return true;
 
             }
             else
-                attackTimer = 999;
+                lastAttackTime = Time.time;
         }
         return false;
 
@@ -50,20 +49,20 @@ public class EnemyAttackController : MonoBehaviour
     private void Attack()
     {
         isAttacking = true;
-        attackTimer = 0f;
+        lastAttackTime = Time.time;
+        Debug.Log("attack");
         closestTarget.TakeDamage(damage);
         isAttacking = false;
 
     }
     bool isAttacking;
-    float attackTimer;
+    float lastAttackTime;
     public void AttackTimer()
     {
         if (!isAttacking)
         {
-            attackTimer += Time.deltaTime;
 
-            if (attackTimer >= attackRate)
+            if (Time.time >= attackRate+ lastAttackTime)
             {
                 Attack();
             }

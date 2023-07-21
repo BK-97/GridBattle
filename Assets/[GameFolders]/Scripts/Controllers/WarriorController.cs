@@ -15,7 +15,8 @@ public class WarriorController : MonoBehaviour
     private bool canAttack;
     private IDamagable closestTarget;
     private WarriorHealthController healthController;
-    private WarriorAnimatorController animatorController;
+    [HideInInspector]
+    public WarriorAnimatorController animatorController;
     private LevelUpgradeBase levelUpBase;
     public Transform raycastMuzzle;
     #endregion
@@ -43,7 +44,6 @@ public class WarriorController : MonoBehaviour
             IDamagable damagable = hitInfo.collider.GetComponent<IDamagable>();
             if (damagable != null)
             {
-                Debug.Log("WarriorAttack");
                 closestTarget = damagable;
                 AttackTimer();
             }

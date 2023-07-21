@@ -3,9 +3,8 @@ using UnityEngine.Events;
 
 namespace GridSystem.Managers
 {
-    public class SpawnManager : MonoBehaviour
+    public class SpawnManager : Singleton<SpawnManager>
     {
-        public static SpawnManager Instance { get; private set; }
         #region Params
         [HideInInspector]
         public GameObject currentSpawnObject;
@@ -14,13 +13,6 @@ namespace GridSystem.Managers
         public static GameObjectEvent OnSpawnObject = new GameObjectEvent();
         #endregion
         #region Methods
-        private void Awake()
-        {
-            if (Instance == null)
-                Instance = this;
-            else
-                Destroy(gameObject);
-        }
         public GameObject GetSelectedPrefab()
         {
             return currentSpawnObject;

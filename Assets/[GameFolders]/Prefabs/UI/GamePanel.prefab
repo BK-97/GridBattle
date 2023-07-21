@@ -290,6 +290,8 @@ GameObject:
   - component: {fileID: 6740782817230171190}
   - component: {fileID: 6740782817230171188}
   - component: {fileID: 6740782817230171191}
+  - component: {fileID: 1776068249034808470}
+  - component: {fileID: 4821375441420380519}
   m_Layer: 5
   m_Name: GamePanel
   m_TagString: Untagged
@@ -357,6 +359,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &1776068249034808470
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740782817230171185}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &4821375441420380519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740782817230171185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947ab523780d27344819386ee301d934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6740782817523224278
 GameObject:
   m_ObjectHideFlags: 0

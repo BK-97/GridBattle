@@ -29,9 +29,13 @@ public class EnemySpawner : MonoBehaviour
     private List<WaveData> waves;
     private int currentWave = 0;
     #endregion
-    private void Start()
+    private void OnEnable()
     {
-        StartSpawning();
+        GameManager.OnBattleSessionStart.AddListener(StartSpawning);
+    }
+    private void OnDisable()
+    {
+        GameManager.OnBattleSessionStart.RemoveListener(StartSpawning);
     }
     #region SpawnMethods
     public void StartSpawning()
@@ -42,14 +46,16 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnWave()
     {
         bool waveLoop = true;
-
         WaveData currentWaveData = waves[currentWave];
-        int totalSpawnable=0;
+        int totalSpawnable = 0;
+
         for (int i = 0; i < currentWaveData.WaveOrder.Count; i++)
         {
             totalSpawnable += currentWaveData.WaveOrder[i].SpawnCount;
         }
+
         float spawnDelay = currentWaveData.WaveTimer / totalSpawnable;
+
         while (waveLoop)
         {
             foreach (CustomData data in currentWaveData.WaveOrder)
@@ -61,9 +67,16 @@ public class EnemySpawner : MonoBehaviour
                     yield return new WaitForSeconds(spawnDelay);
                 }
                 else
+                {
                     waveLoop = false;
+                }
             }
         }
+
+        // Bekleme süresi için
+        yield return new WaitUntil(() => IsAllEnemiesDead());
+        GameManager.OnSpawnSessionStart.Invoke();
+        yield return new WaitForSeconds(5f);
 
         currentWave++;
         if (currentWave >= waves.Count)
@@ -72,9 +85,15 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            StartCoroutine(WaitForNextWave());
+            StartCoroutine(SpawnWave());
         }
     }
+
+    private bool IsAllEnemiesDead()
+    {
+        return transform.childCount == 0;
+    }
+    
     private IEnumerator WaitForNextWave()
     {
         yield return new WaitForSeconds(waves[currentWave-1].NextWaveWaitTime);

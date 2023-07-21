@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace GridSystem.Managers
 {
-    public class InputManager : MonoBehaviour
+    public class InputManager : Singleton<InputManager>
     {
         #region Events
         public static UnityEvent OnClick = new UnityEvent();

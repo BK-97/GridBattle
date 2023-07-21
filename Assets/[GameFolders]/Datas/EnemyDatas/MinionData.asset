@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: MinionData
   m_EditorClassIdentifier: 
   EnemyType: 0
-  Health: 5
+  Health: 50
   AttackRange: 1
-  AttackRate: 1
+  AttackRate: 3
   Damage: 1
   MoveSpeed: 2
+  currencyType: 0
   cost: 50

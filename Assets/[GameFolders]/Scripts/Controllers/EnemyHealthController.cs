@@ -34,6 +34,7 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
     {
         if(currentHealth-damage>0)
         {
+            Debug.Log("takeDamage");
             currentHealth -= damage;
             healthBar.value = currentHealth;
         }

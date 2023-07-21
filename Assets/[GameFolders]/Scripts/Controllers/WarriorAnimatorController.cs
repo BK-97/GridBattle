@@ -22,6 +22,10 @@ public class WarriorAnimatorController : MonoBehaviour
         animator.SetBool("Attack", false);
         warriorController.AttackEnd();
     }
+    public void HitEnd()
+    {
+        warriorController.ControllerOn();
+    }
     #endregion
     #region AnimationMethods
     public void AttackAnim()
@@ -34,7 +38,13 @@ public class WarriorAnimatorController : MonoBehaviour
     }
     public void DeathAnim()
     {
+        animator.Rebind();
+        animator.SetTrigger("Death");
 
+    }
+    public void HitAnim()
+    {
+        animator.SetTrigger("Hit");
     }
     #endregion
 }
