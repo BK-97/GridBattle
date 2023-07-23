@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 1511480989524725467}
   - component: {fileID: 1511480989524725408}
   - component: {fileID: 1511480989524725415}
+  - component: {fileID: -1550911228992070818}
   m_Layer: 7
   m_Name: EnemyMinion
   m_TagString: Untagged
@@ -318,9 +319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3f392cb2c192541a10a11c74d3f089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackableLayers:
+  gridLayer:
     serializedVersion: 2
-    m_Bits: 1088
+    m_Bits: 256
 --- !u!114 &1511480989524725413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,8 +334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47476d2ed584a3b49998218f11b65cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinPrefab: {fileID: 1076947625176626014, guid: cced78183e1de30489d065eee7bb4a1a,
-    type: 3}
   healthBar: {fileID: 1511480989076111631}
 --- !u!114 &1511480989524725412
 MonoBehaviour:
@@ -393,6 +392,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1550911228992070818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511480989524725465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97247860d805b14c9fce817180eae52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetGrid: {fileID: 0}
 --- !u!1 &1511480990130432967
 GameObject:
   m_ObjectHideFlags: 0

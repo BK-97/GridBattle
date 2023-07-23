@@ -39,5 +39,12 @@ public class EnemyMovementController : MonoBehaviour
         else
             return true;
     }
+    public bool IsDestinationReached(Vector3 destination)
+    {
+        if (Vector3.Distance(transform.position, destination) < 1)
+            return true;
+        else
+            return false;
+    }
     #endregion
 }

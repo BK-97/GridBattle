@@ -20,11 +20,14 @@ public class StateController : MonoBehaviour
     public EnemyMovementController MovementController { get { return (movementController == null) ? movementController = GetComponent<EnemyMovementController>() : movementController; } }
     private EnemyHealthController healthController;
     public EnemyHealthController HealthController { get { return (healthController == null) ? healthController = GetComponent<EnemyHealthController>() : healthController; } }
+    private Invader invader;
+    public Invader Invader { get { return (invader == null) ? invader = GetComponent<Invader>() : invader; } }
     #endregion
     #region States
     private BaseState currentState;
     public IdleState idleState=new IdleState();
     public MoveState moveState=new MoveState();
+    public GridCaptureState captureState=new GridCaptureState();
     public AttackState attackState=new AttackState();
     #endregion
     #region MonoBehaviourMethods
@@ -40,6 +43,7 @@ public class StateController : MonoBehaviour
     }
     #endregion
     #region MyMethods
+
     private void SetDatas()
     {
         AttackController.DataSet(enemyData);

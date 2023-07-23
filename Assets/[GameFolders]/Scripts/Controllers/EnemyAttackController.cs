@@ -10,9 +10,11 @@ public class EnemyAttackController : MonoBehaviour
     private int damage;
     bool canAttack;
     IDamagable closestTarget;
-    public LayerMask attackableLayers;
+    public LayerMask gridLayer;
     private StateController stateController;
     public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
+    private Invader invader;
+    public Invader Invader { get { return (invader == null) ? invader = GetComponent<Invader>() : invader; } }
     #endregion
     #region SetMethods
     public void DataSet(EnemyData data)
@@ -23,26 +25,54 @@ public class EnemyAttackController : MonoBehaviour
     }
     #endregion
     #region CheckMethods
+    public bool CheckGrid()
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, attackRange-0.25f, gridLayer))
+        {
+
+            GridSystem.Grid grid = hitInfo.collider.GetComponentInParent<GridSystem.Grid>();
+            if (grid == null)
+                grid = hitInfo.collider.GetComponent<GridSystem.Grid>();
+
+            Debug.DrawLine(transform.position, hitInfo.point);
+
+            if (grid != null)
+            {
+                Invader.targetGrid = grid;
+                return true;
+            }
+            else
+            {
+
+                Invader.targetGrid = null;
+                return false;
+            }
+
+        }
+        return false;
+    }
     public bool CheckEnemy()
     {
-
-        RaycastHit hitInfo;
-
-        if (Physics.Raycast(StateController.raycastPoint.position, StateController.raycastPoint.forward, out hitInfo, attackRange, attackableLayers))
+        if (Invader.targetGrid.gridObject == null)
         {
-            IDamagable damagable = hitInfo.collider.GetComponent<IDamagable>();
+            return false;
+        }
+        else
+        {
+
+            IDamagable damagable = Invader.targetGrid.gridObject.GetComponent<IDamagable>();
             if (damagable != null)
             {
                 closestTarget = damagable;
-                AttackTimer();
                 return true;
-
             }
             else
+            {
                 lastAttackTime = Time.time;
+                return false;
+            }
         }
-        return false;
-
     }
     #endregion
     #region AttackMethods
@@ -50,7 +80,6 @@ public class EnemyAttackController : MonoBehaviour
     {
         isAttacking = true;
         lastAttackTime = Time.time;
-        Debug.Log("attack");
         closestTarget.TakeDamage(damage);
         isAttacking = false;
 
@@ -62,7 +91,7 @@ public class EnemyAttackController : MonoBehaviour
         if (!isAttacking)
         {
 
-            if (Time.time >= attackRate+ lastAttackTime)
+            if (Time.time >= attackRate + lastAttackTime)
             {
                 Attack();
             }

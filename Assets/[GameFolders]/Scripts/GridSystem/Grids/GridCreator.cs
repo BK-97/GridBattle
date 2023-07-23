@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using System.Collections;
+using System.Collections.Generic;
 namespace GridSystem
 {
     public class GridCreator : MonoBehaviour
@@ -11,10 +12,37 @@ namespace GridSystem
         private int gridMapWidth = 1;
         [SerializeField]
         private GameObject gridPrefab;
+        public List<Grid> liberatedGrids;
+        public List<Grid> allGrids;
         #endregion
         #region Methods
+        private void Start()
+        {
+            for (int i = 0; i < allGrids.Count; i++)
+            {
+                if (allGrids[i].gameObject.activeSelf)
+                    liberatedGrids.Add(allGrids[i]);
+            }
+        }
+        public void GridInvaded(Grid invadedGrid)
+        {
+            if (liberatedGrids.Contains(invadedGrid))
+            {
+                liberatedGrids.Remove(invadedGrid);
+                invadedGrid.gameObject.SetActive(false);
+            }
+        }
+        public void GridLiberated(Grid liberatedGrid)
+        {
+            if (!liberatedGrids.Contains(liberatedGrid))
+            {
+                liberatedGrids.Add(liberatedGrid);
+                liberatedGrid.gameObject.SetActive(true);
+            }
+        }
         public void CreateGrid()
         {
+            allGrids.Clear();
             DeleteChildGrids();
             Vector3 creatorPosition = transform.position;
 
@@ -33,8 +61,9 @@ namespace GridSystem
                     Vector3 position = creatorPosition + offset;
                     GameObject gridObject = Instantiate(gridPrefab, position, Quaternion.identity);
                     gridObject.transform.SetParent(transform);
-                    BaseGrid grid = gridObject.GetComponent<BaseGrid>();
+                    Grid grid = gridObject.GetComponent<Grid>();
                     grid.Initialize(position);
+                    allGrids.Add(grid);
                 }
             }
         }

@@ -271,9 +271,6 @@ MonoBehaviour:
   fullGridMat: {fileID: 2100000, guid: 6c65efc6f97a88a43a841e5963c3da8c, type: 2}
   canObjectTakenMat: {fileID: 2100000, guid: 0c628ec726da41643b94621f96076c59, type: 2}
   onMouseMat: {fileID: 2100000, guid: a98297f2708738c4092a5930e3d2acf5, type: 2}
-  ignoredLayers:
-    serializedVersion: 2
-    m_Bits: 192
 --- !u!65 &2130861228972713278
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -285,7 +282,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.01, z: 1}
+  m_Size: {x: 1, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2936385649901637682
 GameObject:
