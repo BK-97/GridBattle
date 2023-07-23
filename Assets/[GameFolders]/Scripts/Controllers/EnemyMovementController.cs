@@ -9,6 +9,8 @@ public class EnemyMovementController : MonoBehaviour
     public bool canMove;
     private StateController stateController;
     public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
+    private EnemyAnimationController animationController;
+    public EnemyAnimationController AnimationController { get { return (animationController == null) ? animationController = GetComponentInChildren<EnemyAnimationController>() : animationController; } }
     #endregion
     #region SetMethods
     public void SetSpeed(int speed)
@@ -25,6 +27,7 @@ public class EnemyMovementController : MonoBehaviour
         if(canMove)
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 
+        AnimationController.MoveAnim();
     }
     #endregion
     #region CheckMethods

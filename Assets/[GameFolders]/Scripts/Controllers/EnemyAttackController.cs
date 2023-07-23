@@ -15,6 +15,8 @@ public class EnemyAttackController : MonoBehaviour
     public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
     private Invader invader;
     public Invader Invader { get { return (invader == null) ? invader = GetComponent<Invader>() : invader; } }
+    private EnemyAnimationController animationController;
+    public EnemyAnimationController AnimationController { get { return (animationController == null) ? animationController = GetComponentInChildren<EnemyAnimationController>() : animationController; } }
     #endregion
     #region SetMethods
     public void DataSet(EnemyData data)
@@ -76,13 +78,14 @@ public class EnemyAttackController : MonoBehaviour
     }
     #endregion
     #region AttackMethods
-    private void Attack()
+    public void Attack()
     {
-        isAttacking = true;
-        lastAttackTime = Time.time;
         closestTarget.TakeDamage(damage);
+    }
+    public void AttackEnd()
+    {
+        lastAttackTime = Time.time;
         isAttacking = false;
-
     }
     bool isAttacking;
     float lastAttackTime;
@@ -93,7 +96,8 @@ public class EnemyAttackController : MonoBehaviour
 
             if (Time.time >= attackRate + lastAttackTime)
             {
-                Attack();
+                isAttacking = true;
+                AnimationController.AttackAnim();
             }
         }
     }
