@@ -15,6 +15,7 @@ public class EnemyAnimationController : MonoBehaviour
     #region AnimationEventMethods
     public void AttackEvent()
     {
+        MoveAnim(0);
         attackController.Attack();
     }
     public void AttackEnd()
@@ -28,12 +29,13 @@ public class EnemyAnimationController : MonoBehaviour
     {
         animator.SetBool("Attack", true);
     }
-    public void MoveAnim()
+    public void MoveAnim(float speed)
     {
-        animator.SetFloat("MoveSpeed",1);
+        animator.SetFloat("MoveSpeed", speed);
     }
     public void DeathAnim()
     {
+        MoveAnim(0);
         animator.Rebind();
         animator.SetTrigger("Death");
 

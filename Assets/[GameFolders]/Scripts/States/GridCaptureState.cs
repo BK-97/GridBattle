@@ -27,6 +27,9 @@ public class GridCaptureState : BaseState
         if (!stateController.MovementController.IsDestinationReached(stateController.Invader.targetGrid.transform.position))
             stateController.MovementController.Move();
         else
+        {
+            stateController.MovementController.Stop();
             stateController.Invader.Invading();
+        }
     }
 }

@@ -13,6 +13,7 @@ public class MoveState : BaseState
 
     public override void ExitState(StateController stateController)
     {
+        stateController.MovementController.Stop();
         if (stateController.AttackController.CheckEnemy())
             stateController.ChangeState(stateController.attackState);
         else

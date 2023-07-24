@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyMovementController : MonoBehaviour
 {
     #region Params
-    private int moveSpeed;
+    private int maxSpeed;
+    private float currentSpeed;
     public bool canMove;
     private StateController stateController;
     public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
@@ -15,7 +16,7 @@ public class EnemyMovementController : MonoBehaviour
     #region SetMethods
     public void SetSpeed(int speed)
     {
-        moveSpeed = speed;
+        maxSpeed = speed;
         canMove = true;
     }
     #endregion
@@ -24,10 +25,19 @@ public class EnemyMovementController : MonoBehaviour
     {
         if (!CheckForwardIsEmpty())
             return;
-        if(canMove)
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        if (canMove)
+        {
+            Vector3 movementDirection = Vector3.forward;
+            currentSpeed = Mathf.Lerp(currentSpeed, maxSpeed, Time.deltaTime);
+            transform.Translate(movementDirection * currentSpeed * Time.deltaTime);
+        }
 
-        AnimationController.MoveAnim();
+        AnimationController.MoveAnim(currentSpeed);
+    }
+    public void Stop()
+    {
+        currentSpeed = 0;
+        AnimationController.MoveAnim(currentSpeed);
     }
     #endregion
     #region CheckMethods
