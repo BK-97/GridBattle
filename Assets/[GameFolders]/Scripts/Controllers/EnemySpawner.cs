@@ -31,11 +31,11 @@ public class EnemySpawner : MonoBehaviour
     #endregion
     private void OnEnable()
     {
-        GameManager.OnBattleSessionStart.AddListener(StartSpawning);
+        GameManager.Instance.OnBattleSessionStart.AddListener(StartSpawning);
     }
     private void OnDisable()
     {
-        GameManager.OnBattleSessionStart.RemoveListener(StartSpawning);
+        GameManager.Instance.OnBattleSessionStart.RemoveListener(StartSpawning);
     }
     #region SpawnMethods
     public void StartSpawning()
@@ -75,7 +75,7 @@ public class EnemySpawner : MonoBehaviour
 
         // Bekleme süresi için
         yield return new WaitUntil(() => IsAllEnemiesDead());
-        GameManager.OnSpawnSessionStart.Invoke();
+        GameManager.Instance.OnSpawnSessionStart.Invoke();
         yield return new WaitForSeconds(5f);
 
         currentWave++;

@@ -11,12 +11,13 @@ public class TapToStartPanel : MonoBehaviour
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        ShowPanel();
+        HidePanel();
     }
-    private void Start()
+    private void StartScale()
     {
         textTransform.DOScale(Vector3.one*1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo);
         waitingForFirstTouch = true;
+
     }
     private void Update()
     {
@@ -25,22 +26,32 @@ public class TapToStartPanel : MonoBehaviour
         if (Input.touchCount > 0 || Input.GetMouseButton(0))
         {
             waitingForFirstTouch = false;
-            GameManager.OnGameStart.Invoke();
+            LevelManager.Instance.OnLevelStart.Invoke();
             HidePanel();
         }
     }
+    private void OnEnable()
+    {
+        
+        SceneController.Instance.OnSceneLoaded.AddListener(ShowPanel);
+    }
+    private void OnDisable()
+    {
+        SceneController.Instance.OnSceneLoaded.RemoveListener(ShowPanel);
 
-
+    }
     private void HidePanel()
     {
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
+
     }
     private void ShowPanel()
     {
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
+        StartScale();
     }
 }

@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/[GameFolders]/Scenes/GridPlacementScene.unity
+    path: Assets/[GameFolders]/Scenes/Init.unity
+    guid: 5fee1dc04992dbf4da2bceaffac2b968
+  - enabled: 1
+    path: Assets/[GameFolders]/Scenes/UI.unity
+    guid: 05b086ff3136d8c4a928b73f12a7318a
+  - enabled: 1
+    path: Assets/[GameFolders]/Scenes/Level-1.unity
     guid: 21b995ff97d96c24c9357d4235b809a0
   m_configObjects: {}

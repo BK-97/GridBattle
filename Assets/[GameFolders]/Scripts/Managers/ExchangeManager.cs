@@ -12,7 +12,8 @@ public class ExchangeManager: Singleton<ExchangeManager>
 {
     private Dictionary<CurrencyType, int> currencyDictionary;
     public DictonaryEvent OnCurrencyChange = new DictonaryEvent();
-    public Transform UITransform;
+    [HideInInspector]
+    public Vector3 UIPos;
     public GameObject coinPrefab;
     public ExchangeManager()
     {
@@ -20,10 +21,13 @@ public class ExchangeManager: Singleton<ExchangeManager>
     }
     private void Start()
     {
-        PlayerPrefs.SetInt(PlayerPrefsKeys.CurrentCoin,300);
+        PlayerPrefs.SetInt(PlayerPrefKeys.CurrentCoin,300);
         Debug.Log("For Test Purposes Set Coin 300");
-        currencyDictionary[CurrencyType.Coin] = PlayerPrefs.GetInt(PlayerPrefsKeys.CurrentCoin, 300);
-
+        currencyDictionary[CurrencyType.Coin] = PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, 300);
+    }
+    public void SetUIPos(Vector3 pos)
+    {
+        UIPos = pos;
     }
     public bool UseCurrency(CurrencyType currencyType, int amount)
     {
@@ -32,7 +36,7 @@ public class ExchangeManager: Singleton<ExchangeManager>
             if (currencyDictionary[currencyType] >= amount)
             {
                 currencyDictionary[currencyType] -= amount;
-                PlayerPrefs.SetInt(PlayerPrefsKeys.CurrentCoin, currencyDictionary[currencyType]);
+                PlayerPrefs.SetInt(PlayerPrefKeys.CurrentCoin, currencyDictionary[currencyType]);
                 OnCurrencyChange.Invoke(currencyDictionary);
                 return true;
             }
@@ -52,7 +56,7 @@ public class ExchangeManager: Singleton<ExchangeManager>
         if (currencyDictionary.ContainsKey(currencyType))
         {
             currencyDictionary[currencyType] += amount;
-            PlayerPrefs.SetInt(PlayerPrefsKeys.CurrentCoin, currencyDictionary[currencyType]);
+            PlayerPrefs.SetInt(PlayerPrefKeys.CurrentCoin, currencyDictionary[currencyType]);
             OnCurrencyChange.Invoke(currencyDictionary);
         }
     }

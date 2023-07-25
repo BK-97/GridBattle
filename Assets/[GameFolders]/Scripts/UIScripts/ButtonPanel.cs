@@ -13,13 +13,13 @@ public class ButtonPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.OnBattleSessionStart.AddListener(HidePanel);
-        GameManager.OnSpawnSessionStart.AddListener(ShowPanel);
+        GameManager.Instance.OnBattleSessionStart.AddListener(HidePanel);
+        GameManager.Instance.OnSpawnSessionStart.AddListener(ShowPanel);
     }
     private void OnDisable()
     {
-        GameManager.OnBattleSessionStart.RemoveListener(HidePanel);
-        GameManager.OnSpawnSessionStart.RemoveListener(ShowPanel);
+        GameManager.Instance.OnBattleSessionStart.RemoveListener(HidePanel);
+        GameManager.Instance.OnSpawnSessionStart.RemoveListener(ShowPanel);
     }
 
     private void HidePanel()
