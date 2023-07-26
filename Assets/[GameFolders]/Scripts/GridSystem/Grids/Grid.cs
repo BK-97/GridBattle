@@ -12,7 +12,8 @@ namespace GridSystem
         public bool hasObject;
         [HideInInspector]
         public Vector3 gridPos;
-
+        [HideInInspector]
+        public GridController gridController;
         protected Material starterMat;
 
         [SerializeField]
@@ -94,6 +95,9 @@ namespace GridSystem
         }
         #endregion
         #endregion
-
+        public void Invaded()
+        {
+            gridController.GridInvaded(this);
+        }
     }
 }

@@ -15,6 +15,8 @@ public class ExchangeManager: Singleton<ExchangeManager>
     [HideInInspector]
     public Vector3 UIPos;
     public GameObject coinPrefab;
+    private float incomeMultiplier=1.1f;
+    public float currentIncomeMultiplier;
     public ExchangeManager()
     {
         currencyDictionary = new Dictionary<CurrencyType, int>();
@@ -23,12 +25,23 @@ public class ExchangeManager: Singleton<ExchangeManager>
     {
         PlayerPrefs.SetInt(PlayerPrefKeys.CurrentCoin,300);
         Debug.Log("For Test Purposes Set Coin 300");
+
+
         currencyDictionary[CurrencyType.Coin] = PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, 300);
+        UpdateIncomeMultiplier();
+
     }
     public void SetUIPos(Vector3 pos)
     {
         UIPos = pos;
     }
+    #region UpgradeMethods
+    public void UpdateIncomeMultiplier()
+    {
+        currentIncomeMultiplier = PlayerPrefs.GetInt(PlayerPrefKeys.IncomeLevel, 1) * incomeMultiplier;
+    }
+    #endregion
+    #region CurrencyMethods
     public bool UseCurrency(CurrencyType currencyType, int amount)
     {
         if (currencyDictionary.ContainsKey(currencyType))
@@ -72,5 +85,6 @@ public class ExchangeManager: Singleton<ExchangeManager>
             return 0;
         }
     }
+    #endregion
 }
 public class DictonaryEvent : UnityEvent<Dictionary<CurrencyType,int>> { }

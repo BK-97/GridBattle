@@ -45,11 +45,13 @@ public class LevelManager : Singleton<LevelManager>
     private void OnEnable()
     {
         GameManager.Instance.OnStageLoose.AddListener(ReloadLevel);
+        OnLevelStart.AddListener(StartLevel);
     }
 
     private void OnDisable()
     {
         GameManager.Instance.OnStageLoose.RemoveListener(ReloadLevel);
+        OnLevelStart.RemoveListener(StartLevel);
     }
     public void ReloadLevel()
     {
@@ -86,12 +88,11 @@ public class LevelManager : Singleton<LevelManager>
 
         SceneController.Instance.LoadScene(CurrentLevel.LoadLevelID);
     }
-    public void StartLevel()
+    private void StartLevel()
     {
         if (IsLevelStarted)
             return;
         IsLevelStarted = true;
-        OnLevelStart.Invoke();
     }
 
     public void FinishLevel()

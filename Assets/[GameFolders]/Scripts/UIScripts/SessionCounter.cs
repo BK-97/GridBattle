@@ -16,7 +16,6 @@ public class SessionCounter : MonoBehaviour
         currentTime = sessionTime;
         timeSlider.maxValue = sessionTime;
         timeSlider.value = sessionTime;
-        Debug.Log("1");
     }
 
     private void OnEnable()
@@ -33,14 +32,12 @@ public class SessionCounter : MonoBehaviour
     {
         currentTime = sessionTime;
         canCountTime = true;
-        Debug.Log("2");
 
     }
     private void Update()
     {
         if (canCountTime && currentTime > 0)
         {
-            Debug.Log(currentTime);
             currentTime -= Time.deltaTime;
             timeSlider.value = currentTime;
             timeText.text = Mathf.RoundToInt(currentTime).ToString();

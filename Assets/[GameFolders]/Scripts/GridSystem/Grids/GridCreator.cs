@@ -12,37 +12,10 @@ namespace GridSystem
         private int gridMapWidth = 1;
         [SerializeField]
         private GameObject gridPrefab;
-        public List<Grid> liberatedGrids;
-        public List<Grid> allGrids;
         #endregion
         #region Methods
-        private void Start()
-        {
-            for (int i = 0; i < allGrids.Count; i++)
-            {
-                if (allGrids[i].gameObject.activeSelf)
-                    liberatedGrids.Add(allGrids[i]);
-            }
-        }
-        public void GridInvaded(Grid invadedGrid)
-        {
-            if (liberatedGrids.Contains(invadedGrid))
-            {
-                liberatedGrids.Remove(invadedGrid);
-                invadedGrid.gameObject.SetActive(false);
-            }
-        }
-        public void GridLiberated(Grid liberatedGrid)
-        {
-            if (!liberatedGrids.Contains(liberatedGrid))
-            {
-                liberatedGrids.Add(liberatedGrid);
-                liberatedGrid.gameObject.SetActive(true);
-            }
-        }
         public void CreateGrid()
         {
-            allGrids.Clear();
             DeleteChildGrids();
             Vector3 creatorPosition = transform.position;
 
@@ -63,7 +36,6 @@ namespace GridSystem
                     gridObject.transform.SetParent(transform);
                     Grid grid = gridObject.GetComponent<Grid>();
                     grid.Initialize(position);
-                    allGrids.Add(grid);
                 }
             }
         }

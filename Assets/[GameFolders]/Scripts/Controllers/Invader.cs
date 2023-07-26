@@ -34,9 +34,7 @@ public class Invader : MonoBehaviour
     {
         Debug.Log("Invaded");
         isInvading = false;
-        GridCreator gridsParent = targetGrid.GetComponentInParent<GridCreator>();
-        gridsParent.GridInvaded(targetGrid);
-
+        targetGrid.Invaded();
     }
 
     public void CancelInvade()

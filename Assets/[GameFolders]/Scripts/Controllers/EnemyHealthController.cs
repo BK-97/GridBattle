@@ -16,7 +16,7 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
     {
         var go = Instantiate(ExchangeManager.Instance.coinPrefab, transform.position, Quaternion.identity);
         go.transform.position = transform.position;
-        go.GetComponent<CoinUp>().SetInfo(StateController.enemyData.cost, StateController.enemyData.currencyType);
+        go.GetComponent<CoinUp>().SetInfo(Mathf.RoundToInt(StateController.enemyData.cost*ExchangeManager.Instance.currentIncomeMultiplier), StateController.enemyData.currencyType);
 
         currentHealth = 0;
         healthBar.value = currentHealth;
@@ -34,7 +34,6 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
     {
         if(currentHealth-damage>0)
         {
-            Debug.Log("takeDamage");
             currentHealth -= damage;
             healthBar.value = currentHealth;
         }

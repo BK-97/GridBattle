@@ -73,19 +73,26 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        // Bekleme süresi için
         yield return new WaitUntil(() => IsAllEnemiesDead());
-        GameManager.Instance.OnSpawnSessionStart.Invoke();
-        yield return new WaitForSeconds(5f);
-
-        currentWave++;
-        if (currentWave >= waves.Count)
+        if (currentWave + 1 == waves.Count)
         {
-            Debug.Log("Waves are completed!");
+            GameManager.Instance.OnStageWin.Invoke();
         }
         else
         {
-            StartCoroutine(SpawnWave());
+            GameManager.Instance.OnSpawnSessionStart.Invoke();
+
+            yield return new WaitForSeconds(5f);
+
+            currentWave++;
+            if (currentWave >= waves.Count)
+            {
+                GameManager.Instance.OnStageWin.Invoke();
+            }
+            else
+            {
+                StartCoroutine(SpawnWave());
+            }
         }
     }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MinionData
   m_EditorClassIdentifier: 
   EnemyType: 0
-  Health: 50
+  Health: 10
   AttackRange: 1
   AttackRate: 3
   Damage: 1
