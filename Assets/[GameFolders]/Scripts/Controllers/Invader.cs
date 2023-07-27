@@ -21,7 +21,6 @@ public class Invader : MonoBehaviour
         if (isInvading)
         {
             invadeCounter += Time.deltaTime;
-            Debug.Log("Invading");
 
             if (invadeCounter >= invadeTime)
             {
@@ -32,7 +31,6 @@ public class Invader : MonoBehaviour
 
     private void Invaded()
     {
-        Debug.Log("Invaded");
         isInvading = false;
         targetGrid.Invaded();
     }

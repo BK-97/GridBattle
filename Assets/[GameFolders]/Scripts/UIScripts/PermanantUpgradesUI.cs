@@ -13,11 +13,14 @@ public class PermanantUpgradesUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        GameManager.Instance.OnStageWin.AddListener(ShowPanel);
+        SceneController.Instance.OnSceneLoaded.AddListener(ShowPanel);
+        LevelManager.Instance.OnLevelStart.AddListener(HidePanel);
+
     }
     private void OnDisable()
     {
-        GameManager.Instance.OnStageWin.RemoveListener(ShowPanel);
+        SceneController.Instance.OnSceneLoaded.RemoveListener(ShowPanel);
+        LevelManager.Instance.OnLevelStart.RemoveListener(HidePanel);
     }
     private void HidePanel()
     {

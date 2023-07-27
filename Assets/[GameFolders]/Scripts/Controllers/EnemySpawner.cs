@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
     #region Params
     [SerializeField]
     private List<WaveData> waves;
-    private int currentWave = 0;
+    private int currentWave = -1;
     #endregion
     private void OnEnable()
     {
@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
     #region SpawnMethods
     public void StartSpawning()
     {
-        currentWave = 0;
+        currentWave++;
         StartCoroutine(SpawnWave());
     }
     private IEnumerator SpawnWave()
@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
         while (waveLoop)
         {
             foreach (CustomData data in currentWaveData.WaveOrder)
-            {
+             {
                 if (data.SpawnCount > 0)
                 {
                     InstantiateObject(data.Enemy);
@@ -72,7 +72,6 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
-
         yield return new WaitUntil(() => IsAllEnemiesDead());
         if (currentWave + 1 == waves.Count)
         {
@@ -81,18 +80,6 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             GameManager.Instance.OnSpawnSessionStart.Invoke();
-
-            yield return new WaitForSeconds(5f);
-
-            currentWave++;
-            if (currentWave >= waves.Count)
-            {
-                GameManager.Instance.OnStageWin.Invoke();
-            }
-            else
-            {
-                StartCoroutine(SpawnWave());
-            }
         }
     }
 
@@ -101,12 +88,6 @@ public class EnemySpawner : MonoBehaviour
         return transform.childCount == 0;
     }
     
-    private IEnumerator WaitForNextWave()
-    {
-        yield return new WaitForSeconds(waves[currentWave-1].NextWaveWaitTime);
-        StartCoroutine(SpawnWave());
-
-    }
     private void InstantiateObject(GameObject spawnObject)
     {
         var go=Instantiate(spawnObject, transform.position, transform.rotation, transform);

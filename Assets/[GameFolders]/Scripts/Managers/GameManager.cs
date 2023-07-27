@@ -49,16 +49,16 @@ public class GameManager : Singleton<GameManager>
     private void OnEnable()
     {
         SceneController.Instance.OnSceneLoaded.AddListener(() => IsStageCompleted = false);
-        LevelManager.Instance.OnLevelStart.AddListener(() => {EventManager.OnTimeSet.Invoke(5); OnSpawnSessionStart.Invoke(); });
+        LevelManager.Instance.OnLevelStart.AddListener(() => { EventManager.OnTimeSet.Invoke(5); OnSpawnSessionStart.Invoke(); });
         OnSpawnSessionStart.AddListener(() => ChangeState(GameStates.SpawnSession));
         OnBattleSessionStart.AddListener(() => ChangeState(GameStates.BattleSession));
         OnStageWin.AddListener(() => CompeleteStage(true));
-        OnStageLoose.AddListener(()=> CompeleteStage(false));
+        OnStageLoose.AddListener(() => CompeleteStage(false));
     }
     private void OnDisable()
     {
         SceneController.Instance.OnSceneLoaded.RemoveListener(() => IsStageCompleted = false);
-        LevelManager.Instance.OnLevelStart.RemoveListener(()=> { EventManager.OnTimeSet.Invoke(5); OnSpawnSessionStart.Invoke(); });
+        LevelManager.Instance.OnLevelStart.RemoveListener(() => { EventManager.OnTimeSet.Invoke(5); OnSpawnSessionStart.Invoke(); });
         OnSpawnSessionStart.RemoveListener(() => ChangeState(GameStates.SpawnSession));
         OnBattleSessionStart.RemoveListener(() => ChangeState(GameStates.BattleSession));
         OnStageWin.RemoveListener(() => CompeleteStage(true));
@@ -92,17 +92,8 @@ public class GameManager : Singleton<GameManager>
 
         if (IsStageCompleted == true)
             return;
-
-        if (value)
-        {
-            StartCoroutine(WaitLevelChange(value));
-            OnStageWin.Invoke();
-        }
-        else
-        {
-            StartCoroutine(WaitLevelChange(value));
-            OnStageLoose.Invoke();
-        }
+        Debug.Log("gAMEFinish");
+        StartCoroutine(WaitLevelChange(value));
         IsStageCompleted = true;
     }
 
@@ -124,7 +115,7 @@ public class GameManager : Singleton<GameManager>
     IEnumerator WaitBattleSession()
     {
         yield return new WaitForSeconds(5);
-        OnBattleSessionStart.Invoke();
+        //OnBattleSessionStart.Invoke();
     }
     #endregion
 }

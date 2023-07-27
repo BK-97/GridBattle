@@ -20,7 +20,6 @@ public class CoinUp : MonoBehaviour
     {
         Vector3 targetPosition = ExchangeManager.Instance.UIPos;
 
-        Debug.Log(targetPosition);
         transform.DOMove(targetPosition, 1f).OnComplete(() =>
         {
             DestinationReached();

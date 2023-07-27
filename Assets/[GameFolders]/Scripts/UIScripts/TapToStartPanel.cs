@@ -19,20 +19,15 @@ public class TapToStartPanel : MonoBehaviour
         waitingForFirstTouch = true;
 
     }
-    private void Update()
+    public void Tapped()
     {
         if (!waitingForFirstTouch)
             return;
-        if (Input.touchCount > 0 || Input.GetMouseButton(0))
-        {
-            waitingForFirstTouch = false;
-            LevelManager.Instance.OnLevelStart.Invoke();
-            HidePanel();
-        }
+        LevelManager.Instance.OnLevelStart.Invoke();
+        HidePanel();
     }
     private void OnEnable()
     {
-        
         SceneController.Instance.OnSceneLoaded.AddListener(ShowPanel);
     }
     private void OnDisable()

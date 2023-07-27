@@ -25,8 +25,7 @@ public class CoinTextController : MonoBehaviour
         if (!LevelManager.Instance.IsLevelStarted)
             return;
         offSet = new Vector3(0, 0, -Camera.main.transform.position.z);
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(transform.position + offSet);
-        Debug.Log(worldPos);
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(coinText.transform.position + offSet);
         ExchangeManager.Instance.SetUIPos(worldPos); 
     }
 }

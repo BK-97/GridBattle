@@ -14,10 +14,12 @@ public class GamePanel : MonoBehaviour
     private void OnEnable()
     {
         LevelManager.Instance.OnLevelStart.AddListener(ShowPanel);
+        LevelManager.Instance.OnLevelFinish.AddListener(HidePanel);
     }
     private void OnDisable()
     {
         LevelManager.Instance.OnLevelStart.RemoveListener(ShowPanel);
+        LevelManager.Instance.OnLevelFinish.RemoveListener(HidePanel);
     }
 
     private void HidePanel()
@@ -28,7 +30,6 @@ public class GamePanel : MonoBehaviour
     }
     private void ShowPanel()
     {
-        Debug.Log("test");
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
