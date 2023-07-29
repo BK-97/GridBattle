@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(WarriorHealthController))]
 public class WarriorController : MonoBehaviour
 {
     #region Params
     public WarriorData warriorData;
+    [SerializeField]
     private int damage;
     private float attackRate;
     private float attackRange;
@@ -19,6 +21,8 @@ public class WarriorController : MonoBehaviour
     public WarriorAnimatorController animatorController;
     private LevelUpgradeBase levelUpBase;
     public Transform raycastMuzzle;
+    [SerializeField]
+    private List<SkinnedMeshRenderer> meshes;
     #endregion
     #region MonoBehaviourMethods
     private void Start()
@@ -27,6 +31,8 @@ public class WarriorController : MonoBehaviour
         levelUpBase = GetComponent<LevelUpgradeBase>();
         animatorController = GetComponentInChildren<WarriorAnimatorController>();
         SetDatas(warriorData);
+        ColorChange();
+
     }
     private void Update()
     {
@@ -80,6 +86,8 @@ public class WarriorController : MonoBehaviour
     public void UpgradeWarrior()
     {
         currentLevel++;
+        ColorChange();
+        ChangeScale();
         levelUpBase.Upgrade(currentLevel, warriorData);
     }
     public void ControllerOff()
@@ -91,6 +99,17 @@ public class WarriorController : MonoBehaviour
     {
         canAttack = true;
         isAttacking = false;
+    }
+    public void ColorChange()
+    {
+        for (int i = 0; i < meshes.Count; i++)
+        {
+            meshes[i].materials[0].color = ColorManager.Instance.GetWarriorColor(currentLevel);
+        }
+    }
+    public void ChangeScale()
+    {
+        transform.DOScale(transform.localScale*1.1f,0.2f);
     }
     public void SetDatas(WarriorData currentData)
     {

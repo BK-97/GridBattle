@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -6468263304049997757}
   - component: {fileID: -7976159253176107531}
   - component: {fileID: -1876381949488852705}
+  - component: {fileID: 2178502265701175296}
   m_Layer: 6
   m_Name: Archer
   m_TagString: Player
@@ -59,7 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730a93b04c7a4314aba71926aaac6842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warriorData: {fileID: 11400000, guid: e26bbf6d4101bea45a55c6abdf92f509, type: 2}
+  warriorData: {fileID: 11400000, guid: af6cdb2233db74e44a89b08b700b28a6, type: 2}
+  currentLevel: 0
+  animatorController: {fileID: 0}
+  raycastMuzzle: {fileID: 0}
 --- !u!136 &-1876381949488852705
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -74,6 +78,19 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &2178502265701175296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7520341672977643540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c75904a1c57d734fa711cdac55f8482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
 --- !u!1001 &5110086601655423198
 PrefabInstance:
   m_ObjectHideFlags: 0

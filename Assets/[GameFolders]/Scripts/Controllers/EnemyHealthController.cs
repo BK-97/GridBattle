@@ -11,12 +11,13 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
     private StateController stateController;
     public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
     #endregion
+
     #region IDamagableMethods
     public void Die()
     {
         var go = Instantiate(ExchangeManager.Instance.coinPrefab, transform.position, Quaternion.identity);
         go.transform.position = transform.position;
-        go.GetComponent<CoinUp>().SetInfo(Mathf.RoundToInt(StateController.enemyData.cost*ExchangeManager.Instance.currentIncomeMultiplier), StateController.enemyData.currencyType);
+        go.GetComponent<CoinUp>().SetInfo(Mathf.RoundToInt(StateController.enemyData.cost*ExchangeManager.Instance.currentIncomeMultiplier), CurrencyType.Coin);
 
         currentHealth = 0;
         healthBar.value = currentHealth;

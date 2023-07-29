@@ -2449,7 +2449,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warriorData: {fileID: 11400000, guid: b7f51aa4c3100214187a0176257a5c57, type: 2}
   currentLevel: 0
+  animatorController: {fileID: 0}
   raycastMuzzle: {fileID: 3155667426109372541}
+  meshes:
+  - {fileID: 9126008117373004743}
+  - {fileID: 4308328081154348355}
+  - {fileID: 6700861677157939739}
 --- !u!114 &2773530626630494112
 MonoBehaviour:
   m_ObjectHideFlags: 0

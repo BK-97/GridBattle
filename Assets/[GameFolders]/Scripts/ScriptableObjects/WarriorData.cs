@@ -13,6 +13,6 @@ public class WarriorData : ScriptableObject
     public float AttackRange;
     public float AttackRate;
     public int Damage;
-
+    public int cost;
 
 }

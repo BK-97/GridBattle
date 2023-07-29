@@ -7,15 +7,17 @@ namespace GridSystem.UI
     {
         #region Params
         public GameObject spawnPrefab;
-        [SerializeField]
         private int spawnCost;
         private TextMeshProUGUI textMesh;
         #endregion
         #region Methods
         private void Start()
         {
+            if (spawnPrefab.GetComponent<WarriorController>().warriorData == null)
+                return;
+            spawnCost = spawnPrefab.GetComponent<WarriorController>().warriorData.cost;
             textMesh = GetComponentInChildren<TextMeshProUGUI>();
-            textMesh.text = spawnPrefab.name;
+            textMesh.text = spawnCost.ToString();
         }
         public void InvokeSpawnPrefab()
         {

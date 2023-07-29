@@ -651,8 +651,8 @@ MonoBehaviour:
   - WaveOrder:
     - Enemy: {fileID: 1511480989524725465, guid: 8c05831c8aafd0f4ea0b3e51cfc5ea00,
         type: 3}
-      SpawnCount: 2
-    WaveTimer: 2
+      SpawnCount: 5
+    WaveTimer: 5
     NextWaveWaitTime: 5
 --- !u!4 &103765193
 Transform:

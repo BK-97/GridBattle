@@ -23,12 +23,14 @@ public class EnemyMovementController : MonoBehaviour
     #region MoveMethods
     public void Move()
     {
-        if (!CheckForwardIsEmpty())
-            return;
         if (canMove)
         {
+            float distance= CheckDistanceForward();
             Vector3 movementDirection = Vector3.forward;
-            currentSpeed = Mathf.Lerp(currentSpeed, maxSpeed, Time.deltaTime);
+            if (distance == 0)
+                currentSpeed = 0;
+            else
+                currentSpeed = Mathf.Lerp(currentSpeed, maxSpeed* distance, Time.deltaTime);
             transform.Translate(movementDirection * currentSpeed * Time.deltaTime);
         }
 
@@ -41,16 +43,20 @@ public class EnemyMovementController : MonoBehaviour
     }
     #endregion
     #region CheckMethods
-    private bool CheckForwardIsEmpty()
+    private float CheckDistanceForward()
     {
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(StateController.raycastPoint.position, StateController.raycastPoint.forward, out hitInfo, 1, LayerMask.GetMask("Enemy")))
+        if (Physics.Raycast(StateController.raycastPoint.position, StateController.raycastPoint.forward, out hitInfo, 2, LayerMask.GetMask("Enemy")))
         {
-            return false;
+            float distance = Vector3.Distance(transform.position, hitInfo.collider.gameObject.transform.position);
+            if (distance <= 1)
+                return 0;
+            else
+                return distance - 1;
         }
-        else
-            return true;
+        return 1;
+
     }
     public bool IsDestinationReached(Vector3 destination)
     {

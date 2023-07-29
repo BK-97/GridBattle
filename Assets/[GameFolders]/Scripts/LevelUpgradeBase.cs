@@ -38,7 +38,12 @@ public class LevelUpgradeBase : MonoBehaviour
 
     protected virtual void CalculateData(int currentLevel)
     {
-
+        //upgradedHealth = upgradedHealth*currentLevel;
+        //upgradedDamage = upgradedDamage+(currentLevel * 2);
+        //Debug.Log(upgradedDamage);
+        //upgradedRate *= (currentLevel * 0.2f);
+        //if (upgradedRange > 1)
+        //    upgradedRange += currentLevel;
     }
 
     protected virtual void SetDataValues(int currentLevel)

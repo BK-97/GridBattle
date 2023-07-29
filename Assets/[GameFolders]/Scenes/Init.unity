@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 1423261069}
   - component: {fileID: 1423261070}
   - component: {fileID: 1423261071}
+  - component: {fileID: 1423261072}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -220,6 +221,9 @@ MonoBehaviour:
   OnGameStart:
     m_PersistentCalls:
       m_Calls: []
+  OnGameEnd:
+    m_PersistentCalls:
+      m_Calls: []
   OnSpawnSessionStart:
     m_PersistentCalls:
       m_Calls: []
@@ -230,9 +234,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnStageLoose:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLevelStart:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1423261067
@@ -275,6 +276,7 @@ MonoBehaviour:
   UIPos: {x: 0, y: 0, z: 0}
   coinPrefab: {fileID: 1076947625176626014, guid: cced78183e1de30489d065eee7bb4a1a,
     type: 3}
+  currentIncomeMultiplier: 0
 --- !u!114 &1423261070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,3 +320,23 @@ MonoBehaviour:
   OnLevelFinish:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1423261072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423261064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f316e7925c1e874e8dbf60563b02a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WarriorColors:
+  - {r: 0, g: 0.946259, b: 1, a: 0}
+  - {r: 0, g: 0.51428366, b: 1, a: 0}
+  - {r: 0.02937603, g: 0, b: 1, a: 0}
+  EnemyColors:
+  - {r: 1, g: 0.6869253, b: 0, a: 0}
+  - {r: 1, g: 0.38597694, b: 0, a: 0}
+  - {r: 1, g: 0, b: 0, a: 0}
