@@ -98,6 +98,12 @@ namespace GridSystem
         public void Invaded()
         {
             gridController.GridInvaded(this);
+            PoolingSystem.Instance.InstantiateAPS("Invaded",transform.position);
+        }
+        public void Liberated()
+        {
+            PoolingSystem.Instance.InstantiateAPS("Liberated", transform.position);
+
         }
     }
 }

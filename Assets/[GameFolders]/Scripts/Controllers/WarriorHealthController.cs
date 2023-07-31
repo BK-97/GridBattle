@@ -55,6 +55,7 @@ public class WarriorHealthController : MonoBehaviour,IDamagable
             healthBar.value = health;
             warriorController.animatorController.HitAnim();
             warriorController.ControllerOff();
+            PoolingSystem.Instance.InstantiateAPS("Blood",transform.position);
         }
     }
     #endregion

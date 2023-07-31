@@ -354,7 +354,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d019834135c396c4b9a090b5a9605d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SourceObjects: []
+  SourceObjects:
+  - ID: Blood
+    SourcePrefab: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+    MinNumberOfObject: 0
+    AllowGrow: 0
+    AutoDestroy: 0
+    clones:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - ID: Hit
+    SourcePrefab: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7,
+      type: 3}
+    MinNumberOfObject: 0
+    AllowGrow: 0
+    AutoDestroy: 0
+    clones:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - ID: Invaded
+    SourcePrefab: {fileID: 100000, guid: 7b56cd9b663f23f429e131a54ec87db0, type: 3}
+    MinNumberOfObject: 0
+    AllowGrow: 0
+    AutoDestroy: 0
+    clones:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - ID: Liberated
+    SourcePrefab: {fileID: 100006, guid: 60bc526f4be1e044ab9e46340b82ffb3, type: 3}
+    MinNumberOfObject: 0
+    AllowGrow: 0
+    AutoDestroy: 0
+    clones: []
+  - ID: LevelUpgraded
+    SourcePrefab: {fileID: 3280519133390621005, guid: a71be3e7990efb040a07565c43cbb198,
+      type: 3}
+    MinNumberOfObject: 0
+    AllowGrow: 0
+    AutoDestroy: 0
+    clones: []
   DefaultCount: 10
 --- !u!114 &1423261074
 MonoBehaviour:

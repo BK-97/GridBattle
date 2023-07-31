@@ -2448,6 +2448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warriorData: {fileID: 11400000, guid: b7f51aa4c3100214187a0176257a5c57, type: 2}
+  damage: 0
   currentLevel: 0
   animatorController: {fileID: 0}
   raycastMuzzle: {fileID: 3155667426109372541}

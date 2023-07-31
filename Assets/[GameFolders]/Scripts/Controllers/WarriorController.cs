@@ -89,6 +89,7 @@ public class WarriorController : MonoBehaviour
         ColorChange();
         ChangeScale();
         levelUpBase.Upgrade(currentLevel, warriorData);
+        PoolingSystem.Instance.InstantiateAPS("LevelUpgraded",transform.position);
     }
     public void ControllerOff()
     {

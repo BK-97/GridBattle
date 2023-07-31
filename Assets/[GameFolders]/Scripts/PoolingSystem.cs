@@ -1,26 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 [System.Serializable]
 public class SourceObjects
 {
     public string ID;
 
     public GameObject SourcePrefab;
-    //If 0 will use the global object count
     public int MinNumberOfObject = 0;
     public bool AllowGrow = true;
     public bool AutoDestroy = true;
 
-    public List<GameObject> clones;
+    public List<GameObject> clones = new List<GameObject>();
 }
 
 public class PoolingSystem : Singleton<PoolingSystem>
 {
     public List<SourceObjects> SourceObjects = new List<SourceObjects>();
 
-    private List<AudioSource> pooledAudioSources = new List<AudioSource>();
 
 
     public int DefaultCount = 10;
@@ -33,13 +31,14 @@ public class PoolingSystem : Singleton<PoolingSystem>
     public void InitilizePool()
     {
         InitilizeGameObjects();
-        InitilizeAudioSources();
     }
 
     private void InitilizeGameObjects()
     {
         for (int i = 0; i < SourceObjects.Count; i++)
         {
+            SourceObjects[i].clones = new List<GameObject>();
+
             int copyNumber = DefaultCount;
             if (SourceObjects[i].MinNumberOfObject != 0)
                 copyNumber = SourceObjects[i].MinNumberOfObject;
@@ -56,44 +55,17 @@ public class PoolingSystem : Singleton<PoolingSystem>
         }
     }
 
-    private void InitilizeAudioSources()
-    {
-        GameObject audioHolder = new GameObject();
-        audioHolder.name = "AudioHolder";
-        audioHolder.transform.SetParent(transform);
-        audioHolder.transform.position = Vector3.zero;
-
-        for (int i = 0; i < 20; i++)
-        {
-            GameObject go = new GameObject();
-            go.name = "PooledSource";
-            go.transform.position = Vector3.zero;
-            go.transform.SetParent(audioHolder.transform);
-            AudioSource audioSource = go.AddComponent<AudioSource>();
-            audioSource.playOnAwake = false;
-            audioSource.loop = false;
-            pooledAudioSources.Add(audioSource);
-        }
-    }
-
     public GameObject InstantiateAPS(string Id)
     {
         for (int i = 0; i < SourceObjects.Count; i++)
         {
             if (string.Equals(SourceObjects[i].ID, Id))
             {
-                for (int j = 0; j < SourceObjects[i].clones.Count; j++)
+                var inactiveClones = SourceObjects[i].clones.Where(clone => !clone.activeSelf);
+                foreach (GameObject inactiveClone in inactiveClones)
                 {
-                    if (!SourceObjects[i].clones[j].activeInHierarchy)
-                    {
-                        SourceObjects[i].clones[j].SetActive(true);
-                        //ForEach e al
-                        IPoolable poolable = SourceObjects[i].clones[j].GetComponent<IPoolable>();
-                        if (poolable != null)
-                            poolable.Initilize();
-
-                        return SourceObjects[i].clones[j];
-                    }
+                    inactiveClone.SetActive(true);
+                    return inactiveClone;
                 }
 
                 if (SourceObjects[i].AllowGrow)
@@ -176,34 +148,13 @@ public class PoolingSystem : Singleton<PoolingSystem>
             return null;
     }
 
-    public AudioSource GetAudioSource()
-    {
-        for (int i = 0; i < pooledAudioSources.Count; i++)
-        {
-            if (!pooledAudioSources[i].isPlaying)
-                return pooledAudioSources[i];
-        }
-
-        Transform audioHolder = transform.Find("AudioHolder");
-        GameObject go = new GameObject();
-        go.name = "PooledSource";
-        go.transform.position = Vector3.zero;
-        go.transform.SetParent(audioHolder);
-        AudioSource audioSource = go.AddComponent<AudioSource>();
-        audioSource.playOnAwake = false;
-        audioSource.loop = false;
-        pooledAudioSources.Add(audioSource);
-        return audioSource;
-    }
-
     public void DestroyAPS(GameObject clone)
     {
         clone.transform.position = transform.position;
         clone.transform.rotation = transform.rotation;
-        clone.transform.localScale = Vector3.one;
+        //clone.transform.localScale = Vector3.one;
         clone.transform.SetParent(transform);
 
-        //ForEach e al
         IPoolable poolable = clone.GetComponent<IPoolable>();
         if (poolable != null)
             poolable.Dispose();

@@ -44,6 +44,7 @@ namespace GridSystem
                 }
             }
             GridLiberated(liberatedGrid);
+
         }
         public void GridInvaded(Grid invadedGrid)
         {
@@ -61,6 +62,7 @@ namespace GridSystem
             if (!liberatedGrids.Contains(liberatedGrid))
             {
                 liberatedGrids.Add(liberatedGrid);
+                liberatedGrid.Liberated();
                 liberatedGrid.gameObject.SetActive(true);
             }
         }
