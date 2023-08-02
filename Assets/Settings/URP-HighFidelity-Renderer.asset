@@ -40,8 +40,8 @@ MonoBehaviour:
       type: 3}
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
-  - {fileID: 3065881006036084399}
-  m_RendererFeatureMap: adc0de57c6d2eee5afe6650088328c2a
+  - {fileID: 6664172503361598178}
+  m_RendererFeatureMap: adc0de57c6d2eee5e232cb6095e57b5c
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_AssetVersion: 2
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_TransparentLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_ClusteredRendering: 0
   m_TileSize: 32
   m_IntermediateTextureMode: 0
---- !u!114 &3065881006036084399
+--- !u!114 &6664172503361598178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,30 +91,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce4a8eb29cb51094ebf9288a38608a80, type: 3}
-  m_Name: ScreenSpaceOutlines
+  m_Script: {fileID: 11500000, guid: f30a0d238be9af84f9749c6cf52cdc84, type: 3}
+  m_Name: DepthNormalsFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  renderPassEvent: 300
-  outlinesLayerMask:
-    serializedVersion: 2
-    m_Bits: 192
-  outlinesOccluderLayerMask:
-    serializedVersion: 2
-    m_Bits: 769
-  outlineSettings:
-    outlineColor: {r: 0, g: 0, b: 0, a: 1}
-    outlineScale: 3
-    depthThreshold: 100
-    robertsCrossMultiplier: 0
-    normalThreshold: 1
-    steepAngleThreshold: 0.2
-    steepAngleMultiplier: 25
-  viewSpaceNormalsTextureSettings:
-    colorFormat: 0
-    depthBufferBits: 16
-    filterMode: 0
-    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-    perObjectData: 0
-    enableDynamicBatching: 0
-    enableInstancing: 0
