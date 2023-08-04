@@ -5,6 +5,8 @@ public static class PlayerPrefKeys
     public const string CurrentCoin = "CurrentCoin";
     public const string GridCount = "Grid";
     public const string IncomeLevel = "Income";
+    public const string CurrentLevel = "CurrentLevel";
+
 
     public static readonly string[] AllKeys =
     {

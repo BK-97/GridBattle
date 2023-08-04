@@ -92,6 +92,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f30a0d238be9af84f9749c6cf52cdc84, type: 3}
-  m_Name: DepthNormalsFeature
+  m_Name: DepthNormals
   m_EditorClassIdentifier: 
   m_Active: 1

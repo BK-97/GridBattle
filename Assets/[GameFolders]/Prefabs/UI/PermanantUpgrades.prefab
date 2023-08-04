@@ -128,7 +128,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2264342569782455925}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -169,6 +169,27 @@ PrefabInstance:
       propertyPath: upgradeName
       value: Income
       objectReference: {fileID: 0}
+    - target: {fileID: 2867842064304128951, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867842064304128951, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9843137
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867842064304128951, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279155156126281010, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0f68fff26736d1b4e854879496c7cb9a,
+        type: 3}
     - target: {fileID: 5404060696753897195, guid: e83b97ac806a1ef4fa3c75a755d1c495,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -188,6 +209,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420913147740662642, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 664ee82672acada4cb42901cdc263e97,
+        type: 3}
+    - target: {fileID: 5420913147740662642, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420913147740662642, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420913147740662643, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5420913147740662644, guid: e83b97ac806a1ef4fa3c75a755d1c495,
         type: 3}
@@ -363,6 +405,27 @@ PrefabInstance:
         type: 3}
       propertyPath: upgradeName
       value: Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279155156126281010, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4dba7eba81555fd46b701ffbedaaf3ca,
+        type: 3}
+    - target: {fileID: 3279155156126281010, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279155156126281010, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279155156126281010, guid: e83b97ac806a1ef4fa3c75a755d1c495,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5404060696753897195, guid: e83b97ac806a1ef4fa3c75a755d1c495,
         type: 3}

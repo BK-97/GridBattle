@@ -21,7 +21,9 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
 
         currentHealth = 0;
         healthBar.value = currentHealth;
-        Destroy(gameObject);
+        GetComponentInChildren<EnemyAnimationController>().DeathAnim();
+        GetComponent<Collider>().enabled = false;
+        Destroy(gameObject,1);
     }
 
     public void SetHealth(int healthCount)

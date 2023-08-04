@@ -1,24 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class GamePanel : MonoBehaviour
 {
     CanvasGroup canvasGroup;
+    public TextMeshProUGUI levelText;
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        HidePanel();
     }
 
     private void OnEnable()
     {
-        LevelManager.Instance.OnLevelStart.AddListener(ShowPanel);
+        SceneController.Instance.OnSceneLoaded.AddListener(ShowPanel);
         LevelManager.Instance.OnLevelFinish.AddListener(HidePanel);
     }
     private void OnDisable()
     {
-        LevelManager.Instance.OnLevelStart.RemoveListener(ShowPanel);
+        SceneController.Instance.OnSceneLoaded.RemoveListener(ShowPanel);
         LevelManager.Instance.OnLevelFinish.RemoveListener(HidePanel);
     }
 
@@ -30,6 +30,7 @@ public class GamePanel : MonoBehaviour
     }
     private void ShowPanel()
     {
+        levelText.text = "Level "+(PlayerPrefs.GetInt(PlayerPrefKeys.LastLevel, 0) + 1).ToString();
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
