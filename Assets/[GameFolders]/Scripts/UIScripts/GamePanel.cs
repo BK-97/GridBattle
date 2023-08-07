@@ -9,6 +9,7 @@ public class GamePanel : MonoBehaviour
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        HidePanel();
     }
 
     private void OnEnable()
