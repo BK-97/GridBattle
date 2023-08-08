@@ -18,7 +18,7 @@ public class CoinTextController : MonoBehaviour
     }
     private void SetText(Dictionary<CurrencyType,int> currencyDict)
     {
-        coinText.text = "Coin= " + currencyDict[CurrencyType.Coin];
+        coinText.text = currencyDict[CurrencyType.Coin].ToString();
     }
     private void Update()
     {
