@@ -846,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinText: {fileID: 7881600252623769455}
+  coinImage: {fileID: 3814705896601239383}
 --- !u!114 &5056889782799750031
 MonoBehaviour:
   m_ObjectHideFlags: 0

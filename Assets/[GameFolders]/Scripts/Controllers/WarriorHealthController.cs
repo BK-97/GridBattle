@@ -24,9 +24,8 @@ public class WarriorHealthController : MonoBehaviour,IDamagable
     }
     private void CoinCreate()
     {
-        var go = Instantiate(ExchangeManager.Instance.coinPrefab, transform.position, Quaternion.identity);
-        go.transform.position = transform.position;
-        go.GetComponent<CoinUp>().SetInfo(Mathf.RoundToInt(warriorController.warriorData.cost), CurrencyType.Coin);
+        var go = PoolingSystem.Instance.InstantiateAPS("CoinStack", transform.position);
+        go.GetComponent<CoinStack>().SetInfo(Mathf.RoundToInt(warriorController.warriorData.cost), CurrencyType.Coin);
     }
     #region IDamagableMethods
     public void Die()

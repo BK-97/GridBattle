@@ -12,9 +12,9 @@ public class ExchangeManager: Singleton<ExchangeManager>
 {
     private Dictionary<CurrencyType, int> currencyDictionary;
     public DictonaryEvent OnCurrencyChange = new DictonaryEvent();
+    public UnityEvent OnCurrencyAdded = new UnityEvent();
     [HideInInspector]
     public Vector3 UIPos;
-    public GameObject coinPrefab;
     private float incomeMultiplier=1.1f;
     public float currentIncomeMultiplier;
     public ExchangeManager()
@@ -25,7 +25,6 @@ public class ExchangeManager: Singleton<ExchangeManager>
     {
         PlayerPrefs.SetInt(PlayerPrefKeys.CurrentCoin,300);
         Debug.Log("For Test Purposes Set Coin 300");
-
 
         currencyDictionary[CurrencyType.Coin] = PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, 300);
         UpdateIncomeMultiplier();
@@ -71,6 +70,7 @@ public class ExchangeManager: Singleton<ExchangeManager>
             currencyDictionary[currencyType] += amount;
             PlayerPrefs.SetInt(PlayerPrefKeys.CurrentCoin, currencyDictionary[currencyType]);
             OnCurrencyChange.Invoke(currencyDictionary);
+            OnCurrencyAdded.Invoke();
         }
     }
 

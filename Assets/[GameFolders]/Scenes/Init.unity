@@ -417,6 +417,20 @@ MonoBehaviour:
     AllowGrow: 0
     AutoDestroy: 0
     clones: []
+  - ID: Coin
+    SourcePrefab: {fileID: 5599815440830621545, guid: 3e9d915abd9a40b4797897d98b0eeac6,
+      type: 3}
+    MinNumberOfObject: 0
+    AllowGrow: 0
+    AutoDestroy: 0
+    clones: []
+  - ID: CoinStack
+    SourcePrefab: {fileID: 9173781609697900686, guid: e33298ef113cae349a24f17ba0579104,
+      type: 3}
+    MinNumberOfObject: 0
+    AllowGrow: 0
+    AutoDestroy: 0
+    clones: []
   DefaultCount: 10
 --- !u!114 &1423261074
 MonoBehaviour:
