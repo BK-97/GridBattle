@@ -6,6 +6,9 @@ public class IdleState : BaseState
 {
     public override void EnterState(StateController stateController)
     {
+        stateController.MovementController.Stop();
+        if (GameManager.Instance.IsStageCompleted)
+            return;
         ExitState(stateController);
     }
 

@@ -38,8 +38,13 @@ public class StateController : MonoBehaviour
     }
     private void Update()
     {
-        if (currentState != null)
-            currentState.UpdateState(this);
+        if (GameManager.Instance.IsStageCompleted)
+            ChangeState(idleState);
+        else
+        {
+            if (currentState != null)
+                currentState.UpdateState(this);
+        }
     }
     #endregion
     #region MyMethods

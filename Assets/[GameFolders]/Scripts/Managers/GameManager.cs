@@ -92,7 +92,6 @@ public class GameManager : Singleton<GameManager>
 
         if (IsStageCompleted == true)
             return;
-        Debug.Log("gAMEFinish");
         StartCoroutine(WaitLevelChange(value));
         IsStageCompleted = true;
     }

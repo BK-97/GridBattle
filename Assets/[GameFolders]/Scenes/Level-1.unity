@@ -594,7 +594,7 @@ MonoBehaviour:
   - WaveOrder:
     - Enemy: {fileID: 1511480989524725465, guid: 8c05831c8aafd0f4ea0b3e51cfc5ea00,
         type: 3}
-      SpawnCount: 5
+      SpawnCount: 1
     WaveTimer: 5
     NextWaveWaitTime: 5
 --- !u!4 &103765193
@@ -2084,7 +2084,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464891494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5.755}
+  m_LocalPosition: {x: 0, y: 0, z: -5.4}
   m_LocalScale: {x: 4.0288, y: 2.8852, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2100,7 +2100,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 464891494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e008e0619aacf82439bf7de4459bd7e8, type: 3}
+  m_Script: {fileID: 11500000, guid: f6ceca6e5a6628744a0c7b6f209aa8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &468379013

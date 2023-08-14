@@ -43,13 +43,18 @@ public class EnemyMovementController : MonoBehaviour
     }
     #endregion
     #region CheckMethods
+    public LayerMask stopMask;
     private float CheckDistanceForward()
     {
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(StateController.raycastPoint.position, StateController.raycastPoint.forward, out hitInfo, 2, LayerMask.GetMask("Enemy")))
+        Debug.DrawRay(StateController.raycastPoint.position, StateController.raycastPoint.forward);
+
+        if (Physics.Raycast(StateController.raycastPoint.position, StateController.raycastPoint.forward, out hitInfo, 2, stopMask))
         {
-            float distance = Vector3.Distance(transform.position, hitInfo.collider.gameObject.transform.position);
+
+            float distance = Vector3.Distance(StateController.raycastPoint.position, hitInfo.point);
+
             if (distance <= 1)
                 return 0;
             else

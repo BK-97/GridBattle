@@ -302,6 +302,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPrefab: {fileID: 0}
+  soldierIcon: {fileID: 1453254603989903419}
+  textImage: {fileID: 2563384277122942278}
 --- !u!1 &8762126783157589889
 GameObject:
   m_ObjectHideFlags: 0

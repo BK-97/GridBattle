@@ -25,7 +25,6 @@ public class PermanantUpgrade : MonoBehaviour
         if (upgradeName == PlayerPrefKeys.GridCount)
         {
             upgradeLevel = PlayerPrefs.GetInt(upgradeName, 4);
-            Debug.Log(upgradeLevel);
         }
         else
             upgradeLevel = PlayerPrefs.GetInt(upgradeName, 1);

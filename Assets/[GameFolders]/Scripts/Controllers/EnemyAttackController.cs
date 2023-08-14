@@ -30,14 +30,17 @@ public class EnemyAttackController : MonoBehaviour
     public bool CheckGrid()
     {
         RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 0.4f, LayerMask.GetMask("Base")))
+        {
+            GameManager.Instance.CompeleteStage(false);
+            return false;
+        }
         if (Physics.Raycast(transform.position, transform.forward, out hitInfo, attackRange-0.25f, gridLayer))
         {
 
             GridSystem.Grid grid = hitInfo.collider.GetComponentInParent<GridSystem.Grid>();
             if (grid == null)
                 grid = hitInfo.collider.GetComponent<GridSystem.Grid>();
-
-            Debug.DrawLine(transform.position, hitInfo.point);
 
             if (grid != null)
             {
@@ -54,6 +57,7 @@ public class EnemyAttackController : MonoBehaviour
         }
         return false;
     }
+
     public bool CheckEnemy()
     {
         if (Invader.targetGrid.gridObject == null)
