@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 using GridSystem.Controllers;
+using DG.Tweening;
 namespace GridSystem
 {
     public class Grid : BaseGrid
@@ -22,6 +24,7 @@ namespace GridSystem
         private Material canObjectTakenMat;
         [SerializeField]
         private Material onMouseMat;
+
         #endregion
         #region MonoBehavioursMethod
         private void Start()
@@ -104,6 +107,22 @@ namespace GridSystem
         {
             PoolingSystem.Instance.InstantiateAPS("Liberated", transform.position);
 
+        }
+        [SerializeField]
+        private Image blackKnob;
+        private float currentInvadeTime = 0f;
+        public void Invading(float invadeDuration)
+        {
+            currentInvadeTime += Time.deltaTime;
+            float progress = Mathf.Clamp01(currentInvadeTime / invadeDuration);
+            blackKnob.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, progress);
+            Debug.Log(1);
+        }
+        public void CancelInvading()
+        {
+            blackKnob.transform.localScale = Vector3.zero;
+            Debug.Log(2);
+            currentInvadeTime = 0;
         }
     }
 }

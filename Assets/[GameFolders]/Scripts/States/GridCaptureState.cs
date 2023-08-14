@@ -13,7 +13,9 @@ public class GridCaptureState : BaseState
 
     public override void ExitState(StateController stateController)
     {
+        stateController.Invader.CancelInvade();
         stateController.ChangeState(stateController.moveState);
+
     }
 
     public override void UpdateState(StateController stateController)

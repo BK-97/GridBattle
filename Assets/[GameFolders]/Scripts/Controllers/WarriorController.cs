@@ -36,6 +36,8 @@ public class WarriorController : MonoBehaviour
     }
     private void Update()
     {
+        if (GameManager.Instance.IsStageCompleted)
+            return;
         if (canAttack)
             CheckEnemyWithRaycast();
     }
