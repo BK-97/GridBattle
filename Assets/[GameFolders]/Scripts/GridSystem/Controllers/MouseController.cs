@@ -45,12 +45,12 @@ namespace GridSystem.Controllers
         private void OnEnable()
         {
             InputManager.OnClick.AddListener(ClickOn);
-            SpawnManager.OnSpawnObject.AddListener(AddToPointer);
+            CharacterManager.OnSpawnObject.AddListener(AddToPointer);
         }
         private void OnDisable()
         {
             InputManager.OnClick.RemoveListener(ClickOn);
-            SpawnManager.OnSpawnObject.RemoveListener(AddToPointer);
+            CharacterManager.OnSpawnObject.RemoveListener(AddToPointer);
         }
         #endregion
         #region Methods
@@ -88,7 +88,7 @@ namespace GridSystem.Controllers
             else
             {
                 if (!IsPointerOnUI())
-                    SpawnManager.Instance.ClearObjectToSpawn();
+                    CharacterManager.Instance.ClearObjectToSpawn();
             }
         }
         private void AddToPointer(GameObject spawnable)

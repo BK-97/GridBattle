@@ -413,7 +413,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -100, y: 0}
+  m_SizeDelta: {x: -100, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5618808107894201939
 CanvasRenderer:
@@ -445,8 +445,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Level 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb6fd8899c2ca4a06945294f548f0cfd, type: 2}
+  m_sharedMaterial: {fileID: 6220165566366645958, guid: bb6fd8899c2ca4a06945294f548f0cfd,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -470,7 +471,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.75
+  m_fontSize: 46.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -752,7 +753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947ab523780d27344819386ee301d934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelText: {fileID: 901361934778949525}
+  waveInfoText: {fileID: 901361934778949525}
 --- !u!1 &6740782818926709746
 GameObject:
   m_ObjectHideFlags: 0

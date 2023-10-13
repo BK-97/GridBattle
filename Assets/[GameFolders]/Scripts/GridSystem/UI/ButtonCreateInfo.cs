@@ -26,8 +26,11 @@ namespace GridSystem.UI
         }
         public void InvokeSpawnPrefab()
         {
-            if (ExchangeManager.Instance.UseCurrency(CurrencyType.Coin,spawnCost))
-                SpawnManager.Instance.CreatePrefab(spawnPrefab);
+            if (ExchangeManager.Instance.UseCurrency(CurrencyType.Coin, spawnCost))
+            {
+                var go=PoolingSystem.SpawnObject(spawnPrefab);
+                CharacterManager.Instance.AddSpawnedAlly(go);
+            }
 
         }
         private void Update()

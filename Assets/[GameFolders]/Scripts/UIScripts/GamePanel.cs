@@ -5,7 +5,7 @@ using TMPro;
 public class GamePanel : MonoBehaviour
 {
     CanvasGroup canvasGroup;
-    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI waveInfoText;
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -31,9 +31,15 @@ public class GamePanel : MonoBehaviour
     }
     private void ShowPanel()
     {
-        levelText.text = "Level "+(PlayerPrefs.GetInt(PlayerPrefKeys.LastLevel, 0) + 1).ToString();
+        waveInfoText.text = "Wait For New Wave";
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
+    }
+
+    private void Update()
+    {
+        waveInfoText.text = "WAVE "+GameManager.Instance.GetCurrentWaveLevel();
+
     }
 }

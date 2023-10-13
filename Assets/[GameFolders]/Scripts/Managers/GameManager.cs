@@ -30,6 +30,7 @@ public class GameManager : Singleton<GameManager>
 
     private bool isStageCompleted;
     public bool IsStageCompleted { get { return isStageCompleted; } set { isStageCompleted = value; } }
+    private int currentWaveLevel=1; // PlayerPrefs ile burdan kayýtlý leveli alacaðýz daha sonra spawnerde burayý kullanacak bu artýk bizim levelimiz gibi biþey oldu yani
     #endregion
     #region Events
     [HideInInspector]
@@ -108,13 +109,14 @@ public class GameManager : Singleton<GameManager>
     public void ChangeState(GameStates newState)
     {
         GameState = newState;
-        if (GameState == GameStates.SpawnSession)
-            StartCoroutine(WaitBattleSession());
+        Debug.Log(newState.ToString());
+        if (GameState == GameStates.SpawnSession&&currentWaveLevel!=1)
+            currentWaveLevel++;
     }
-    IEnumerator WaitBattleSession()
+
+    public int GetCurrentWaveLevel()
     {
-        yield return new WaitForSeconds(5);
-        //OnBattleSessionStart.Invoke();
+        return currentWaveLevel;
     }
     #endregion
 }

@@ -6,12 +6,12 @@ using UnityEngine;
 [Serializable]
 public class CustomData
 {
-    public GameObject Enemy;
+    public EnemyTypes EnemyType;
     public int SpawnCount;
 
-    public CustomData(GameObject enemy, int count)
+    public CustomData(EnemyTypes enemyType, int count)
     {
-        Enemy = enemy;
+        EnemyType = enemyType;
         SpawnCount = count;
     }
 }
@@ -28,14 +28,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private List<WaveData> waves;
     private int currentWave = -1;
+    bool allEnemiesDied;
     #endregion
     private void OnEnable()
     {
         GameManager.Instance.OnBattleSessionStart.AddListener(StartSpawning);
+        CharacterManager.OnAllEnemiesDied.AddListener(() => allEnemiesDied = true);
     }
     private void OnDisable()
     {
         GameManager.Instance.OnBattleSessionStart.RemoveListener(StartSpawning);
+        CharacterManager.OnAllEnemiesDied.RemoveListener(() => allEnemiesDied = true);
+
     }
     #region SpawnMethods
     public void StartSpawning()
@@ -62,7 +66,10 @@ public class EnemySpawner : MonoBehaviour
              {
                 if (data.SpawnCount > 0)
                 {
-                    InstantiateObject(data.Enemy);
+                    float posX = GetRandomNumber();
+                    Vector3 spawnPos = new Vector3(posX,0,transform.position.z);
+                    PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName(data.EnemyType.ToString()), spawnPos,Quaternion.identity,null);
+
                     data.SpawnCount--;
                     yield return new WaitForSeconds(spawnDelay);
                 }
@@ -72,7 +79,8 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
-        yield return new WaitUntil(() => IsAllEnemiesDead());
+        yield return new WaitUntil(() => allEnemiesDied);
+        allEnemiesDied = false;
         if (currentWave + 1 == waves.Count)
         {
             GameManager.Instance.OnStageWin.Invoke();
@@ -83,17 +91,6 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private bool IsAllEnemiesDead()
-    {
-        return transform.childCount == 0;
-    }
-    
-    private void InstantiateObject(GameObject spawnObject)
-    {
-        var go=Instantiate(spawnObject, transform.position, transform.rotation, transform);
-        float posX = GetRandomNumber();
-        go.transform.position = new Vector3(posX,go.transform.position.y,go.transform.position.z);
-    }
     #endregion
     #region Helpers
     private float GetRandomNumber()
