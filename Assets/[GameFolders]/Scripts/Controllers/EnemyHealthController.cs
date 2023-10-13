@@ -15,7 +15,7 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
     #region IDamagableMethods
     public void Die()
     {
-        var go = PoolingSystem.Instance.InstantiateAPS("CoinStack",transform.position);
+        var go = PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("CoinStack"),transform.position,Quaternion.identity);
         go.GetComponent<CoinStack>().SetInfo(Mathf.RoundToInt(StateController.enemyData.cost * ExchangeManager.Instance.currentIncomeMultiplier), CurrencyType.Coin);
 
         currentHealth = 0;

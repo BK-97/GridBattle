@@ -12,6 +12,7 @@ public class ExchangeManager: Singleton<ExchangeManager>
 {
     private Dictionary<CurrencyType, int> currencyDictionary;
     public DictonaryEvent OnCurrencyChange = new DictonaryEvent();
+    [HideInInspector]
     public UnityEvent OnCurrencyAdded = new UnityEvent();
     [HideInInspector]
     public Vector3 UIPos;

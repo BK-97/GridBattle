@@ -57,8 +57,7 @@ public class CoinStack : MonoBehaviour
         randomX /= 2;
         randomZ /= 2;
         Vector3 instantiatePos = new Vector3(transform.position.x + randomX, transform.position.y+0.5f, transform.position.z + randomZ);
-
-        var go = PoolingSystem.Instance.InstantiateAPS("Coin", transform.position,Quaternion.identity,transform);
+        var go = PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Coin"), transform.position,Quaternion.identity,transform);
         coins.Add(go.GetComponent<Coin>());
         go.GetComponent<Coin>().JumpPos(instantiatePos);
     }

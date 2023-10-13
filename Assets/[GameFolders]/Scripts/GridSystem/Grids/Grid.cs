@@ -101,12 +101,11 @@ namespace GridSystem
         public void Invaded()
         {
             gridController.GridInvaded(this);
-            PoolingSystem.Instance.InstantiateAPS("Invaded",transform.position);
+            PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Invaded"),transform.position,Quaternion.identity);
         }
         public void Liberated()
         {
-            PoolingSystem.Instance.InstantiateAPS("Liberated", transform.position);
-
+            PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Liberated"), transform.position,Quaternion.identity);
         }
         [SerializeField]
         private Image blackKnob;
@@ -116,12 +115,10 @@ namespace GridSystem
             currentInvadeTime += Time.deltaTime;
             float progress = Mathf.Clamp01(currentInvadeTime / invadeDuration);
             blackKnob.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, progress);
-            Debug.Log(1);
         }
         public void CancelInvading()
         {
             blackKnob.transform.localScale = Vector3.zero;
-            Debug.Log(2);
             currentInvadeTime = 0;
         }
     }

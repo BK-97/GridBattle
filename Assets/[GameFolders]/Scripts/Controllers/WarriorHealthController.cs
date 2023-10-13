@@ -24,7 +24,7 @@ public class WarriorHealthController : MonoBehaviour,IDamagable
     }
     private void CoinCreate()
     {
-        var go = PoolingSystem.Instance.InstantiateAPS("CoinStack", transform.position);
+        var go = PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("CoinStack"), transform.position,Quaternion.identity);
         go.GetComponent<CoinStack>().SetInfo(Mathf.RoundToInt(warriorController.warriorData.cost), CurrencyType.Coin);
     }
     #region IDamagableMethods
@@ -54,7 +54,7 @@ public class WarriorHealthController : MonoBehaviour,IDamagable
             healthBar.value = health;
             warriorController.animatorController.HitAnim();
             warriorController.ControllerOff();
-            PoolingSystem.Instance.InstantiateAPS("Blood",transform.position);
+            PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Blood"),transform.position,Quaternion.identity);
         }
     }
     #endregion

@@ -9532,7 +9532,7 @@ GameObject:
   - component: {fileID: 4021103657954561942}
   - component: {fileID: 4021103657954561943}
   - component: {fileID: 4021103657954561960}
-  - component: {fileID: 4021103657954561941}
+  - component: {fileID: 6884016944592208989}
   m_Layer: 0
   m_Name: CFXR Hit A (Red)
   m_TagString: Untagged
@@ -9642,7 +9642,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.5
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 1
   cullingMode: 1
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -14256,7 +14256,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &4021103657954561941
+--- !u!114 &6884016944592208989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14265,186 +14265,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4021103657954561961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9205bc1bbacc90040a998067b5643d16, type: 3}
+  m_Script: {fileID: 11500000, guid: ec66558e78443af4689b6641c0842af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearBehavior: 2
-  cameraShake:
-    enabled: 0
-    useMainCamera: 1
-    cameras: []
-    delay: 0
-    duration: 1
-    shakeSpace: 0
-    shakeStrength: {x: 0.1, y: 0.1, z: 0.1}
-    shakeCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: -1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: -1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    shakesDelay: 0
-  animatedLights:
-  - light: {fileID: 0}
-    loop: 0
-    animateIntensity: 1
-    intensityStart: 3
-    intensityEnd: 0
-    intensityDuration: 0.5
-    intensityCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0.26084012
-        outSlope: -0
-        tangentMode: 1
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.73376626
-      - serializedVersion: 3
-        time: 0.1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.16753247
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: -1.9179008
-        outSlope: -1.9179008
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.046567023
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 0
-    perlinIntensity: 0
-    perlinIntensitySpeed: 1
-    fadeIn: 0
-    fadeInDuration: 0.5
-    fadeOut: 0
-    fadeOutDuration: 0.5
-    animateRange: 0
-    rangeStart: 8
-    rangeEnd: 0
-    rangeDuration: 0.5
-    rangeCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.25
-        value: 1
-        inSlope: 1.3333333
-        outSlope: 1.3333333
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.046567023
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 0
-    perlinRange: 0
-    perlinRangeSpeed: 1
-    animateColor: 1
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 0.6443301, b: 0, a: 1}
-      key1: {r: 1, g: 0.48850012, b: 0, a: 1}
-      key2: {r: 1, g: 0, b: 0, a: 0.039215688}
-      key3: {r: 0.654902, g: 0, b: 0, a: 0.039215688}
-      key4: {r: 1, g: 0, b: 0, a: 0.039215688}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 8345
-      ctime2: 38357
-      ctime3: 65535
-      ctime4: 65535
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 65535
-      atime3: 65535
-      atime4: 65535
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 4
-      m_NumAlphaKeys: 2
-    colorDuration: 0.5
-    colorCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 1
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 0
-    perlinColor: 0
-    perlinColorSpeed: 1
-  fadeOutReference: {fileID: 0}
 --- !u!1 &4311522845078898388
 GameObject:
   m_ObjectHideFlags: 0
