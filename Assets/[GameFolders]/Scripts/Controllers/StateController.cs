@@ -31,8 +31,9 @@ public class StateController : MonoBehaviour
     public AttackState attackState=new AttackState();
     #endregion
     #region MonoBehaviourMethods
-    private void Start()
+    private void OnEnable()
     {
+        //Because of my pool system, we have to set data every time an object becomes enabled
         SetDatas();
         ChangeState(idleState);
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WarriorHealthController : MonoBehaviour,IDamagable
+public class WarriorHealthController : MonoBehaviour, IDamagable
 {
     #region Params
     public Slider healthBar;
@@ -24,7 +24,7 @@ public class WarriorHealthController : MonoBehaviour,IDamagable
     }
     private void CoinCreate()
     {
-        var go = PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("CoinStack"), transform.position,Quaternion.identity);
+        var go = PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("CoinStack"), transform.position, Quaternion.identity);
         go.GetComponent<CoinStack>().SetInfo(Mathf.RoundToInt(warriorController.warriorData.cost), CurrencyType.Coin);
     }
     #region IDamagableMethods
@@ -34,9 +34,14 @@ public class WarriorHealthController : MonoBehaviour,IDamagable
         healthBar.value = health;
         warriorController.animatorController.DeathAnim();
         warriorController.ControllerOff();
-        Destroy(gameObject,1.5f);
+        StartCoroutine(WaitForDieCO());
     }
-    
+    IEnumerator WaitForDieCO()
+    {
+        yield return new WaitForSeconds(1.5f);
+        CharacterManager.Instance.RemoveAlly(gameObject);
+        PoolingSystem.ReturnObjectToPool(gameObject);
+    }
     public void SetHealth(int healthCount)
     {
         health = healthCount;
@@ -54,7 +59,7 @@ public class WarriorHealthController : MonoBehaviour,IDamagable
             healthBar.value = health;
             warriorController.animatorController.HitAnim();
             warriorController.ControllerOff();
-            PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Blood"),transform.position,Quaternion.identity);
+            PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Blood"), transform.position, Quaternion.identity);
         }
     }
     #endregion

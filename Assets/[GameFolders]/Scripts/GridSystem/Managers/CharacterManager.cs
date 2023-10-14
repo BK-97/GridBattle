@@ -6,15 +6,12 @@ using UnityEngine.Events;
 public class CharacterManager : Singleton<CharacterManager>
 {
     #region Params
-    [HideInInspector]
-    public GameObject currentSpawnObject;
-
     private List<GameObject> spawnedEnemies=new List<GameObject>();
     private List<GameObject> spawnedAllies=new List<GameObject>();
     private List<Grid> SpawnedGrids=new List<Grid>();
     #endregion
     #region Events
-    public static GameObjectEvent OnSpawnObject = new GameObjectEvent();
+    public static GameObjectEvent OnNewAllySpawned = new GameObjectEvent();
     public static UnityEvent OnAllEnemiesDied = new UnityEvent();
     #endregion
     #region Methods
@@ -25,28 +22,23 @@ public class CharacterManager : Singleton<CharacterManager>
     public void RemoveSpawnedEnemy(GameObject spawnedEnemy)
     {
         spawnedEnemies.Remove(spawnedEnemy);
+
         if (CheckAllEnemiesDead())
             OnAllEnemiesDied.Invoke();
     }
     public void AddSpawnedAlly(GameObject newAlly)
     {
         spawnedAllies.Add(newAlly);
+        OnNewAllySpawned.Invoke(newAlly);
     }
     public void RemoveAlly(GameObject newAlly)
     {
         spawnedAllies.Remove(newAlly);
     }
-    public void ClearObjectToSpawn()
-    {
-        Debug.Log("Ne bu aq");
-        Destroy(currentSpawnObject);
-    }
+
     #endregion
     #region Helpers
-    public GameObject GetSelectedPrefab()
-    {
-        return currentSpawnObject;
-    }
+
     private bool CheckAllEnemiesDead()
     {
         return spawnedEnemies.Count == 0 ? true : false;

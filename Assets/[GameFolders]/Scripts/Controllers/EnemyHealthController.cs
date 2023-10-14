@@ -11,7 +11,6 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
     private StateController stateController;
     public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
     #endregion
-
     #region IDamagableMethods
     public void Die()
     {
@@ -22,14 +21,20 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
         healthBar.value = currentHealth;
         GetComponentInChildren<EnemyAnimationController>().DeathAnim();
         GetComponent<Collider>().enabled = false;
-        Destroy(gameObject,1);
+        StartCoroutine(WaitForDieCO());
     }
-
+    IEnumerator WaitForDieCO()
+    {
+        yield return new WaitForSeconds(1);
+        CharacterManager.Instance.RemoveSpawnedEnemy(gameObject);
+        PoolingSystem.ReturnObjectToPool(gameObject);
+    }
     public void SetHealth(int healthCount)
     {
         currentHealth = healthCount;
         healthBar.maxValue = currentHealth;
         healthBar.value = currentHealth;
+        GetComponent<Collider>().enabled = true;
     }
 
     public void TakeDamage(int damage)

@@ -17,6 +17,8 @@ public class WarriorController : MonoBehaviour
     private bool canAttack;
     private IDamagable closestTarget;
     private WarriorHealthController healthController;
+    public WarriorHealthController HealthController { get { return (healthController == null) ? healthController = GetComponent<WarriorHealthController>() : healthController; } }
+
     [HideInInspector]
     public WarriorAnimatorController animatorController;
     private LevelUpgradeBase levelUpBase;
@@ -27,12 +29,14 @@ public class WarriorController : MonoBehaviour
     #region MonoBehaviourMethods
     private void Start()
     {
-        healthController = GetComponent<WarriorHealthController>();
         levelUpBase = GetComponent<LevelUpgradeBase>();
         animatorController = GetComponentInChildren<WarriorAnimatorController>();
+    }
+    private void OnEnable()
+    {
+        //Because of my pool system, we have to set data every time an object becomes enabled
         SetDatas(warriorData);
         ColorChange();
-
     }
     private void Update()
     {
@@ -91,7 +95,7 @@ public class WarriorController : MonoBehaviour
         ColorChange();
         ChangeScale();
         levelUpBase.Upgrade(currentLevel, warriorData);
-        PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("LevelUpgraded"),transform.position,Quaternion.identity);
+        PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName("LevelUpgraded"),transform.position,Quaternion.identity,transform);
     }
     public void ControllerOff()
     {
@@ -116,7 +120,7 @@ public class WarriorController : MonoBehaviour
     }
     public void SetDatas(WarriorData currentData)
     {
-        healthController.SetHealth(currentData.Health);
+        HealthController.SetHealth(currentData.Health);
         damage = currentData.Damage;
         attackRate = currentData.AttackRate;
         attackRange = currentData.AttackRange;

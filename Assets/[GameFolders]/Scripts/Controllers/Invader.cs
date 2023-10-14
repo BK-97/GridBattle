@@ -8,7 +8,6 @@ public class Invader : MonoBehaviour
     private float invadeTime = 4;
     private bool isInvading = false;
     private float invadeCounter = 0f;
-
     public void StartInvading()
     {
         isInvading = true;
@@ -17,7 +16,8 @@ public class Invader : MonoBehaviour
 
     public void Invading()
     {
-
+        if (!gameObject.activeSelf)
+            return;
         if (isInvading)
         {
             invadeCounter += Time.deltaTime;

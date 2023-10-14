@@ -19,10 +19,9 @@ public class CustomData
 public class WaveData
 {
     public List<CustomData> WaveOrder;
-    public float WaveTimer;
-    public float NextWaveWaitTime;
+    public float TotalWaveSpawnTime;
 }
-public class EnemySpawner : MonoBehaviour
+public class WaveController : MonoBehaviour
 {
     #region Params
     [SerializeField]
@@ -58,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
             totalSpawnable += currentWaveData.WaveOrder[i].SpawnCount;
         }
 
-        float spawnDelay = currentWaveData.WaveTimer / totalSpawnable;
+        float spawnDelay = currentWaveData.TotalWaveSpawnTime / totalSpawnable;
 
         while (waveLoop)
         {
@@ -68,8 +67,9 @@ public class EnemySpawner : MonoBehaviour
                 {
                     float posX = GetRandomNumber();
                     Vector3 spawnPos = new Vector3(posX,0,transform.position.z);
-                    PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName(data.EnemyType.ToString()), spawnPos,Quaternion.identity,null);
-
+                    Quaternion spawnRotate = Quaternion.Euler(0, 180, 0);
+                    var go=PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName(data.EnemyType.ToString()), spawnPos, spawnRotate, null);
+                    CharacterManager.Instance.AddSpawnedEnemy(go);
                     data.SpawnCount--;
                     yield return new WaitForSeconds(spawnDelay);
                 }

@@ -45,12 +45,12 @@ namespace GridSystem.Controllers
         private void OnEnable()
         {
             InputManager.OnClick.AddListener(ClickOn);
-            CharacterManager.OnSpawnObject.AddListener(AddToPointer);
+            CharacterManager.OnNewAllySpawned.AddListener(AddToPointer);
         }
         private void OnDisable()
         {
             InputManager.OnClick.RemoveListener(ClickOn);
-            CharacterManager.OnSpawnObject.RemoveListener(AddToPointer);
+            CharacterManager.OnNewAllySpawned.RemoveListener(AddToPointer);
         }
         #endregion
         #region Methods
@@ -65,7 +65,9 @@ namespace GridSystem.Controllers
                         if(CheckIfUpgradable())
                         {
                             currentGrid.gridObject.GetComponent<WarriorController>().UpgradeWarrior();
-                            Destroy(takenObject);
+                            CharacterManager.Instance.RemoveAlly(takenObject);
+                            PoolingSystem.ReturnObjectToPool(takenObject);
+                            takenObject = null;
                             return;
                         }
                     }
@@ -84,11 +86,6 @@ namespace GridSystem.Controllers
 
                     }
                 }
-            }
-            else
-            {
-                if (!IsPointerOnUI())
-                    CharacterManager.Instance.ClearObjectToSpawn();
             }
         }
         private void AddToPointer(GameObject spawnable)

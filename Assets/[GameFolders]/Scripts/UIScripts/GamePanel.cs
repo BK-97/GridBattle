@@ -39,7 +39,10 @@ public class GamePanel : MonoBehaviour
 
     private void Update()
     {
-        waveInfoText.text = "WAVE "+GameManager.Instance.GetCurrentWaveLevel();
+        int waveLevel = LevelManager.Instance.CurrentWaveLevel;
+        if (waveLevel == 0)
+            waveLevel = 1;
+        waveInfoText.text = "WAVE "+ waveLevel;
 
     }
 }

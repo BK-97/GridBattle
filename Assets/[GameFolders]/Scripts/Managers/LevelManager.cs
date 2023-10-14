@@ -41,7 +41,21 @@ public class LevelManager : Singleton<LevelManager>
             PlayerPrefs.SetInt(PlayerPrefKeys.LastLevel, value);
         }
     }
+    private int currentWaveLevel;
 
+    public int CurrentWaveLevel
+    {
+        get
+        {
+            currentWaveLevel = PlayerPrefs.GetInt(PlayerPrefKeys.CurrentWave, 0);
+            return currentWaveLevel;
+        }
+        set
+        {
+            currentWaveLevel = value;
+            PlayerPrefs.SetInt(PlayerPrefKeys.CurrentWave, currentWaveLevel);
+        }
+    } 
     private void OnEnable()
     {
         GameManager.Instance.OnStageLoose.AddListener(ReloadLevel);
