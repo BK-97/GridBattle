@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseConst : MonoBehaviour,IDamagable
+public class BaseConst : MonoBehaviour,IDamageable
 {
     public void Die()
     {

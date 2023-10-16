@@ -8,8 +8,9 @@ public class EnemyAttackController : MonoBehaviour
     private int attackRate;
     private int attackRange;
     private int damage;
-    bool canAttack;
-    IDamagable closestTarget;
+    [HideInInspector]
+    public bool canAttack;
+    IDamageable closestTarget;
     public LayerMask gridLayer;
     private StateController stateController;
     public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
@@ -67,7 +68,7 @@ public class EnemyAttackController : MonoBehaviour
         else
         {
 
-            IDamagable damagable = Invader.targetGrid.gridObject.GetComponent<IDamagable>();
+            IDamageable damagable = Invader.targetGrid.gridObject.GetComponent<IDamageable>();
             if (damagable != null)
             {
                 closestTarget = damagable;

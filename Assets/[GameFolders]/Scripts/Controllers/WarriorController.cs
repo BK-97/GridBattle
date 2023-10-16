@@ -7,15 +7,16 @@ using DG.Tweening;
 public class WarriorController : MonoBehaviour
 {
     #region Params
+    [Header("Datas")]
     public WarriorData warriorData;
     [SerializeField]
     private int damage;
     private float attackRate;
     private float attackRange;
-
     public int currentLevel;
+
     private bool canAttack;
-    private IDamagable closestTarget;
+    private IDamageable closestTarget;
     private WarriorHealthController healthController;
     public WarriorHealthController HealthController { get { return (healthController == null) ? healthController = GetComponent<WarriorHealthController>() : healthController; } }
 
@@ -25,6 +26,10 @@ public class WarriorController : MonoBehaviour
     public Transform raycastMuzzle;
     [SerializeField]
     private List<SkinnedMeshRenderer> meshes;
+    public LayerMask enemyLayer;
+
+    [Header("Ranged Character Params")]
+    public RangerAttack rangerAttack;
     #endregion
     #region MonoBehaviourMethods
     private void Start()
@@ -51,9 +56,9 @@ public class WarriorController : MonoBehaviour
     {
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(raycastMuzzle.position, raycastMuzzle.forward, out hitInfo, attackRange+0.1f, LayerMask.GetMask("Enemy")))
+        if (Physics.Raycast(raycastMuzzle.position, raycastMuzzle.forward, out hitInfo, attackRange+0.1f, enemyLayer))
         {
-            IDamagable damagable = hitInfo.collider.GetComponent<IDamagable>();
+            IDamageable damagable = hitInfo.collider.GetComponent<IDamageable>();
             if (damagable != null)
             {
                 closestTarget = damagable;
@@ -65,7 +70,24 @@ public class WarriorController : MonoBehaviour
     }
     public void Attack()
     {
-        closestTarget.TakeDamage(damage);
+        switch (warriorData.WarriorType)
+        {
+            case WarriorData.WarriorTypes.Knight:
+                closestTarget.TakeDamage(damage);
+
+                break;
+            case WarriorData.WarriorTypes.Archer:
+                rangerAttack.CreateBullet(enemyLayer,damage);
+                break;
+            case WarriorData.WarriorTypes.TwoHanded:
+                closestTarget.TakeDamage(damage);
+                break;
+            case WarriorData.WarriorTypes.Mage:
+                rangerAttack.CreateBullet(enemyLayer, damage);
+                break;
+            default:
+                break;
+        }
     }
     public void AttackEnd()
     {
@@ -87,6 +109,7 @@ public class WarriorController : MonoBehaviour
             }
         }
     }
+    
     #endregion
     #region MyMethods
     public void UpgradeWarrior()

@@ -29,6 +29,7 @@ public class StateController : MonoBehaviour
     public MoveState moveState=new MoveState();
     public GridCaptureState captureState=new GridCaptureState();
     public AttackState attackState=new AttackState();
+    public DeathState deathState=new DeathState();
     #endregion
     #region MonoBehaviourMethods
     private void OnEnable()

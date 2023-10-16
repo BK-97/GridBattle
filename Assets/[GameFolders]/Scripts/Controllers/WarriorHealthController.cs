@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WarriorHealthController : MonoBehaviour, IDamagable
+public class WarriorHealthController : MonoBehaviour, IDamageable
 {
     #region Params
     public Slider healthBar;

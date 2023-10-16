@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealthController : MonoBehaviour, IDamagable
+public class EnemyHealthController : MonoBehaviour, IDamageable
 {
     #region Params
     private int currentHealth;

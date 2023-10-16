@@ -218,6 +218,12 @@ MonoBehaviour:
   - gameObject: {fileID: 1511480989524725465, guid: 8c05831c8aafd0f4ea0b3e51cfc5ea00,
       type: 3}
     name: Minion
+  - gameObject: {fileID: 4805074008076385199, guid: 45dcb559ffc57b149937d5c0fcdd8422,
+      type: 3}
+    name: MagicFire
+  - gameObject: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
+      type: 3}
+    name: MagicHit
 --- !u!4 &1359531486
 Transform:
   m_ObjectHideFlags: 0
@@ -315,7 +321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86dc908d206779649aef74f032dc8f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpawnObject: {fileID: 0}
 --- !u!114 &1423261068
 MonoBehaviour:
   m_ObjectHideFlags: 0

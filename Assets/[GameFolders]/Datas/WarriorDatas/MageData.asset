@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WarriorType: 3
   warriorLevel: 1
-  Health: 10
-  AttackRange: 3
+  Health: 8
+  AttackRange: 11
   AttackRate: 2
   Damage: 7
   cost: 250
