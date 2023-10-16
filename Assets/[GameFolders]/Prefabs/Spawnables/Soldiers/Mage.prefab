@@ -229,7 +229,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 477b1ce20530f594b87bce7fe5ba012a, type: 2}
+  - {fileID: 2100000, guid: 744db4fc9ecb97a4a8c676a8378869a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -421,6 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3009907526361858364}
   - component: {fileID: 3009907526352514746}
+  - component: {fileID: 8399450272027671487}
   m_Layer: 6
   m_Name: Mage
   m_TagString: Untagged
@@ -466,6 +467,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8399450272027671487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3009907526362029276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac429ee73540c8e4b9bd5abc482c30b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3009907526352514746}
 --- !u!1 &3009907526362029278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,7 +2338,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 477b1ce20530f594b87bce7fe5ba012a, type: 2}
+  - {fileID: 2100000, guid: 744db4fc9ecb97a4a8c676a8378869a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2371,6 +2385,7 @@ GameObject:
   - component: {fileID: -7409566672021784209}
   - component: {fileID: 8061193141572093199}
   - component: {fileID: 1507913360317247192}
+  - component: {fileID: 3026721703648349725}
   m_Layer: 6
   m_Name: Mage
   m_TagString: Player
@@ -2425,7 +2440,9 @@ MonoBehaviour:
   currentLevel: 0
   animatorController: {fileID: 0}
   raycastMuzzle: {fileID: 3326163186276081811}
-  meshes: []
+  meshes:
+  - {fileID: 3009907526356815986}
+  - {fileID: 7694343674316750989}
 --- !u!136 &8061193141572093199
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2453,3 +2470,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1745043688339586327}
+--- !u!114 &3026721703648349725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9186795781410484748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0e9e4a2192d3c4d9180967bacd9f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
