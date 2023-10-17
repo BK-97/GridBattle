@@ -32,8 +32,6 @@ public class WarriorController : MonoBehaviour
 
     [Header("Ranged Character Params")]
     public RangerAttack rangerAttack;
-    [Header("Close Combat Character Params")]
-    public ParticleSystem trailParticle;
     #endregion
     #region MonoBehaviourMethods
     private void Start()
@@ -78,16 +76,12 @@ public class WarriorController : MonoBehaviour
         {
             case CharacterTypes.Knight:
                 closestTarget.TakeDamage(damage);
-                if (trailParticle != null)
-                    trailParticle.Play();
                 break;
             case CharacterTypes.Archer:
                 rangerAttack.CreateBullet(enemyLayer,damage, Vector3.forward);
                 break;
             case CharacterTypes.TwoHanded:
                 closestTarget.TakeDamage(damage);
-                if (trailParticle != null)
-                    trailParticle.Play();
                 break;
             case CharacterTypes.Mage:
                 rangerAttack.CreateBullet(enemyLayer, damage, Vector3.forward);

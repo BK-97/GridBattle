@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterType: 0
   warriorLevel: 1
-  Health: 20
+  Health: 15
   AttackRange: 1
   AttackRate: 2
   Damage: 5
   cost: 100
-  MoveSpeed: 1.5
+  MoveSpeed: 3
