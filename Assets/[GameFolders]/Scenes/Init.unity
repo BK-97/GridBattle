@@ -201,8 +201,7 @@ MonoBehaviour:
     name: Invaded
   - gameObject: {fileID: 100006, guid: 60bc526f4be1e044ab9e46340b82ffb3, type: 3}
     name: Liberated
-  - gameObject: {fileID: 3280519133390621005, guid: a71be3e7990efb040a07565c43cbb198,
-      type: 3}
+  - gameObject: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
     name: LevelUpgraded
   - gameObject: {fileID: 5599815440830621545, guid: 3e9d915abd9a40b4797897d98b0eeac6,
       type: 3}

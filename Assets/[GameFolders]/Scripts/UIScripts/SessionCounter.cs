@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 public class SessionCounter : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
@@ -45,8 +46,19 @@ public class SessionCounter : MonoBehaviour
             {
                 TimeUp();
             }
+            else if (currentTime <= 3 && currentTime > 0)
+            {
+                int roundedTime = Mathf.RoundToInt(currentTime);
+                if (roundedTime != Mathf.RoundToInt(currentTime + Time.deltaTime))
+                {
+                    PunchScale();
+                }
+            }
         }
-
+    }
+    private void PunchScale()
+    {
+        timeSlider.gameObject.transform.DOPunchScale(Vector3.one * 0.1f, 0.2f, 10, 1);
     }
     private void TimeUp()
     {
