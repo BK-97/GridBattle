@@ -1,6 +1,6 @@
 # Grid Battle
 
-A simple game I made to try grid mechanics.
+Buy Warriors,Place Them to Grids,Defend Against Enemies,Merge And Upgrade!
 
 ---
 # Pictures
