@@ -922,7 +922,11 @@ MonoBehaviour:
   - WaveOrder:
     - CharacterType: 0
       SpawnCount: 2
-    TotalWaveSpawnTime: 4
+    - CharacterType: 1
+      SpawnCount: 2
+    - CharacterType: 2
+      SpawnCount: 2
+    TotalWaveSpawnTime: 6
   - WaveOrder:
     - CharacterType: 2
       SpawnCount: 3
