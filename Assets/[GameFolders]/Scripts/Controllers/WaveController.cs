@@ -26,6 +26,8 @@ public class WaveController : MonoBehaviour
     #region Params
     [SerializeField]
     private List<WaveData> waves;
+    [SerializeField]
+    private List<Transform> spawnPosses;
     private int currentWave = -1;
     bool allEnemiesDied;
     #endregion
@@ -65,10 +67,12 @@ public class WaveController : MonoBehaviour
              {
                 if (data.SpawnCount > 0)
                 {
-                    float posX = GetRandomNumber();
+                    spawnPosses.Shuffle();
+                    //float posX = spawnPosses[0].position.x;
+                    float posX = -1.5f;
                     Vector3 spawnPos = new Vector3(posX,0,transform.position.z);
                     Quaternion spawnRotate = Quaternion.Euler(0, 180, 0);
-                    var go=PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName(data.EnemyType.ToString()), spawnPos, spawnRotate, null);
+                    var go=PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Enemy" + data.EnemyType.ToString()), spawnPos, spawnRotate, null);
                     CharacterManager.Instance.AddSpawnedEnemy(go);
                     data.SpawnCount--;
                     yield return new WaitForSeconds(spawnDelay);
@@ -91,14 +95,5 @@ public class WaveController : MonoBehaviour
         }
     }
 
-    #endregion
-    #region Helpers
-    private float GetRandomNumber()
-    {
-        float[] possibleValues = new float[] { -1.5f, -0.5f, 0.5f, 1.5f };
-        int randomIndex = UnityEngine.Random.Range(0, possibleValues.Length);
-
-        return possibleValues[randomIndex];
-    }
     #endregion
 }

@@ -9,10 +9,10 @@ public class WarriorController : MonoBehaviour
     #region Params
     [Header("Datas")]
     public WarriorData warriorData;
-    [SerializeField]
     private int damage;
     private float attackRate;
     private float attackRange;
+    [HideInInspector]
     public int currentLevel;
 
     private bool canAttack;
@@ -55,7 +55,7 @@ public class WarriorController : MonoBehaviour
     private void CheckEnemyWithRaycast()
     {
         RaycastHit hitInfo;
-
+        Debug.DrawRay(raycastMuzzle.position, raycastMuzzle.forward*(attackRange+0.1f));
         if (Physics.Raycast(raycastMuzzle.position, raycastMuzzle.forward, out hitInfo, attackRange+0.1f, enemyLayer))
         {
             IDamageable damagable = hitInfo.collider.GetComponent<IDamageable>();
@@ -72,17 +72,17 @@ public class WarriorController : MonoBehaviour
     {
         switch (warriorData.WarriorType)
         {
-            case WarriorData.WarriorTypes.Knight:
+            case WarriorTypes.Knight:
                 closestTarget.TakeDamage(damage);
 
                 break;
-            case WarriorData.WarriorTypes.Archer:
+            case WarriorTypes.Archer:
                 rangerAttack.CreateBullet(enemyLayer,damage);
                 break;
-            case WarriorData.WarriorTypes.TwoHanded:
+            case WarriorTypes.TwoHanded:
                 closestTarget.TakeDamage(damage);
                 break;
-            case WarriorData.WarriorTypes.Mage:
+            case WarriorTypes.Mage:
                 rangerAttack.CreateBullet(enemyLayer, damage);
                 break;
             default:

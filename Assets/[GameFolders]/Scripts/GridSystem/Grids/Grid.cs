@@ -8,6 +8,7 @@ namespace GridSystem
     {
         #region Params
         public GameObject middleObject;
+        [HideInInspector]
         public GameObject gridObject;
         public Transform objectArea;
         [HideInInspector]

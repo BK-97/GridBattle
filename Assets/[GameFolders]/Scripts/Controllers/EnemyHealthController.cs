@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class EnemyHealthController : MonoBehaviour, IDamageable
 {
     #region Params
+    public HealthBar healthBar;
+
     private int currentHealth;
-    public Slider healthBar;
+
     private StateController stateController;
     public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
     #endregion
@@ -18,7 +20,7 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
         go.GetComponent<CoinStack>().SetInfo(Mathf.RoundToInt(StateController.enemyData.cost * ExchangeManager.Instance.currentIncomeMultiplier), CurrencyType.Coin);
 
         currentHealth = 0;
-        healthBar.value = currentHealth;
+        healthBar.ChangeBar(currentHealth);
         GetComponentInChildren<EnemyAnimationController>().DeathAnim();
         GetComponent<Collider>().enabled = false;
         StartCoroutine(WaitForDieCO());
@@ -32,8 +34,7 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
     public void SetHealth(int healthCount)
     {
         currentHealth = healthCount;
-        healthBar.maxValue = currentHealth;
-        healthBar.value = currentHealth;
+        healthBar.SetBar(currentHealth);
         GetComponent<Collider>().enabled = true;
     }
 
@@ -42,7 +43,7 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
         if(currentHealth-damage>0)
         {
             currentHealth -= damage;
-            healthBar.value = currentHealth;
+            healthBar.ChangeBar(currentHealth);
         }
         else
         {

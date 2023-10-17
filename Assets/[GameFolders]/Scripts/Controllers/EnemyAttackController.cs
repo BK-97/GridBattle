@@ -8,10 +8,17 @@ public class EnemyAttackController : MonoBehaviour
     private int attackRate;
     private int attackRange;
     private int damage;
+
     [HideInInspector]
     public bool canAttack;
+
     IDamageable closestTarget;
+
     public LayerMask gridLayer;
+
+    [Header("Ranged Character Params")]
+    public RangerAttack rangerAttack;
+
     private StateController stateController;
     public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
     private Invader invader;
@@ -28,64 +35,82 @@ public class EnemyAttackController : MonoBehaviour
     }
     #endregion
     #region CheckMethods
-    public bool CheckGrid()
+    public bool CheckBase()
     {
         RaycastHit hitInfo;
         if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 0.4f, LayerMask.GetMask("Base")))
         {
             GameManager.Instance.CompeleteStage(false);
-            return false;
+            return true;
         }
-        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, attackRange-0.25f, gridLayer))
+        return false;
+    }
+    public bool CheckGridInvadable()
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 0.75f, gridLayer))
         {
-
-            GridSystem.Grid grid = hitInfo.collider.GetComponentInParent<GridSystem.Grid>();
-            if (grid == null)
-                grid = hitInfo.collider.GetComponent<GridSystem.Grid>();
+            GridSystem.Grid grid = hitInfo.collider.GetComponent<GridSystem.Grid>();
 
             if (grid != null)
             {
-                Invader.targetGrid = grid;
-                return true;
+                if (grid.gridObject == null)
+                {
+                    Invader.targetGrid = grid;
+                    return true;
+                }
+                else
+                {
+                    Invader.targetGrid = null;
+                    return false;
+                }
             }
-            else
-            {
-
-                Invader.targetGrid = null;
-                return false;
-            }
-
         }
         return false;
     }
 
     public bool CheckEnemy()
     {
-        if (Invader.targetGrid.gridObject == null)
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, attackRange-0.25f, gridLayer))
         {
-            return false;
-        }
-        else
-        {
+            GridSystem.Grid grid = hitInfo.collider.GetComponentInParent<GridSystem.Grid>();
+            if (grid != null)
+            {
+                if (grid.gridObject == null)
+                    return false;
 
-            IDamageable damagable = Invader.targetGrid.gridObject.GetComponent<IDamageable>();
-            if (damagable != null)
-            {
-                closestTarget = damagable;
-                return true;
-            }
-            else
-            {
-                lastAttackTime = Time.time;
-                return false;
+                IDamageable damagable =grid.gridObject.GetComponent<IDamageable>();
+                if (damagable != null)
+                {
+                    closestTarget = damagable;
+                    return true;
+                }
             }
         }
+        return false;
     }
     #endregion
     #region AttackMethods
     public void Attack()
     {
-        closestTarget.TakeDamage(damage);
+        switch (StateController.enemyData.EnemyType)
+        {
+            case EnemyTypes.Knight:
+                closestTarget.TakeDamage(damage);
+                break;
+            case EnemyTypes.Archer:
+                rangerAttack.CreateBullet(LayerMask.GetMask("Warrior"),damage);
+                break;
+            case EnemyTypes.TwoHanded:
+                closestTarget.TakeDamage(damage);
+                break;
+            case EnemyTypes.Mage:
+                rangerAttack.CreateBullet(LayerMask.GetMask("Warrior"), damage);
+                break;
+            default:
+                break;
+        }
     }
     public void AttackEnd()
     {

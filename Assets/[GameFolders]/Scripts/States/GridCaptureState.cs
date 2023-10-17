@@ -6,7 +6,7 @@ public class GridCaptureState : BaseState
 {
     public override void EnterState(StateController stateController)
     {
-        if(!stateController.MovementController.IsDestinationReached(stateController.Invader.targetGrid.transform.position))
+        if (!stateController.MovementController.IsDestinationReached(stateController.Invader.targetGrid.transform.position))
             stateController.MovementController.Move();
         stateController.Invader.StartInvading();
     }
@@ -23,15 +23,20 @@ public class GridCaptureState : BaseState
         if (stateController.AttackController.CheckEnemy())
             ExitState(stateController);
 
-        if (!stateController.AttackController.CheckGrid())
+        if (!stateController.AttackController.CheckGridInvadable())
             ExitState(stateController);
-
-        if (!stateController.MovementController.IsDestinationReached(stateController.Invader.targetGrid.transform.position))
-            stateController.MovementController.Move();
+        if (stateController.Invader.targetGrid == null)
+            ExitState(stateController);
         else
         {
-            stateController.MovementController.Stop();
-            stateController.Invader.Invading();
+            if (!stateController.MovementController.IsDestinationReached(stateController.Invader.targetGrid.transform.position))
+                stateController.MovementController.Move();
+            else
+            {
+                stateController.MovementController.Stop();
+                stateController.Invader.Invading();
+            }
         }
+
     }
 }

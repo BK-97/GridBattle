@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   middleObject: {fileID: 532898392954105998}
-  gridObject: {fileID: 1093455633859174460}
+  gridObject: {fileID: 0}
   objectArea: {fileID: 8376902020788587019}
   hasObject: 0
   gridPos: {x: 0, y: 0, z: 0}

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class WarriorHealthController : MonoBehaviour, IDamageable
 {
     #region Params
-    public Slider healthBar;
+    public HealthBar healthBar;
     private int health;
     WarriorController warriorController;
     #endregion
@@ -31,7 +31,7 @@ public class WarriorHealthController : MonoBehaviour, IDamageable
     public void Die()
     {
         health = 0;
-        healthBar.value = health;
+        healthBar.ChangeBar(health);
         warriorController.animatorController.DeathAnim();
         warriorController.ControllerOff();
         StartCoroutine(WaitForDieCO());
@@ -45,8 +45,8 @@ public class WarriorHealthController : MonoBehaviour, IDamageable
     public void SetHealth(int healthCount)
     {
         health = healthCount;
-        healthBar.maxValue = health;
-        healthBar.value = health;
+        healthBar.SetBar(health);
+
     }
 
     public void TakeDamage(int damage)
@@ -56,7 +56,7 @@ public class WarriorHealthController : MonoBehaviour, IDamageable
         else
         {
             health -= damage;
-            healthBar.value = health;
+            healthBar.ChangeBar(health);
             warriorController.animatorController.HitAnim();
             warriorController.ControllerOff();
             PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Blood"), transform.position, Quaternion.identity);

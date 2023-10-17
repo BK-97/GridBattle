@@ -39,6 +39,7 @@ public class Invader : MonoBehaviour
     public void CancelInvade()
     {
         isInvading = false;
-        targetGrid.CancelInvading();
+        if(targetGrid!=null)
+            targetGrid.CancelInvading();
     }
 }
