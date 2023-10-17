@@ -104,7 +104,7 @@ namespace GridSystem.Controllers
         {
             WarriorController gridWarrior = currentGrid.gridObject.GetComponent<WarriorController>();
             WarriorController pointerWarrior = takenObject.GetComponent<WarriorController>();
-            if(pointerWarrior.warriorData.WarriorType==gridWarrior.warriorData.WarriorType)
+            if(pointerWarrior.warriorData.CharacterType==gridWarrior.warriorData.CharacterType)
             {
                 if (pointerWarrior.currentLevel == gridWarrior.currentLevel)
                     return true;

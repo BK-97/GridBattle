@@ -9532,7 +9532,7 @@ GameObject:
   - component: {fileID: 4021103657954561942}
   - component: {fileID: 4021103657954561943}
   - component: {fileID: 4021103657954561960}
-  - component: {fileID: 6884016944592208989}
+  - component: {fileID: 2073912318779451373}
   m_Layer: 0
   m_Name: CFXR Hit A (Red)
   m_TagString: Untagged
@@ -9549,7 +9549,7 @@ Transform:
   m_GameObject: {fileID: 4021103657954561961}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7356675331608156007}
@@ -14256,7 +14256,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &6884016944592208989
+--- !u!114 &2073912318779451373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -6,12 +6,12 @@ using UnityEngine;
 [Serializable]
 public class CustomData
 {
-    public EnemyTypes EnemyType;
+    public CharacterTypes CharacterType;
     public int SpawnCount;
 
-    public CustomData(EnemyTypes enemyType, int count)
+    public CustomData(CharacterTypes enemyType, int count)
     {
-        EnemyType = enemyType;
+        CharacterType = enemyType;
         SpawnCount = count;
     }
 }
@@ -68,11 +68,10 @@ public class WaveController : MonoBehaviour
                 if (data.SpawnCount > 0)
                 {
                     spawnPosses.Shuffle();
-                    //float posX = spawnPosses[0].position.x;
-                    float posX = -1.5f;
+                    float posX = spawnPosses[0].position.x;
                     Vector3 spawnPos = new Vector3(posX,0,transform.position.z);
                     Quaternion spawnRotate = Quaternion.Euler(0, 180, 0);
-                    var go=PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Enemy" + data.EnemyType.ToString()), spawnPos, spawnRotate, null);
+                    var go=PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Enemy" + data.CharacterType.ToString()), spawnPos, spawnRotate, null);
                     CharacterManager.Instance.AddSpawnedEnemy(go);
                     data.SpawnCount--;
                     yield return new WaitForSeconds(spawnDelay);

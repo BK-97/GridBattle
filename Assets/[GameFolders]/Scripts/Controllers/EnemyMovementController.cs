@@ -8,7 +8,7 @@ public class EnemyMovementController : MonoBehaviour
     private int maxSpeed;
     private float currentSpeed;
     public bool canMove;
-    public RaycastCheck raycastCheck;
+    public LayerMask stopMask;
 
     private StateController stateController;
     public StateController StateController { get { return (stateController == null) ? stateController = GetComponent<StateController>() : stateController; } }
@@ -27,7 +27,7 @@ public class EnemyMovementController : MonoBehaviour
     {
         if (canMove)
         {
-            float distance= raycastCheck.CheckDistanceForward();
+            float distance= CheckDistanceForward();
             Vector3 movementDirection = Vector3.forward;
             if (distance == 0)
             {
@@ -39,6 +39,20 @@ public class EnemyMovementController : MonoBehaviour
         }
 
         AnimationController.MoveAnim(currentSpeed);
+    }
+    private float CheckDistanceForward()
+    {
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(StateController.raycastPoint.transform.position, StateController.raycastPoint.transform.forward, out hitInfo, 2, stopMask))
+        {
+            float distance = Vector3.Distance(StateController.raycastPoint.transform.position, hitInfo.point);
+            if (distance <= 1)
+                return 0;
+            else
+                return distance - 1;
+        }
+        return 1;
     }
     public void Stop()
     {

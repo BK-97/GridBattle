@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyAttackController : MonoBehaviour
 {
     #region Params
-    private int attackRate;
-    private int attackRange;
+    private float attackRate;
+    private float attackRange;
     private int damage;
 
     [HideInInspector]
@@ -27,7 +27,7 @@ public class EnemyAttackController : MonoBehaviour
     public EnemyAnimationController AnimationController { get { return (animationController == null) ? animationController = GetComponentInChildren<EnemyAnimationController>() : animationController; } }
     #endregion
     #region SetMethods
-    public void DataSet(EnemyData data)
+    public void DataSet(CharacterData data)
     {
         attackRate = data.AttackRate;
         attackRange = data.AttackRange;
@@ -94,19 +94,19 @@ public class EnemyAttackController : MonoBehaviour
     #region AttackMethods
     public void Attack()
     {
-        switch (StateController.enemyData.EnemyType)
+        switch (StateController.enemyData.CharacterType)
         {
-            case EnemyTypes.Knight:
+            case CharacterTypes.Knight:
                 closestTarget.TakeDamage(damage);
                 break;
-            case EnemyTypes.Archer:
-                rangerAttack.CreateBullet(LayerMask.GetMask("Warrior"),damage);
+            case CharacterTypes.Archer:
+                rangerAttack.CreateBullet(LayerMask.GetMask("Warrior"),damage,-Vector3.forward);
                 break;
-            case EnemyTypes.TwoHanded:
+            case CharacterTypes.TwoHanded:
                 closestTarget.TakeDamage(damage);
                 break;
-            case EnemyTypes.Mage:
-                rangerAttack.CreateBullet(LayerMask.GetMask("Warrior"), damage);
+            case CharacterTypes.Mage:
+                rangerAttack.CreateBullet(LayerMask.GetMask("Warrior"), damage, -Vector3.forward);
                 break;
             default:
                 break;

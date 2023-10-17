@@ -9,7 +9,7 @@ public class LevelUpgradeBase : MonoBehaviour
     protected int upgradedDamage;
     protected float upgradedRange;
     protected float upgradedRate;
-    protected WarriorData upgradeData;
+    protected CharacterData upgradeData;
     private WarriorController warriorController;
     #endregion
     #region MonoBehaviourMethods
@@ -19,7 +19,7 @@ public class LevelUpgradeBase : MonoBehaviour
     }
     #endregion
     #region MyMethods
-    public void Upgrade(int currentLevel, WarriorData upData)
+    public void Upgrade(int currentLevel, CharacterData upData)
     {
         upgradeData = upData;
         GetDataValues();
@@ -48,7 +48,7 @@ public class LevelUpgradeBase : MonoBehaviour
 
     protected virtual void SetDataValues(int currentLevel)
     {
-        WarriorData newData = new WarriorData();
+        CharacterData newData = new CharacterData();
         newData.Health = upgradedHealth;
         newData.Damage = upgradedDamage;
         newData.AttackRange = upgradedRange;

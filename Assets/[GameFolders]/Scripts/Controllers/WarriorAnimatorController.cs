@@ -11,6 +11,9 @@ public class WarriorAnimatorController : MonoBehaviour
     private void Start()
     {
         warriorController = GetComponentInParent<WarriorController>();
+        animator.applyRootMotion = false;
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
     }
     #region AnimationEventMethods
     public void AttackEvent()
@@ -39,6 +42,7 @@ public class WarriorAnimatorController : MonoBehaviour
     public void DeathAnim()
     {
         animator.Rebind();
+        animator.applyRootMotion = true;
         animator.SetTrigger("Death");
 
     }

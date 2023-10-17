@@ -8,7 +8,7 @@ using UnityEngine;
 public class StateController : MonoBehaviour
 {
     #region Datas
-    public EnemyData enemyData;
+    public CharacterData enemyData;
     #endregion
     #region Params
     public Transform raycastPoint;

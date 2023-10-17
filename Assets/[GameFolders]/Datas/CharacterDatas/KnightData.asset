@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a3d518ca0d5cf44af68e218751a53c, type: 3}
-  m_Name: BossData
+  m_Script: {fileID: 11500000, guid: 05a20c967b0518e4e83f06d78b7ba93a, type: 3}
+  m_Name: KnightData
   m_EditorClassIdentifier: 
-  EnemyType: 3
-  Health: 0
-  AttackRange: 0
-  AttackRate: 0
-  Damage: 0
-  MoveSpeed: 0
+  CharacterType: 0
+  warriorLevel: 1
+  Health: 10
+  AttackRange: 1
+  AttackRate: 2
+  Damage: 5
+  cost: 100
+  MoveSpeed: 1

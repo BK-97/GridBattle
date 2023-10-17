@@ -8,27 +8,29 @@ public class Bullet : MonoBehaviour
     private LayerMask _hitLayer;
     private int _damage;
     private bool canMove;
-
+    private Vector3 moveDirection;
+    public GameObject hitParticle;
     private void Update()
     {
         if (canMove)
         {
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
 
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, moveSpeed * Time.deltaTime, _hitLayer))
+            if (Physics.Raycast(transform.position, moveDirection, out hit, moveSpeed * Time.deltaTime, _hitLayer))
             {
                 DealDamage(hit.collider.gameObject);
-                PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("MagicHit"), transform.position,Quaternion.identity);
+                PoolingSystem.SpawnObject(hitParticle, transform.position,Quaternion.identity);
                 PoolingSystem.ReturnObjectToPool(gameObject);
             }
         }
     }
 
-    public void Initialize(LayerMask hitLayer, int damage)
+    public void Initialize(LayerMask hitLayer, int damage,Vector3 direction)
     {
         _hitLayer = hitLayer;
         _damage = damage;
+        moveDirection = direction;
         canMove = true;
     }
 

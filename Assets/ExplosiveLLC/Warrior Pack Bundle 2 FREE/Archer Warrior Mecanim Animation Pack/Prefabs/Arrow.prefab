@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7381297848981803586}
   - component: {fileID: 7381297848981000802}
   - component: {fileID: 7381297848980033698}
-  - component: {fileID: 3031763662804484244}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -26,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7381297848982031970}
-  m_LocalRotation: {x: -0.04084498, y: 0.0297195, z: 0.7402963, w: 0.6703804}
+  m_LocalRotation: {x: -0.040845625, y: 0.029717747, z: 0.7402989, w: 0.67037755}
   m_LocalPosition: {x: 0.39968792, y: 1.3137012, z: -0.008870537}
-  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -5.668, y: -1.188, z: 95.734}
 --- !u!33 &7381297848981000802
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -84,16 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3031763662804484244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7381297848982031970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51550faf7252b8c4b9b170408903fc78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5

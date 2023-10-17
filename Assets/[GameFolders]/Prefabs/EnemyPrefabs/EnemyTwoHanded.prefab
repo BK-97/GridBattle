@@ -373,7 +373,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
-  raycastCheck: {fileID: 1820716233430619636}
+  stopMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1511480989524725467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b9b6f31d4d3a44c848b3aba97ee627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 243e3321a4a635540b7da563c2cb7a17, type: 2}
+  enemyData: {fileID: 11400000, guid: 05131869e38b23e489f7d54c5263f4c3, type: 2}
   raycastPoint: {fileID: 3808955375980752433}
 --- !u!136 &1511480989524725408
 CapsuleCollider:
@@ -2830,7 +2832,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3808955375980752433}
-  - component: {fileID: 1820716233430619636}
   m_Layer: 2
   m_Name: RaycastPoint
   m_TagString: Untagged
@@ -2853,21 +2854,6 @@ Transform:
   m_Father: {fileID: 461142514835509576}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1820716233430619636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8426667092263195860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978f2c6adbe2f0841b339b6bf7f9b9dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &9067198490537433474
 GameObject:
   m_ObjectHideFlags: 0

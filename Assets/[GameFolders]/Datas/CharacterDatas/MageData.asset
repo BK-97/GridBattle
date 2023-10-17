@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a3d518ca0d5cf44af68e218751a53c, type: 3}
-  m_Name: RangerData
+  m_Script: {fileID: 11500000, guid: 05a20c967b0518e4e83f06d78b7ba93a, type: 3}
+  m_Name: MageData
   m_EditorClassIdentifier: 
-  EnemyType: 1
-  Health: 5
-  AttackRange: 3
-  AttackRate: 1
-  Damage: 1
+  CharacterType: 3
+  warriorLevel: 1
+  Health: 8
+  AttackRange: 11
+  AttackRate: 2
+  Damage: 7
+  cost: 250
   MoveSpeed: 2

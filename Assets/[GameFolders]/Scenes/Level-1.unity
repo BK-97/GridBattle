@@ -407,23 +407,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - WaveOrder:
-    - EnemyType: 2
+    - CharacterType: 1
       SpawnCount: 2
     TotalWaveSpawnTime: 4
   - WaveOrder:
-    - EnemyType: 1
+    - CharacterType: 2
       SpawnCount: 3
     TotalWaveSpawnTime: 6
   - WaveOrder:
-    - EnemyType: 0
+    - CharacterType: 0
       SpawnCount: 1
     TotalWaveSpawnTime: 0
   - WaveOrder:
-    - EnemyType: 0
+    - CharacterType: 0
       SpawnCount: 1
     TotalWaveSpawnTime: 0
   - WaveOrder:
-    - EnemyType: 0
+    - CharacterType: 0
       SpawnCount: 1
     TotalWaveSpawnTime: 0
   spawnPosses:

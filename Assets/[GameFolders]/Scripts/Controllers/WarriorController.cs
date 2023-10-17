@@ -8,7 +8,7 @@ public class WarriorController : MonoBehaviour
 {
     #region Params
     [Header("Datas")]
-    public WarriorData warriorData;
+    public CharacterData warriorData;
     private int damage;
     private float attackRate;
     private float attackRange;
@@ -70,20 +70,20 @@ public class WarriorController : MonoBehaviour
     }
     public void Attack()
     {
-        switch (warriorData.WarriorType)
+        switch (warriorData.CharacterType)
         {
-            case WarriorTypes.Knight:
+            case CharacterTypes.Knight:
                 closestTarget.TakeDamage(damage);
 
                 break;
-            case WarriorTypes.Archer:
-                rangerAttack.CreateBullet(enemyLayer,damage);
+            case CharacterTypes.Archer:
+                rangerAttack.CreateBullet(enemyLayer,damage, Vector3.forward);
                 break;
-            case WarriorTypes.TwoHanded:
+            case CharacterTypes.TwoHanded:
                 closestTarget.TakeDamage(damage);
                 break;
-            case WarriorTypes.Mage:
-                rangerAttack.CreateBullet(enemyLayer, damage);
+            case CharacterTypes.Mage:
+                rangerAttack.CreateBullet(enemyLayer, damage, Vector3.forward);
                 break;
             default:
                 break;
@@ -141,7 +141,7 @@ public class WarriorController : MonoBehaviour
     {
         transform.DOScale(transform.localScale*1.1f,0.2f);
     }
-    public void SetDatas(WarriorData currentData)
+    public void SetDatas(CharacterData currentData)
     {
         HealthController.SetHealth(currentData.Health);
         damage = currentData.Damage;

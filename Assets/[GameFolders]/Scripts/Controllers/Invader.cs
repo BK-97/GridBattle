@@ -4,6 +4,7 @@ using UnityEngine;
 using GridSystem;
 public class Invader : MonoBehaviour
 {
+    [HideInInspector]
     public GridSystem.Grid targetGrid;
     private float invadeTime = 4;
     private bool isInvading = false;

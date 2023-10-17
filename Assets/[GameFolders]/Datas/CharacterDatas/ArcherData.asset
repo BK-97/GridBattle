@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05a20c967b0518e4e83f06d78b7ba93a, type: 3}
-  m_Name: KnightData
+  m_Name: ArcherData
   m_EditorClassIdentifier: 
-  WarriorType: 0
+  CharacterType: 1
   warriorLevel: 1
-  Health: 10
-  AttackRange: 1
+  Health: 7
+  AttackRange: 13
   AttackRate: 2
   Damage: 5
-  cost: 100
+  cost: 150
+  MoveSpeed: 3

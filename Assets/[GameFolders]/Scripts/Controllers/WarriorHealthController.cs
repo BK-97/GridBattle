@@ -34,6 +34,7 @@ public class WarriorHealthController : MonoBehaviour, IDamageable
         healthBar.ChangeBar(health);
         warriorController.animatorController.DeathAnim();
         warriorController.ControllerOff();
+        GetComponentInParent<GridSystem.Grid>().RemoveObject();
         StartCoroutine(WaitForDieCO());
     }
     IEnumerator WaitForDieCO()
