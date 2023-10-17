@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovementController : MonoBehaviour
 {
     #region Params
-    private int maxSpeed;
+    private float maxSpeed;
     private float currentSpeed;
     public bool canMove;
     public LayerMask stopMask;
@@ -16,7 +16,7 @@ public class EnemyMovementController : MonoBehaviour
     public EnemyAnimationController AnimationController { get { return (animationController == null) ? animationController = GetComponentInChildren<EnemyAnimationController>() : animationController; } }
     #endregion
     #region SetMethods
-    public void SetSpeed(int speed)
+    public void SetSpeed(float speed)
     {
         maxSpeed = speed;
         canMove = true;

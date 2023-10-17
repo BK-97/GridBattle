@@ -13,6 +13,6 @@ public class CharacterData : ScriptableObject
     public float AttackRate;
     public int Damage;
     public int cost;
-    public int MoveSpeed;
+    public float MoveSpeed;
 
 }

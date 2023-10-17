@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05a20c967b0518e4e83f06d78b7ba93a, type: 3}
-  m_Name: MageData
+  m_Name: E_KnightData
   m_EditorClassIdentifier: 
-  CharacterType: 3
+  CharacterType: 0
   warriorLevel: 1
-  Health: 12
-  AttackRange: 11
+  Health: 20
+  AttackRange: 1
   AttackRate: 2
-  Damage: 7
-  cost: 250
-  MoveSpeed: 2
+  Damage: 5
+  cost: 100
+  MoveSpeed: 1.5

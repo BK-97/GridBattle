@@ -15,6 +15,8 @@ public class WarriorController : MonoBehaviour
     [HideInInspector]
     public int currentLevel;
 
+    bool isAttacking;
+    float lastAttackTime=-Mathf.Infinity;
     private bool canAttack;
     private IDamageable closestTarget;
     private WarriorHealthController healthController;
@@ -30,6 +32,8 @@ public class WarriorController : MonoBehaviour
 
     [Header("Ranged Character Params")]
     public RangerAttack rangerAttack;
+    [Header("Close Combat Character Params")]
+    public ParticleSystem trailParticle;
     #endregion
     #region MonoBehaviourMethods
     private void Start()
@@ -65,7 +69,7 @@ public class WarriorController : MonoBehaviour
                 AttackTimer();
             }
             else
-                attackTimer = 999;
+                lastAttackTime = -Mathf.Infinity;
         }
     }
     public void Attack()
@@ -74,13 +78,16 @@ public class WarriorController : MonoBehaviour
         {
             case CharacterTypes.Knight:
                 closestTarget.TakeDamage(damage);
-
+                if (trailParticle != null)
+                    trailParticle.Play();
                 break;
             case CharacterTypes.Archer:
                 rangerAttack.CreateBullet(enemyLayer,damage, Vector3.forward);
                 break;
             case CharacterTypes.TwoHanded:
                 closestTarget.TakeDamage(damage);
+                if (trailParticle != null)
+                    trailParticle.Play();
                 break;
             case CharacterTypes.Mage:
                 rangerAttack.CreateBullet(enemyLayer, damage, Vector3.forward);
@@ -91,21 +98,19 @@ public class WarriorController : MonoBehaviour
     }
     public void AttackEnd()
     {
-        attackTimer = 0f;
+        Debug.Log("test");
         isAttacking = false;
     }
-    bool isAttacking;
-    float attackTimer=999;
+
     private void AttackTimer()
     {
         if (!isAttacking)
         {
-            attackTimer += Time.deltaTime;
-
-            if (attackTimer >= attackRate)
+            if (Time.time >= attackRate + lastAttackTime)
             {
-                animatorController.AttackAnim();
                 isAttacking = true;
+                lastAttackTime = Time.time;
+                animatorController.AttackAnim();
             }
         }
     }

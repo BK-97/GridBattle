@@ -407,7 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - WaveOrder:
-    - CharacterType: 1
+    - CharacterType: 0
       SpawnCount: 2
     TotalWaveSpawnTime: 4
   - WaveOrder:

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterType: 1
   warriorLevel: 1
-  Health: 7
+  Health: 10
   AttackRange: 13
   AttackRate: 2
   Damage: 5

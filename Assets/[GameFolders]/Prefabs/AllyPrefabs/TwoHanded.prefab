@@ -1039,7 +1039,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warriorData: {fileID: 11400000, guid: 05131869e38b23e489f7d54c5263f4c3, type: 2}
-  damage: 0
   currentLevel: 0
   animatorController: {fileID: 0}
   raycastMuzzle: {fileID: 1708205768320778249}
@@ -1050,6 +1049,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   rangerAttack: {fileID: 0}
+  trailParticle: {fileID: 0}
 --- !u!136 &5847876366135163979
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1266,10 +1266,10 @@ Animator:
   m_GameObject: {fileID: 7915026842311831806}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 781a15e490c144941adf6440cf6b6cdd, type: 3}
-  m_Controller: {fileID: 9100000, guid: eedd95950d7c15e4eb7d88267e566406, type: 2}
+  m_Controller: {fileID: 9100000, guid: ed61bd16cab3ec447a0979e484088b87, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 

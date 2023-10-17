@@ -9,6 +9,8 @@ public class EnemyAttackController : MonoBehaviour
     private float attackRange;
     private int damage;
 
+    bool isAttacking;
+    float lastAttackTime=-Mathf.Infinity;
     [HideInInspector]
     public bool canAttack;
 
@@ -117,13 +119,11 @@ public class EnemyAttackController : MonoBehaviour
         lastAttackTime = Time.time;
         isAttacking = false;
     }
-    bool isAttacking;
-    float lastAttackTime;
+
     public void AttackTimer()
     {
         if (!isAttacking)
         {
-
             if (Time.time >= attackRate + lastAttackTime)
             {
                 isAttacking = true;

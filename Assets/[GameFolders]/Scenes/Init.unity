@@ -221,18 +221,21 @@ MonoBehaviour:
   - gameObject: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
       type: 3}
     name: MagicHit
-  - gameObject: {fileID: 1511480989524725465, guid: 8c05831c8aafd0f4ea0b3e51cfc5ea00,
-      type: 3}
-    name: EnemyArcher
-  - gameObject: {fileID: 1511480989524725465, guid: 05738e983c1c03644b71d110ebbe42c8,
-      type: 3}
-    name: EnemyTwoHanded
   - gameObject: {fileID: 3495654168313710730, guid: deef8c4afa2f35f42a9993b9fbdbf2b4,
       type: 3}
     name: Arrow
   - gameObject: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7,
       type: 3}
     name: ArrowHit
+  - gameObject: {fileID: 1511480989524725465, guid: 7ab24c521cd21784fb4aa529dbf7da27,
+      type: 3}
+    name: EnemyKnight
+  - gameObject: {fileID: 1511480989524725465, guid: 8c05831c8aafd0f4ea0b3e51cfc5ea00,
+      type: 3}
+    name: EnemyArcher
+  - gameObject: {fileID: 1511480989524725465, guid: 05738e983c1c03644b71d110ebbe42c8,
+      type: 3}
+    name: EnemyTwoHanded
 --- !u!4 &1359531486
 Transform:
   m_ObjectHideFlags: 0
