@@ -46,7 +46,7 @@ public class SessionCounter : MonoBehaviour
             {
                 TimeUp();
             }
-            else if (currentTime <= 3 && currentTime > 0)
+            else if (currentTime <= 4 && currentTime > 0)
             {
                 int roundedTime = Mathf.RoundToInt(currentTime);
                 if (roundedTime != Mathf.RoundToInt(currentTime + Time.deltaTime))

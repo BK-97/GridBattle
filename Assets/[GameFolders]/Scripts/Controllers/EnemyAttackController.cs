@@ -56,7 +56,7 @@ public class EnemyAttackController : MonoBehaviour
 
             if (grid != null)
             {
-                if (grid.gridObject == null)
+                if (!grid.hasObject)
                 {
                     Invader.targetGrid = grid;
                     return true;
@@ -79,10 +79,10 @@ public class EnemyAttackController : MonoBehaviour
             GridSystem.Grid grid = hitInfo.collider.GetComponentInParent<GridSystem.Grid>();
             if (grid != null)
             {
-                if (grid.gridObject == null)
+                if (!grid.hasObject)
                     return false;
 
-                IDamageable damagable =grid.gridObject.GetComponent<IDamageable>();
+                IDamageable damagable =grid.GetGridObject().GetComponent<IDamageable>();
                 if (damagable != null)
                 {
                     closestTarget = damagable;

@@ -35,7 +35,6 @@ namespace GridSystem
                     GameObject gridObject = Instantiate(gridPrefab, position, Quaternion.identity);
                     gridObject.transform.SetParent(transform);
                     Grid grid = gridObject.GetComponent<Grid>();
-                    grid.Initialize(position);
                 }
             }
         }

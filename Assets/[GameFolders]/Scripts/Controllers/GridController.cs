@@ -16,7 +16,7 @@ namespace GridSystem
             for (int i = 0; i < transform.childCount; i++)
             {
                 allGrids.Add(transform.GetChild(i).GetComponent<Grid>());
-                allGrids[i].gridController = this;
+                allGrids[i].Initialize(this);
             }
             for (int i = 0; i < allGrids.Count; i++)
             {

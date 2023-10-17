@@ -7,8 +7,6 @@ namespace GridSystem.Controllers
     public class MouseController : MonoBehaviour
     {
         #region Params
-        [SerializeField]
-        private InputManager inputManager;
         [HideInInspector]
         public Grid currentGrid;
         public Transform mousePointer;
@@ -64,7 +62,7 @@ namespace GridSystem.Controllers
                     {
                         if(CheckIfUpgradable())
                         {
-                            currentGrid.gridObject.GetComponent<WarriorController>().UpgradeWarrior();
+                            currentGrid.GetGridObject().GetComponent<WarriorController>().UpgradeWarrior();
                             CharacterManager.Instance.RemoveAlly(takenObject);
                             PoolingSystem.ReturnObjectToPool(takenObject);
                             takenObject = null;
@@ -73,7 +71,7 @@ namespace GridSystem.Controllers
                     }
                     else
                     {
-                        AddToPointer(currentGrid.gridObject);
+                        AddToPointer(currentGrid.GetGridObject());
                         currentGrid.RemoveObject();
                     }
                 }
@@ -102,7 +100,7 @@ namespace GridSystem.Controllers
         #region Helpers
         private bool CheckIfUpgradable()
         {
-            WarriorController gridWarrior = currentGrid.gridObject.GetComponent<WarriorController>();
+            WarriorController gridWarrior = currentGrid.GetGridObject().GetComponent<WarriorController>();
             WarriorController pointerWarrior = takenObject.GetComponent<WarriorController>();
             if(pointerWarrior.warriorData.CharacterType==gridWarrior.warriorData.CharacterType)
             {
