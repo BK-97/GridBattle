@@ -14,8 +14,11 @@ Defend Your Grids!
 ---
 # GIFs
 Merge Your Warriors!
+
 ![GridBattleMergeGif](https://github.com/BK-97/GridBattle/assets/59361739/8868369e-c00c-40be-9e4d-ac7304d2b649)
+
 They Are Coming!
+
 ![GridBattleGif01](https://github.com/BK-97/GridBattle/assets/59361739/157861e9-cfb6-438c-a521-fee5316e0664)
 
 
