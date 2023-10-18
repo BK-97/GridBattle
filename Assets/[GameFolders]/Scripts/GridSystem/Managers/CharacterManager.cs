@@ -14,6 +14,7 @@ public class CharacterManager : Singleton<CharacterManager>
     public static GameObjectEvent OnNewAllySpawned = new GameObjectEvent();
     public static UnityEvent OnAllEnemiesDied = new UnityEvent();
     #endregion
+
     #region Methods
     public void AddSpawnedEnemy(GameObject spawnedEnemy)
     {

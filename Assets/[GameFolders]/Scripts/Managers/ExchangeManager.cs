@@ -18,7 +18,6 @@ public class ExchangeManager: Singleton<ExchangeManager>
     public Vector3 UIPos;
     private float incomeMultiplier=1.1f;
     public float currentIncomeMultiplier;
-    private float startGameCoin=100;
     public ExchangeManager()
     {
         currencyDictionary = new Dictionary<CurrencyType, int>();

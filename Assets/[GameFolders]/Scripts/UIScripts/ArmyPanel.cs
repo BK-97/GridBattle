@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonPanel : MonoBehaviour
+public class ArmyPanel : PanelBase
 {
-    CanvasGroup canvasGroup;
     void Awake()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
         HidePanel();
     }
 
@@ -21,17 +19,8 @@ public class ButtonPanel : MonoBehaviour
         GameManager.Instance.OnBattleSessionStart.RemoveListener(HidePanel);
         GameManager.Instance.OnSpawnSessionStart.RemoveListener(ShowPanel);
     }
-
-    private void HidePanel()
+    public void StartBattle()
     {
-        canvasGroup.alpha = 0;
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.interactable= false;
-    }
-    private void ShowPanel()
-    {
-        canvasGroup.alpha = 1;
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.interactable = true;
+        GameManager.Instance.OnBattleSessionStart.Invoke();
     }
 }

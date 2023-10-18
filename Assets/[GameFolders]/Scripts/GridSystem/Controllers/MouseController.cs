@@ -19,48 +19,37 @@ namespace GridSystem.Controllers
         private static object lockObject = new object();
         #endregion
         #region MonoBehaviourMethods
-        private void Update()
-        {
-            Grid gridGet = GetMouseOverGrid();
-            if (gridGet != null)
-            {
-                currentGrid = gridGet;
-            }
-            else
-            {
-                currentGrid = null;
-            }
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, float.MaxValue,GroundLayerMask))
-            {
-                mousePointer.position = hit.point;
-            }
-
-        }
+        
         private void OnEnable()
         {
-            InputManager.OnClick.AddListener(ClickOn);
-            CharacterManager.OnNewAllySpawned.AddListener(AddToPointer);
+            InputManager.OnTap.AddListener(TapCheck);
+            InputManager.OnHold.AddListener(SetPointerPos);
+            InputManager.OnRelease.AddListener(TapCheck);
         }
         private void OnDisable()
         {
-            InputManager.OnClick.RemoveListener(ClickOn);
-            CharacterManager.OnNewAllySpawned.RemoveListener(AddToPointer);
+            InputManager.OnTap.RemoveListener(TapCheck);
+            InputManager.OnHold.RemoveListener(SetPointerPos);
+            InputManager.OnRelease.RemoveListener(TapCheck);
         }
-        #endregion
-        #region Methods
-        private void ClickOn()
+#endregion
+#region Methods
+        private void SetPointerPos(Vector3 clickPoint)
         {
+            mousePointer.transform.position = clickPoint;
+
+        }
+        private void TapCheck(Vector3 pos)
+        {
+            SetPointerPos(pos);
+
             if (CheckIfGrid())
             {
                 if (currentGrid.hasObject)
                 {
                     if (takenObject != null)
                     {
-                        if(CheckIfUpgradable())
+                        if (CheckIfUpgradable())
                         {
                             currentGrid.GetGridObject().GetComponent<WarriorController>().UpgradeWarrior();
                             CharacterManager.Instance.RemoveAlly(takenObject);
@@ -85,19 +74,21 @@ namespace GridSystem.Controllers
                     }
                 }
             }
+
         }
         private void AddToPointer(GameObject spawnable)
         {
             if (takenObject != null)
                 Destroy(takenObject);
+
             SetTakenObject(spawnable);
             takenObject.transform.SetParent(mousePointer);
             takenObject.transform.localPosition = Vector3.zero;
             takenObject.transform.localRotation = Quaternion.identity;
         }
 
-        #endregion
-        #region Helpers
+#endregion
+#region Helpers
         private bool CheckIfUpgradable()
         {
             WarriorController gridWarrior = currentGrid.GetGridObject().GetComponent<WarriorController>();
@@ -116,22 +107,11 @@ namespace GridSystem.Controllers
             else
                 return true;
         }
-        private bool IsPointerOnUI()
-        {
-
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         public Grid GetMouseOverGrid()
         {
-            Vector3 mousePos = Input.mousePosition;
+            Vector3 mousePos = mousePointer.position;
+
             mousePos.z = Camera.main.nearClipPlane;
 
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
@@ -161,6 +141,6 @@ namespace GridSystem.Controllers
                 return takenObject;
             }
         }
-        #endregion
+#endregion
     }
 }

@@ -27,10 +27,31 @@ namespace GridSystem
         private void OnEnable()
         {
             OnGridLiberate.AddListener(PermamentGridLiberate);
+            CharacterManager.OnNewAllySpawned.AddListener(SetNewAllyToGrid);
+
         }
         private void OnDisable()
         {
             OnGridLiberate.RemoveListener(PermamentGridLiberate);
+            CharacterManager.OnNewAllySpawned.RemoveListener(SetNewAllyToGrid);
+        }
+        private void SetNewAllyToGrid(GameObject newAlly)
+        {
+            GridSystem.Grid emptyGrid = GetEmptyGrid();
+            if (emptyGrid != null)
+            {
+                Debug.Log(newAlly.name);
+                emptyGrid.AddObject(newAlly);
+            }
+        }
+        private GridSystem.Grid GetEmptyGrid()
+        {
+            for (int i = 0; i < liberatedGrids.Count; i++)
+            {
+                if (!liberatedGrids[i].hasObject)
+                    return liberatedGrids[i];
+            }
+            return null;
         }
         private void PermamentGridLiberate()
         {

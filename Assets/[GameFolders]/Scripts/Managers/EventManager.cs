@@ -15,4 +15,5 @@ public class EventManager : MonoBehaviour
 public class BoolEvent : UnityEvent<bool> { }
 public class IntEvent : UnityEvent<int> { }
 public class FloatEvent : UnityEvent<float> { }
+public class Vector3Event : UnityEvent<Vector3> { }
 public class GameObjectEvent : UnityEvent<GameObject> { }
