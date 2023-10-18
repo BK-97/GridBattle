@@ -12,6 +12,14 @@ public class EnemyAnimationController : MonoBehaviour
     {
         attackController = GetComponentInParent<EnemyAttackController>();
     }
+    private void OnEnable()
+    {
+        GameManager.Instance.OnStageLoose.AddListener(CheerAnim);
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.OnStageLoose.RemoveListener(CheerAnim);
+    }
     #region AnimationEventMethods
     public void AttackEvent()
     {
@@ -20,24 +28,34 @@ public class EnemyAnimationController : MonoBehaviour
     }
     public void AttackEnd()
     {
-        animator.SetBool("Attack", false);
+        animator.SetBool(AnimKeys.ATTACK_BOOL, false);
         attackController.AttackEnd();
     }
     #endregion
     #region AnimationMethods
     public void AttackAnim()
     {
-        animator.SetBool("Attack", true);
+        animator.SetBool(AnimKeys.ATTACK_BOOL, true);
     }
     public void MoveAnim(float speed)
     {
-        animator.SetFloat("MoveSpeed", speed);
+        animator.SetFloat(AnimKeys.SPEED, speed);
+    }
+    public void InvadeAnim(bool status)
+    {
+        animator.SetBool(AnimKeys.INVADE, status);
+    }
+    public void CheerAnim()
+    {
+        MoveAnim(0);
+        animator.Rebind();
+        animator.SetTrigger(AnimKeys.CHEER);
     }
     public void DeathAnim()
     {
         MoveAnim(0);
         animator.Rebind();
-        animator.SetTrigger("Death");
+        animator.SetTrigger(AnimKeys.DIE);
 
     }
     #endregion

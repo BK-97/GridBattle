@@ -9,10 +9,16 @@ public class Invader : MonoBehaviour
     private float invadeTime = 4;
     private bool isInvading = false;
     private float invadeCounter = 0f;
+    private EnemyAnimationController enemyAnimationController;
+    private void Start()
+    {
+        enemyAnimationController = GetComponentInChildren<EnemyAnimationController>();
+    }
     public void StartInvading()
     {
         isInvading = true;
         invadeCounter = 0f;
+        enemyAnimationController.InvadeAnim(true);
     }
 
     public void Invading()
@@ -35,6 +41,7 @@ public class Invader : MonoBehaviour
     {
         isInvading = false;
         targetGrid.Invaded();
+        enemyAnimationController.InvadeAnim(false);
     }
 
     public void CancelInvade()
@@ -42,5 +49,8 @@ public class Invader : MonoBehaviour
         isInvading = false;
         if(targetGrid!=null)
             targetGrid.CancelInvading();
+
+        enemyAnimationController.InvadeAnim(false);
+
     }
 }
