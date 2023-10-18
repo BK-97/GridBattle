@@ -28,9 +28,9 @@ public class WaveController : MonoBehaviour
     private List<WaveData> waves;
     [SerializeField]
     private List<Transform> spawnPosses;
-    private int currentWave = -1;
     bool allEnemiesDied;
     #endregion
+
     private void OnEnable()
     {
         GameManager.Instance.OnBattleSessionStart.AddListener(StartSpawning);
@@ -45,13 +45,14 @@ public class WaveController : MonoBehaviour
     #region SpawnMethods
     public void StartSpawning()
     {
-        currentWave++;
         StartCoroutine(SpawnWave());
     }
     private IEnumerator SpawnWave()
     {
         bool waveLoop = true;
-        WaveData currentWaveData = waves[currentWave];
+        if (waves.Count <= LevelManager.Instance.CurrentWaveLevel - 1)
+            LevelManager.Instance.CurrentWaveLevel -= 1;
+        WaveData currentWaveData = waves[LevelManager.Instance.CurrentWaveLevel-1];
         int totalSpawnable = 0;
 
         for (int i = 0; i < currentWaveData.WaveOrder.Count; i++)
@@ -84,9 +85,9 @@ public class WaveController : MonoBehaviour
         }
         yield return new WaitUntil(() => allEnemiesDied);
         allEnemiesDied = false;
-        if (currentWave + 1 == waves.Count)
+        if (LevelManager.Instance.CurrentWaveLevel == waves.Count)
         {
-            GameManager.Instance.OnStageWin.Invoke();
+            GameManager.Instance.OnSpawnSessionStart.Invoke();
         }
         else
         {

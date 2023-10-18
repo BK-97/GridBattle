@@ -18,18 +18,17 @@ public class ExchangeManager: Singleton<ExchangeManager>
     public Vector3 UIPos;
     private float incomeMultiplier=1.1f;
     public float currentIncomeMultiplier;
+    private float startGameCoin=100;
     public ExchangeManager()
     {
         currencyDictionary = new Dictionary<CurrencyType, int>();
     }
     private void Start()
     {
-        PlayerPrefs.SetInt(PlayerPrefKeys.CurrentCoin,3000);
-        Debug.Log("For Test Purposes Set Coin 300");
-
-        currencyDictionary[CurrencyType.Coin] = PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, 3000);
+        if (PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, 100) <= 100)
+            PlayerPrefs.SetInt(PlayerPrefKeys.CurrentCoin, 100);
+        currencyDictionary[CurrencyType.Coin] = PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, 100);
         UpdateIncomeMultiplier();
-
     }
     public void SetUIPos(Vector3 pos)
     {

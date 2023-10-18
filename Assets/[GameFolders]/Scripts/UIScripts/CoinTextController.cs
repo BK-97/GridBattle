@@ -24,6 +24,10 @@ public class CoinTextController : MonoBehaviour
     {
         coinText.text = currencyDict[CurrencyType.Coin].ToString();
     }
+    private void Start()
+    {
+        coinText.text = ExchangeManager.Instance.GetCurrency(CurrencyType.Coin).ToString();
+    }
     private void Update()
     {
         if (!LevelManager.Instance.IsLevelStarted)
