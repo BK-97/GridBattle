@@ -18,15 +18,18 @@ public class ExchangeManager: Singleton<ExchangeManager>
     public Vector3 UIPos;
     private float incomeMultiplier=1.1f;
     public float currentIncomeMultiplier;
+    const int STARTER_COIN= 100;
     public ExchangeManager()
     {
         currencyDictionary = new Dictionary<CurrencyType, int>();
     }
     private void Start()
     {
-        if (PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, 100) <= 100)
-            PlayerPrefs.SetInt(PlayerPrefKeys.CurrentCoin, 100);
-        currencyDictionary[CurrencyType.Coin] = PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, 100);
+        if (PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, STARTER_COIN) <= STARTER_COIN)
+            PlayerPrefs.SetInt(PlayerPrefKeys.CurrentCoin, STARTER_COIN);
+
+        currencyDictionary[CurrencyType.Coin] = PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, STARTER_COIN);
+
         UpdateIncomeMultiplier();
     }
     public void SetUIPos(Vector3 pos)

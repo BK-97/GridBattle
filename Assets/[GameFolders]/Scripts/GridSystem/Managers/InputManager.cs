@@ -11,6 +11,7 @@ namespace GridSystem.Managers
         public static Vector3Event OnRelease = new Vector3Event();
         #endregion
         public LayerMask GroundLayerMask;
+        private Vector3 lastPos;
         #region Methods
         private void Update()
         {
@@ -25,6 +26,8 @@ namespace GridSystem.Managers
 
                 if (Physics.Raycast(ray, out hit, float.MaxValue, GroundLayerMask))
                 {
+
+                    lastPos = Input.mousePosition;
                     OnTap.Invoke(hit.point);
                 }
             }
@@ -35,6 +38,7 @@ namespace GridSystem.Managers
 
                 if (Physics.Raycast(ray, out hit, float.MaxValue, GroundLayerMask))
                 {
+
                     OnHold.Invoke(hit.point);
                 }
             }
@@ -42,9 +46,10 @@ namespace GridSystem.Managers
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-
                 if (Physics.Raycast(ray, out hit, float.MaxValue, GroundLayerMask))
                 {
+
+                    lastPos = Input.mousePosition;
                     OnRelease.Invoke(hit.point);
                 }
             }
@@ -65,12 +70,19 @@ namespace GridSystem.Managers
                 else if (touch.phase == TouchPhase.Ended)
                 {
                     OnRelease.Invoke(touch.position);
+                    lastPos = touch.position;
                 }
+
             }
 #endif
+
         }
         #endregion
-
+        public Vector3 GetLastInputPos()
+        {
+            return lastPos;
+        }
     }
+
 
 }
