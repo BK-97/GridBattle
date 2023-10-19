@@ -58,8 +58,8 @@ public class WarriorHealthController : MonoBehaviour, IDamageable
         {
             health -= damage;
             healthBar.ChangeBar(health);
-            warriorController.animatorController.HitAnim();
-            warriorController.ControllerOff();
+            //warriorController.animatorController.HitAnim();
+            //warriorController.ControllerOff();
             PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Blood"), transform.position, Quaternion.identity);
         }
     }
