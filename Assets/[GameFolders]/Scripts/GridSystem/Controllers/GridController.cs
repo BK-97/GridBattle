@@ -6,9 +6,12 @@ namespace GridSystem
 {
     public class GridController : MonoBehaviour
     {
+        #region Params
         public static UnityEvent OnGridLiberate = new UnityEvent();
         public List<Grid> liberatedGrids;
         public List<Grid> allGrids;
+        #endregion
+        #region MonoBehaviours
         private void Start()
         {
             allGrids.Clear();
@@ -29,6 +32,8 @@ namespace GridSystem
             OnGridLiberate.RemoveListener(PermamentGridLiberate);
             CharacterManager.OnNewAllySpawned.RemoveListener(SetNewAllyToGrid);
         }
+        #endregion
+        #region SaveLoad
         private void LoadGrids()
         {
             int liberatedGridCount = PlayerPrefs.GetInt(PlayerPrefKeys.GridCount, 4);
@@ -65,6 +70,12 @@ namespace GridSystem
 
             PlayerPrefs.Save();
         }
+        private void OnApplicationQuit()
+        {
+            SaveGrids();
+        }
+        #endregion
+        #region MyMethods
         private void SetNewAllyToGrid(GameObject newAlly)
         {
             Grid emptyGrid = GetEmptyGrid();
@@ -117,10 +128,7 @@ namespace GridSystem
 
             }
         }
-        private void OnApplicationQuit()
-        {
-            SaveGrids();
-        }
-    }
 
+        #endregion
+    }
 }
