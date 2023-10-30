@@ -928,21 +928,65 @@ MonoBehaviour:
       SpawnCount: 1
     TotalWaveSpawnTime: 1
   - WaveOrder:
+    - CharacterType: 1
+      SpawnCount: 2
+    TotalWaveSpawnTime: 2
+  - WaveOrder:
+    - CharacterType: 1
+      SpawnCount: 2
     - CharacterType: 2
-      SpawnCount: 3
+      SpawnCount: 1
     TotalWaveSpawnTime: 6
   - WaveOrder:
-    - CharacterType: 0
-      SpawnCount: 1
-    TotalWaveSpawnTime: 0
+    - CharacterType: 1
+      SpawnCount: 3
+    - CharacterType: 2
+      SpawnCount: 2
+    TotalWaveSpawnTime: 5
   - WaveOrder:
-    - CharacterType: 0
+    - CharacterType: 1
+      SpawnCount: 5
+    - CharacterType: 2
+      SpawnCount: 3
+    - CharacterType: 3
       SpawnCount: 1
-    TotalWaveSpawnTime: 0
+    TotalWaveSpawnTime: 10
   - WaveOrder:
-    - CharacterType: 0
-      SpawnCount: 1
-    TotalWaveSpawnTime: 0
+    - CharacterType: 1
+      SpawnCount: 2
+    - CharacterType: 2
+      SpawnCount: 3
+    - CharacterType: 3
+      SpawnCount: 3
+    TotalWaveSpawnTime: 10
+  - WaveOrder:
+    - CharacterType: 1
+      SpawnCount: 0
+    - CharacterType: 2
+      SpawnCount: 2
+    - CharacterType: 3
+      SpawnCount: 8
+    TotalWaveSpawnTime: 15
+  - WaveOrder:
+    - CharacterType: 1
+      SpawnCount: 2
+    - CharacterType: 2
+      SpawnCount: 2
+    - CharacterType: 3
+      SpawnCount: 4
+    - CharacterType: 4
+      SpawnCount: 2
+    TotalWaveSpawnTime: 15
+  - WaveOrder:
+    - CharacterType: 1
+      SpawnCount: 2
+    - CharacterType: 2
+      SpawnCount: 0
+    - CharacterType: 3
+      SpawnCount: 4
+    - CharacterType: 4
+      SpawnCount: 4
+    TotalWaveSpawnTime: 15
   spawnPosses:
   - {fileID: 869482986}
   - {fileID: 432839436}
@@ -965,7 +1009,7 @@ Transform:
   - {fileID: 1827092873}
   - {fileID: 607884173}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &107511079
 GameObject:
@@ -3299,7 +3343,7 @@ Transform:
   m_Children:
   - {fileID: 1527640277}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &440373606
 GameObject:
@@ -3495,7 +3539,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &464891499
 MonoBehaviour:
@@ -3923,7 +3967,7 @@ Transform:
   m_Children:
   - {fileID: 170000245}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &573631119
 GameObject:
@@ -8302,7 +8346,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1219140910
 GameObject:
@@ -8382,7 +8426,7 @@ Transform:
   - {fileID: 1904889614}
   - {fileID: 1016038142}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1235126017
 GameObject:
@@ -8673,74 +8717,6 @@ Transform:
   - {fileID: 152093911}
   m_Father: {fileID: 817474986}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1304867411
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1304867414}
-  - component: {fileID: 1304867413}
-  - component: {fileID: 1304867412}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1304867412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304867411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1304867413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304867411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1304867414
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304867411}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1322966958
 GameObject:
@@ -12927,7 +12903,7 @@ Transform:
   m_Children:
   - {fileID: 1507506810}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 27.179, y: 8.589, z: 0}
 --- !u!1 &2036485347
 GameObject:

@@ -52,6 +52,8 @@ namespace GridSystem
                 int type = PlayerPrefs.GetInt(gridID + "_Type", 0);
 
                 liberatedGrids[i].LoadGrid(gridID, level, type);
+
+                Debug.Log(gridID+" "+ level+" "+type + "   loaded!");
             }
         }
 
@@ -66,6 +68,8 @@ namespace GridSystem
                 PlayerPrefs.SetInt(gridID + "_Level", level);
                 PlayerPrefs.SetInt(gridID + "_Type", type);
 
+                Debug.Log(gridID + " " + level + " " + type+ "   saved!");
+
             }
 
             PlayerPrefs.Save();
@@ -78,10 +82,11 @@ namespace GridSystem
         #region MyMethods
         private void SetNewAllyToGrid(GameObject newAlly)
         {
+            if (!LevelManager.Instance.IsLevelStarted)
+                return;
             Grid emptyGrid = GetEmptyGrid();
             if (emptyGrid != null)
             {
-                Debug.Log(newAlly.name);
                 emptyGrid.AddObject(newAlly);
             }
         }

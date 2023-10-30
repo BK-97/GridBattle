@@ -38,6 +38,7 @@ namespace GridSystem
         }
         public override void AddObject(GameObject gridGameObject)
         {
+            Debug.Log("testetet");
             gridObject = gridGameObject;
             gridObject.transform.SetParent(objectArea);
             gridObject.transform.localPosition = Vector3.zero;

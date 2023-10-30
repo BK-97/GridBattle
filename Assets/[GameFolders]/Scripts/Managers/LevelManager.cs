@@ -47,7 +47,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         get
         {
-            currentWaveLevel = PlayerPrefs.GetInt(PlayerPrefKeys.CurrentWave, 0);
+            currentWaveLevel = PlayerPrefs.GetInt(PlayerPrefKeys.CurrentWave, 1);
             return currentWaveLevel;
         }
         set

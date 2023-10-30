@@ -23,6 +23,7 @@ public class WarriorAnimatorController : MonoBehaviour
     public void AttackEnd()
     {
         animator.SetBool("Attack", false);
+
         warriorController.AttackEnd();
     }
     public void HitEnd()
@@ -34,10 +35,6 @@ public class WarriorAnimatorController : MonoBehaviour
     public void AttackAnim()
     {
         animator.SetBool("Attack", true);
-    }
-    public void MoveAnim()
-    {
-
     }
     public void DeathAnim()
     {

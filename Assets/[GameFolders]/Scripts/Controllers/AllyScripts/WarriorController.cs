@@ -84,10 +84,11 @@ public class WarriorController : MonoBehaviour
             default:
                 break;
         }
+        lastAttackTime = Time.time;
+
     }
     public void AttackEnd()
     {
-        Debug.Log("test");
         isAttacking = false;
     }
 
@@ -98,7 +99,6 @@ public class WarriorController : MonoBehaviour
             if (Time.time >= attackRate + lastAttackTime)
             {
                 isAttacking = true;
-                lastAttackTime = Time.time;
                 AnimatorController.AttackAnim();
             }
         }

@@ -109,8 +109,8 @@ public class GameManager : Singleton<GameManager>
     public void ChangeState(GameStates newState)
     {
         GameState = newState;
-        if (GameState == GameStates.SpawnSession)
-            LevelManager.Instance.CurrentWaveLevel++;
+        //if (GameState == GameStates.SpawnSession)
+        //    LevelManager.Instance.CurrentWaveLevel++;
     }
 
     #endregion

@@ -23,19 +23,16 @@ public class MoveState : BaseState
         if (stateController.AttackController.CheckGridInvadable())
         {
             stateController.ChangeState(stateController.captureState);
-            Debug.Log(1);
         }
 
         else if (stateController.AttackController.CheckEnemy())
         {
             stateController.ChangeState(stateController.attackState);
-            Debug.Log(2);
 
         }
         else if (stateController.AttackController.CheckBase())
         {
             stateController.ChangeState(stateController.idleState);
-            Debug.Log(3);
 
         }
     }
