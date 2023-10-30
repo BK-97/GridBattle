@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 648544546}
+  gridID: 
   blackKnob: {fileID: 1985941738}
 --- !u!1 &61681414
 GameObject:
@@ -486,6 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 18705421}
+  gridID: 
   blackKnob: {fileID: 1444204992}
 --- !u!1 &67004074
 GameObject:
@@ -761,6 +763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 391364042}
+  gridID: 
   blackKnob: {fileID: 971462036}
 --- !u!1 &95918622
 GameObject:
@@ -857,6 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 1633196869}
+  gridID: 
   blackKnob: {fileID: 952285167}
 --- !u!1 &102954090
 GameObject:
@@ -920,7 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - WaveOrder:
-    - CharacterType: 0
+    - CharacterType: 1
       SpawnCount: 1
     TotalWaveSpawnTime: 1
   - WaveOrder:
@@ -1230,6 +1234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 202792213}
+  gridID: 
   blackKnob: {fileID: 845632123}
 --- !u!1 &152093910
 GameObject:
@@ -1874,6 +1879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 1246113920}
+  gridID: 
   blackKnob: {fileID: 48842403}
 --- !u!1 &256594176
 GameObject:
@@ -2215,6 +2221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 764338962}
+  gridID: 
   blackKnob: {fileID: 1904953218}
 --- !u!1 &297849006
 GameObject:
@@ -2899,6 +2906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 691432152}
+  gridID: 
   blackKnob: {fileID: 1149339618}
 --- !u!1 &351414677
 GameObject:
@@ -4459,6 +4467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 102954091}
+  gridID: 
   blackKnob: {fileID: 1196335810}
 --- !u!1 &648544545
 GameObject:
@@ -5122,6 +5131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 1884347846}
+  gridID: 
   blackKnob: {fileID: 1080747941}
 --- !u!1 &817474985
 GameObject:
@@ -5186,6 +5196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 841105659}
+  gridID: 
   blackKnob: {fileID: 1442991693}
 --- !u!1 &832575517
 GameObject:
@@ -5821,6 +5832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 573631120}
+  gridID: 
   blackKnob: {fileID: 760613010}
 --- !u!1 &930222521
 GameObject:
@@ -7044,6 +7056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 88458340}
+  gridID: 
   blackKnob: {fileID: 329231751}
 --- !u!1 &1080747939
 GameObject:
@@ -7316,6 +7329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 1031061899}
+  gridID: 
   blackKnob: {fileID: 1718137041}
 --- !u!1 &1116173992
 GameObject:
@@ -7380,6 +7394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 688311397}
+  gridID: 
   blackKnob: {fileID: 478682213}
 --- !u!1 &1120748017
 GameObject:
@@ -7545,6 +7560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 623823584}
+  gridID: 
   blackKnob: {fileID: 206371792}
 --- !u!1 &1127219902
 GameObject:
@@ -7806,6 +7822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 659252907}
+  gridID: 
   blackKnob: {fileID: 1057028382}
 --- !u!1 &1149339616
 GameObject:
@@ -7946,6 +7963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 324808224}
+  gridID: 
   blackKnob: {fileID: 922155076}
 --- !u!1 &1170952298
 GameObject:
@@ -8111,6 +8129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 1460842867}
+  gridID: 
   blackKnob: {fileID: 1322966960}
 --- !u!1 &1196335808
 GameObject:
@@ -8428,6 +8447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 10898591}
+  gridID: 
   blackKnob: {fileID: 701789277}
 --- !u!1 &1246113919
 GameObject:
@@ -8620,6 +8640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 1917311644}
+  gridID: 
   blackKnob: {fileID: 122205387}
 --- !u!1 &1302635433
 GameObject:
@@ -9007,6 +9028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 1081268460}
+  gridID: 
   blackKnob: {fileID: 946100635}
 --- !u!1 &1442991691
 GameObject:
@@ -10503,6 +10525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 880476916}
+  gridID: 
   blackKnob: {fileID: 558413983}
 --- !u!1 &1637075978
 GameObject:
@@ -11388,6 +11411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectArea: {fileID: 112417145}
+  gridID: 
   blackKnob: {fileID: 774911472}
 --- !u!1 &1775149355
 GameObject:
@@ -12896,7 +12920,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023272527}
-  m_LocalRotation: {x: 0.2627411, y: -0.000000016601863, z: 0.000000004520825, w: 0.9648664}
+  m_LocalRotation: {x: 0.2627411, y: 0.000000016601854, z: -0.000000004520823, w: 0.9648664}
   m_LocalPosition: {x: 0, y: 10, z: -14.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

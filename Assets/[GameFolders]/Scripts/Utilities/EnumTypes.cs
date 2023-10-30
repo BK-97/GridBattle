@@ -1,1 +1,1 @@
-public enum CharacterTypes { Knight, Archer, TwoHanded, Mage }
+public enum CharacterTypes { NONE,Knight, Archer, TwoHanded, Mage}

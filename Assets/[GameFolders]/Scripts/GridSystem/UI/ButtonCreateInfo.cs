@@ -29,7 +29,7 @@ namespace GridSystem.UI
             if (ExchangeManager.Instance.UseCurrency(CurrencyType.Coin, spawnCost))
             {
                 var go=PoolingSystem.SpawnObject(spawnPrefab);
-                CharacterManager.Instance.AddSpawnedAlly(go);
+                go.GetComponent<WarriorController>().Initalize(1);
             }
 
         }

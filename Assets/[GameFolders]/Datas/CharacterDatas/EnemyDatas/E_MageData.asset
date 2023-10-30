@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a20c967b0518e4e83f06d78b7ba93a, type: 3}
   m_Name: E_MageData
   m_EditorClassIdentifier: 
-  CharacterType: 3
+  CharacterType: 4
   warriorLevel: 1
   Health: 8
   AttackRange: 9

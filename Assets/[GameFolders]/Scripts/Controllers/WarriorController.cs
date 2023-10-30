@@ -16,15 +16,16 @@ public class WarriorController : MonoBehaviour
     public int currentLevel;
 
     bool isAttacking;
-    float lastAttackTime=-Mathf.Infinity;
+    float lastAttackTime = -Mathf.Infinity;
     private bool canAttack;
     private IDamageable closestTarget;
     private WarriorHealthController healthController;
     public WarriorHealthController HealthController { get { return (healthController == null) ? healthController = GetComponent<WarriorHealthController>() : healthController; } }
 
-    [HideInInspector]
-    public WarriorAnimatorController animatorController;
+    private WarriorAnimatorController animatorController;
+    public WarriorAnimatorController AnimatorController { get { return (animatorController == null) ? animatorController = GetComponentInChildren<WarriorAnimatorController>() : animatorController; } }
     private LevelUpgradeBase levelUpBase;
+    private LevelUpgradeBase LevelUpBase { get { return (levelUpBase == null) ? levelUpBase = GetComponent<LevelUpgradeBase>() : levelUpBase; } }
     public Transform raycastMuzzle;
     [SerializeField]
     private List<SkinnedMeshRenderer> meshes;
@@ -34,14 +35,8 @@ public class WarriorController : MonoBehaviour
     public RangerAttack rangerAttack;
     #endregion
     #region MonoBehaviourMethods
-    private void Start()
-    {
-        levelUpBase = GetComponent<LevelUpgradeBase>();
-        animatorController = GetComponentInChildren<WarriorAnimatorController>();
-    }
     private void OnEnable()
     {
-        //Because of my pool system, we have to set data every time an object becomes enabled
         SetDatas(warriorData);
         ColorChange();
     }
@@ -57,8 +52,8 @@ public class WarriorController : MonoBehaviour
     private void CheckEnemyWithRaycast()
     {
         RaycastHit hitInfo;
-        Debug.DrawRay(raycastMuzzle.position, raycastMuzzle.forward*(attackRange+0.1f));
-        if (Physics.Raycast(raycastMuzzle.position, raycastMuzzle.forward, out hitInfo, attackRange+0.1f, enemyLayer))
+        Debug.DrawRay(raycastMuzzle.position, raycastMuzzle.forward * (attackRange + 0.1f));
+        if (Physics.Raycast(raycastMuzzle.position, raycastMuzzle.forward, out hitInfo, attackRange + 0.1f, enemyLayer))
         {
             IDamageable damagable = hitInfo.collider.GetComponent<IDamageable>();
             if (damagable != null)
@@ -78,7 +73,7 @@ public class WarriorController : MonoBehaviour
                 closestTarget.TakeDamage(damage);
                 break;
             case CharacterTypes.Archer:
-                rangerAttack.CreateBullet(enemyLayer,damage, Vector3.forward);
+                rangerAttack.CreateBullet(enemyLayer, damage, Vector3.forward);
                 break;
             case CharacterTypes.TwoHanded:
                 closestTarget.TakeDamage(damage);
@@ -104,20 +99,28 @@ public class WarriorController : MonoBehaviour
             {
                 isAttacking = true;
                 lastAttackTime = Time.time;
-                animatorController.AttackAnim();
+                AnimatorController.AttackAnim();
             }
         }
     }
-    
+
     #endregion
     #region MyMethods
+    public void Initalize(int warriorLevel)
+    {
+        CharacterManager.Instance.AddSpawnedAlly(gameObject);
+        currentLevel = warriorLevel;
+        ColorChange();
+        LevelUpBase.Upgrade(currentLevel, warriorData);
+
+    }
     public void UpgradeWarrior()
     {
         currentLevel++;
         ColorChange();
         ChangeScale();
-        levelUpBase.Upgrade(currentLevel, warriorData);
-        PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName("LevelUpgraded"),transform.position, PoolingSystem.Instance.GetObjectFromName("LevelUpgraded").transform.rotation, transform);
+        LevelUpBase.Upgrade(currentLevel, warriorData);
+        PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName("LevelUpgraded"), transform.position, PoolingSystem.Instance.GetObjectFromName("LevelUpgraded").transform.rotation, transform);
     }
     public void ControllerOff()
     {
@@ -138,7 +141,7 @@ public class WarriorController : MonoBehaviour
     }
     public void ChangeScale()
     {
-        transform.DOScale(transform.localScale*1.1f,0.2f);
+        transform.DOScale(transform.localScale * 1.1f, 0.2f);
     }
     public void SetDatas(CharacterData currentData)
     {

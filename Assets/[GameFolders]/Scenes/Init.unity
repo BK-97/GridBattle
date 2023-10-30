@@ -235,6 +235,21 @@ MonoBehaviour:
   - gameObject: {fileID: 1511480989524725465, guid: 05738e983c1c03644b71d110ebbe42c8,
       type: 3}
     name: EnemyTwoHanded
+  - gameObject: {fileID: 1511480989524725465, guid: f865d5892b5a0d3419248b58c41dd43d,
+      type: 3}
+    name: EnemyMage
+  - gameObject: {fileID: 6455139829038195398, guid: 7778632bf67024a46b1f78e3c03c216e,
+      type: 3}
+    name: WarriorKnight
+  - gameObject: {fileID: 7520341672977643540, guid: b0e8c80702d87fb4f9c231b669dcffd3,
+      type: 3}
+    name: WarriorArcher
+  - gameObject: {fileID: 6718588461118902311, guid: 338097dc3c0187f42a8a49e673ed32d4,
+      type: 3}
+    name: WarriorTwoHanded
+  - gameObject: {fileID: 9186795781410484748, guid: dd9d3d7655ac3934d9096722ca483868,
+      type: 3}
+    name: WarriorMage
 --- !u!4 &1359531486
 Transform:
   m_ObjectHideFlags: 0
@@ -267,7 +282,6 @@ GameObject:
   - component: {fileID: 1423261071}
   - component: {fileID: 1423261072}
   - component: {fileID: 1423261074}
-  - component: {fileID: 1423261075}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -345,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ed917bf530f294fbb8704a345f1ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  takenObject: {fileID: 0}
   gridLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -443,16 +458,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4baca7f911bf94a4eb28561eab72a9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1423261075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423261064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 736e553c57e716f499de8930519341bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  draggableObject: {fileID: 0}

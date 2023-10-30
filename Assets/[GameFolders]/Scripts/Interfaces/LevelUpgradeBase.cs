@@ -13,7 +13,7 @@ public class LevelUpgradeBase : MonoBehaviour
     private WarriorController warriorController;
     #endregion
     #region MonoBehaviourMethods
-    private void Start()
+    private void Awake()
     {
         warriorController = GetComponent<WarriorController>();
     }

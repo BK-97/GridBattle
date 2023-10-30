@@ -16,35 +16,65 @@ namespace GridSystem
             for (int i = 0; i < transform.childCount; i++)
             {
                 allGrids.Add(transform.GetChild(i).GetComponent<Grid>());
-                allGrids[i].Initialize(this);
             }
-            for (int i = 0; i < allGrids.Count; i++)
-            {
-                if (allGrids[i].gameObject.activeSelf)
-                    liberatedGrids.Add(allGrids[i]);
-            }
+            LoadGrids();
         }
         private void OnEnable()
         {
             OnGridLiberate.AddListener(PermamentGridLiberate);
             CharacterManager.OnNewAllySpawned.AddListener(SetNewAllyToGrid);
-
         }
         private void OnDisable()
         {
             OnGridLiberate.RemoveListener(PermamentGridLiberate);
             CharacterManager.OnNewAllySpawned.RemoveListener(SetNewAllyToGrid);
         }
+        private void LoadGrids()
+        {
+            int liberatedGridCount = PlayerPrefs.GetInt(PlayerPrefKeys.GridCount, 4);
+
+            for (int i = 0; i < liberatedGridCount; i++)
+            {
+                string gridID = "Grid" + i;
+
+                liberatedGrids.Add(allGrids[i]);
+                allGrids[i].Initialize(this);
+                allGrids[i].gameObject.SetActive(true);
+                allGrids[i].gridID = gridID;
+
+
+                int level = PlayerPrefs.GetInt(gridID + "_Level", 0);
+                int type = PlayerPrefs.GetInt(gridID + "_Type", 0);
+
+                liberatedGrids[i].LoadGrid(gridID, level, type);
+            }
+        }
+
+        private void SaveGrids()
+        {
+            for (int i = 0; i < liberatedGrids.Count; i++)
+            {
+                string gridID = liberatedGrids[i].gridID;
+                int level = liberatedGrids[i].GetWarriorLevelInfo();
+                int type = liberatedGrids[i].GetWarriorTypeInfo();
+
+                PlayerPrefs.SetInt(gridID + "_Level", level);
+                PlayerPrefs.SetInt(gridID + "_Type", type);
+
+            }
+
+            PlayerPrefs.Save();
+        }
         private void SetNewAllyToGrid(GameObject newAlly)
         {
-            GridSystem.Grid emptyGrid = GetEmptyGrid();
+            Grid emptyGrid = GetEmptyGrid();
             if (emptyGrid != null)
             {
                 Debug.Log(newAlly.name);
                 emptyGrid.AddObject(newAlly);
             }
         }
-        private GridSystem.Grid GetEmptyGrid()
+        private Grid GetEmptyGrid()
         {
             for (int i = 0; i < liberatedGrids.Count; i++)
             {
@@ -65,7 +95,6 @@ namespace GridSystem
                 }
             }
             GridLiberated(liberatedGrid);
-
         }
         public void GridInvaded(Grid invadedGrid)
         {
@@ -76,7 +105,6 @@ namespace GridSystem
                 int currentGridCount = PlayerPrefs.GetInt(PlayerPrefKeys.GridCount, 4);
                 PlayerPrefs.SetInt(PlayerPrefKeys.GridCount, currentGridCount - 1);
             }
-
         }
         public void GridLiberated(Grid liberatedGrid)
         {
@@ -84,8 +112,15 @@ namespace GridSystem
             {
                 liberatedGrids.Add(liberatedGrid);
                 liberatedGrid.Liberated();
+                liberatedGrid.Initialize(this);
                 liberatedGrid.gameObject.SetActive(true);
+
             }
         }
+        private void OnApplicationQuit()
+        {
+            SaveGrids();
+        }
     }
+
 }

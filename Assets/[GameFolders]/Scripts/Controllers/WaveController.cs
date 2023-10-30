@@ -72,6 +72,7 @@ public class WaveController : MonoBehaviour
                     float posX = spawnPosses[0].position.x;
                     Vector3 spawnPos = new Vector3(posX,0,transform.position.z);
                     Quaternion spawnRotate = Quaternion.Euler(0, 180, 0);
+                    Debug.Log("Enemy" + data.CharacterType.ToString());
                     var go=PoolingSystem.Instance.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Enemy" + data.CharacterType.ToString()), spawnPos, spawnRotate, null);
                     CharacterManager.Instance.AddSpawnedEnemy(go);
                     data.SpawnCount--;

@@ -17,7 +17,6 @@ public class PermanantUpgrade : MonoBehaviour
     public void Start()
     {
         upgradeText.text = upgradeName.ToUpper();
-        PlayerPrefs.DeleteAll();
         CalculateCost();
     }
     public void CalculateCost()

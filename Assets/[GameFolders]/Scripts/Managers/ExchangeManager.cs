@@ -10,6 +10,7 @@ public enum CurrencyType
 
 public class ExchangeManager: Singleton<ExchangeManager>
 {
+    #region Params
     private Dictionary<CurrencyType, int> currencyDictionary;
     public DictonaryEvent OnCurrencyChange = new DictonaryEvent();
     [HideInInspector]
@@ -19,6 +20,8 @@ public class ExchangeManager: Singleton<ExchangeManager>
     private float incomeMultiplier=1.1f;
     public float currentIncomeMultiplier;
     const int STARTER_COIN= 100;
+    #endregion
+    #region StarterMethods
     public ExchangeManager()
     {
         currencyDictionary = new Dictionary<CurrencyType, int>();
@@ -36,6 +39,7 @@ public class ExchangeManager: Singleton<ExchangeManager>
     {
         UIPos = pos;
     }
+    #endregion
     #region UpgradeMethods
     public void UpdateIncomeMultiplier()
     {

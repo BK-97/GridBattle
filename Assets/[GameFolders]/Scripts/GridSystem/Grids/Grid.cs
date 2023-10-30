@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using GridSystem.Controllers;
 using DG.Tweening;
+using System.IO;
 namespace GridSystem
 {
     public class Grid : BaseGrid
@@ -11,11 +12,29 @@ namespace GridSystem
         public Transform objectArea;
         public bool hasObject { get; private set; }
         private GridController gridController;
+
+        public string gridID;
+
+        [SerializeField]
+        private Image blackKnob;
+        private float currentInvadeTime = 0f;
         #endregion
         #region BaseGridMethods
         public override void Initialize(GridController _gridController)
         {
             gridController = _gridController;
+        }
+        public void LoadGrid(string gridID,int levelOfWarrior,int  warriorType)
+        {
+
+            if (levelOfWarrior == 0)
+                return;
+
+            CharacterTypes _warriorType = (CharacterTypes)warriorType;
+
+            var go=PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Warrior"+ _warriorType.ToString()));
+            go.GetComponent<WarriorController>().Initalize(levelOfWarrior);
+            this.AddObject(go);
         }
         public override void AddObject(GameObject gridGameObject)
         {
@@ -44,9 +63,7 @@ namespace GridSystem
         {
             PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Liberated"), transform.position,Quaternion.identity);
         }
-        [SerializeField]
-        private Image blackKnob;
-        private float currentInvadeTime = 0f;
+
         public void Invading(float invadeDuration)
         {
             currentInvadeTime += Time.deltaTime;
@@ -58,11 +75,26 @@ namespace GridSystem
             blackKnob.transform.localScale = Vector3.zero;
             currentInvadeTime = 0;
         }
+
         #endregion
         #region Helpers
         public GameObject GetGridObject()
         {
             return gridObject;
+        }
+        public int GetWarriorLevelInfo()
+        {
+            if (gridObject != null)
+                return gridObject.GetComponent<WarriorController>().currentLevel;
+            else
+                return 0;
+        }
+        public int GetWarriorTypeInfo()
+        {
+            if (gridObject != null)
+                return (int)gridObject.GetComponent<WarriorController>().warriorData.CharacterType;
+            else
+                return (int)CharacterTypes.NONE;
         }
         #endregion
     }

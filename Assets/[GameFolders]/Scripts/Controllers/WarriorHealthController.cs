@@ -32,7 +32,7 @@ public class WarriorHealthController : MonoBehaviour, IDamageable
     {
         health = 0;
         healthBar.ChangeBar(health);
-        warriorController.animatorController.DeathAnim();
+        warriorController.AnimatorController.DeathAnim();
         warriorController.ControllerOff();
         GetComponentInParent<GridSystem.Grid>().RemoveObject();
         StartCoroutine(WaitForDieCO());
