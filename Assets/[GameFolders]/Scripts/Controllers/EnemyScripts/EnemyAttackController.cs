@@ -42,7 +42,7 @@ public class EnemyAttackController : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 0.4f, LayerMask.GetMask("Base")))
         {
-            GameManager.Instance.CompeleteStage(false);
+            GameManager.Instance.OnStageLoose.Invoke();
             return true;
         }
         return false;
