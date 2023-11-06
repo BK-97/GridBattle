@@ -24,6 +24,7 @@ public class StateController : MonoBehaviour
     public Invader Invader { get { return (invader == null) ? invader = GetComponent<Invader>() : invader; } }
     #endregion
     #region States
+    [SerializeField]
     private BaseState currentState;
     public IdleState idleState=new IdleState();
     public MoveState moveState=new MoveState();
@@ -63,5 +64,6 @@ public class StateController : MonoBehaviour
         currentState = newState;
         currentState.EnterState(this);
     }
+
     #endregion
 }

@@ -120,7 +120,13 @@ namespace GridSystem.Managers
 
             if (CheckIfGrid())
             {
-                if (currentGrid.hasObject)
+                if (currentGrid.isInvaded)
+                {
+                    previousGrid.AddObject(takenObject);
+                    takenObject = null;
+
+                }
+                else if (currentGrid.hasObject)
                 {
                     if (takenObject != null)
                     {
@@ -158,8 +164,12 @@ namespace GridSystem.Managers
             else
             {
                 OnCheckSell.Invoke();
+                if (takenObject != null)
+                {
+                    previousGrid.AddObject(takenObject);
+                    takenObject = null;
+                }
             }
-
         }
 
         private void SwitchObjects()
@@ -203,7 +213,13 @@ namespace GridSystem.Managers
 
                 if (currentGrid != null)
                 {
-                    return true;
+                    if (currentGrid.isInvaded)
+                    {
+                        currentGrid = null;
+                        return false;
+                    }
+                    else
+                        return true;
                 }
             }
             currentGrid = null;

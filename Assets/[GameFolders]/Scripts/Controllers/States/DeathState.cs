@@ -4,6 +4,7 @@ public class DeathState : BaseState
     {
         stateController.MovementController.canMove = false;
         stateController.AttackController.canAttack = false;
+        stateController.AttackController.Invader.CancelInvade();
     }
 
     public override void ExitState(StateController stateController)

@@ -53,7 +53,6 @@ namespace GridSystem
 
                 liberatedGrids[i].LoadGrid(gridID, level, type);
 
-                Debug.Log(gridID+" "+ level+" "+type + "   loaded!");
             }
         }
 
@@ -68,7 +67,6 @@ namespace GridSystem
                 PlayerPrefs.SetInt(gridID + "_Level", level);
                 PlayerPrefs.SetInt(gridID + "_Type", type);
 
-                Debug.Log(gridID + " " + level + " " + type+ "   saved!");
 
             }
 

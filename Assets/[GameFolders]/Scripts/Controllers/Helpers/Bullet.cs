@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
         if (canMove)
         {
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
-
+            Debug.DrawRay(transform.position, moveDirection);
             RaycastHit hit;
             if (Physics.Raycast(transform.position, moveDirection, out hit, moveSpeed * Time.deltaTime, _hitLayer))
             {
@@ -31,6 +31,8 @@ public class Bullet : MonoBehaviour
         _hitLayer = hitLayer;
         _damage = damage;
         moveDirection = direction;
+        if (moveDirection.z > 0)
+            transform.GetChild(0).rotation = Quaternion.Euler(0, -270, 0);
         canMove = true;
     }
 

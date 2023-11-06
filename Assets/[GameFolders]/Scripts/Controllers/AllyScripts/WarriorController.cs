@@ -84,12 +84,12 @@ public class WarriorController : MonoBehaviour
             default:
                 break;
         }
-        lastAttackTime = Time.time;
 
     }
     public void AttackEnd()
     {
         isAttacking = false;
+        lastAttackTime = Time.time;
     }
 
     private void AttackTimer()

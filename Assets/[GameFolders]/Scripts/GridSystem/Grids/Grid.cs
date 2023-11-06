@@ -18,6 +18,8 @@ namespace GridSystem
         [SerializeField]
         private Image blackKnob;
         private float currentInvadeTime = 0f;
+        [HideInInspector]
+        public bool isInvaded;
         #endregion
         #region BaseGridMethods
         public override void Initialize(GridController _gridController)
@@ -38,7 +40,6 @@ namespace GridSystem
         }
         public override void AddObject(GameObject gridGameObject)
         {
-            Debug.Log("testetet");
             gridObject = gridGameObject;
             gridObject.transform.SetParent(objectArea);
             gridObject.transform.localPosition = Vector3.zero;
@@ -57,11 +58,13 @@ namespace GridSystem
         #region InvadeMethods
         public void Invaded()
         {
+            isInvaded = true;
             gridController.GridInvaded(this);
             PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Invaded"),transform.position,Quaternion.identity);
         }
         public void Liberated()
         {
+            isInvaded = false;
             PoolingSystem.SpawnObject(PoolingSystem.Instance.GetObjectFromName("Liberated"), transform.position,Quaternion.identity);
         }
 

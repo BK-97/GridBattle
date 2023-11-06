@@ -1040,16 +1040,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warriorData: {fileID: 11400000, guid: 05131869e38b23e489f7d54c5263f4c3, type: 2}
   currentLevel: 0
-  animatorController: {fileID: 0}
   raycastMuzzle: {fileID: 1708205768320778249}
   meshes:
   - {fileID: 2859771130577498573}
   - {fileID: 7324444980935803086}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   rangerAttack: {fileID: 0}
-  trailParticle: {fileID: 0}
 --- !u!136 &5847876366135163979
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -1366,6 +1366,7 @@ Transform:
   - {fileID: 5110086601655028250}
   - {fileID: 5110086601655028244}
   - {fileID: 5110086601655028238}
+  - {fileID: 1769127919654923249}
   m_Father: {fileID: 5110086601655028230}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2495,6 +2496,51 @@ Transform:
   m_Father: {fileID: 5110086601655028328}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5719609291975125632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769127919654923249}
+  - component: {fileID: 8165645088334402948}
+  m_Layer: 6
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1769127919654923249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719609291975125632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.212, y: 0.163, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5110086601655028228}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8165645088334402948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719609291975125632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c0313f5bcb4aa429e1991845ed0e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 3495654168313710730, guid: deef8c4afa2f35f42a9993b9fbdbf2b4, type: 3}
 --- !u!1 &7478064576307898597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2727,16 +2773,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warriorData: {fileID: 11400000, guid: af6cdb2233db74e44a89b08b700b28a6, type: 2}
   currentLevel: 0
-  animatorController: {fileID: 0}
   raycastMuzzle: {fileID: 120041203333953699}
   meshes:
   - {fileID: 7850367371760297642}
   - {fileID: 8038576544213368662}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
-  rangerAttack: {fileID: 0}
-  trailParticle: {fileID: 0}
+    m_Bits: 128
+  rangerAttack: {fileID: 8165645088334402948}
 --- !u!136 &-1876381949488852705
 CapsuleCollider:
   m_ObjectHideFlags: 0

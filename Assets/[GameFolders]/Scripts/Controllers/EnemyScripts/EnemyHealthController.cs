@@ -23,6 +23,7 @@ public class EnemyHealthController : MonoBehaviour, IDamageable
         healthBar.ChangeBar(currentHealth);
         GetComponentInChildren<EnemyAnimationController>().DeathAnim();
         GetComponent<Collider>().enabled = false;
+        StateController.ChangeState(StateController.deathState);
         StartCoroutine(WaitForDieCO());
     }
     IEnumerator WaitForDieCO()

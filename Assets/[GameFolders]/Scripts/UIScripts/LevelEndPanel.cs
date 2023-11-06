@@ -14,13 +14,13 @@ public class LevelEndPanel : MonoBehaviour
     {
         GameManager.Instance.OnStageWin.AddListener(()=>ShowPanel(true));
         GameManager.Instance.OnStageLoose.AddListener(()=>ShowPanel(false));
-        LevelManager.Instance.OnLevelFinish.AddListener(HidePanel);
+        SceneController.Instance.OnSceneLoaded.AddListener(HidePanel);
     }
     private void OnDisable()
     {
         GameManager.Instance.OnStageWin.RemoveListener(() => ShowPanel(true));
         GameManager.Instance.OnStageLoose.RemoveListener(() => ShowPanel(false));
-        LevelManager.Instance.OnLevelFinish.RemoveListener(HidePanel);
+        SceneController.Instance.OnSceneLoaded.RemoveListener(HidePanel);
     }
 
     private void HidePanel()
