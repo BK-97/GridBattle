@@ -20,6 +20,7 @@ namespace GridSystem
             {
                 allGrids.Add(transform.GetChild(i).GetComponent<Grid>());
             }
+            CharacterManager.Instance.gridController = this;
             LoadGrids();
         }
         private void OnEnable()

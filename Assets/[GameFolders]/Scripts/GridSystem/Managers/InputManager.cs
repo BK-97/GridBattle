@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 namespace GridSystem.Managers
@@ -164,14 +166,20 @@ namespace GridSystem.Managers
             else
             {
                 OnCheckSell.Invoke();
-                if (takenObject != null)
-                {
-                    previousGrid.AddObject(takenObject);
-                    takenObject = null;
-                }
+
+                StartCoroutine(WaitForOneFrameCO());
             }
         }
+        IEnumerator WaitForOneFrameCO()
+        {
+            yield return new WaitForSeconds(0.1f);
 
+            if (takenObject != null)
+            {
+                previousGrid.AddObject(takenObject);
+                takenObject = null;
+            }
+        }
         private void SwitchObjects()
         {
             previousGrid.AddObject(currentGrid.GetGridObject());

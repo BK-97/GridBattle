@@ -6,6 +6,7 @@ using DG.Tweening;
 public class TapToStartPanel : MonoBehaviour
 {
     public Transform textTransform;
+    private Tween scaleUpTween;
     bool waitingForFirstTouch;
     CanvasGroup canvasGroup;
     void Awake()
@@ -15,7 +16,7 @@ public class TapToStartPanel : MonoBehaviour
     }
     private void StartScale()
     {
-        textTransform.DOScale(Vector3.one*1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+        scaleUpTween=textTransform.DOScale(Vector3.one*1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo);
         waitingForFirstTouch = true;
 
     }
@@ -24,6 +25,7 @@ public class TapToStartPanel : MonoBehaviour
         if (!waitingForFirstTouch)
             return;
         LevelManager.Instance.OnLevelStart.Invoke();
+        scaleUpTween.Kill();
         HidePanel();
     }
     private void OnEnable()
@@ -33,7 +35,6 @@ public class TapToStartPanel : MonoBehaviour
     private void OnDisable()
     {
         SceneController.Instance.OnSceneLoaded.RemoveListener(ShowPanel);
-
     }
     private void HidePanel()
     {

@@ -9,6 +9,8 @@ public class CharacterManager : Singleton<CharacterManager>
     private List<GameObject> spawnedEnemies=new List<GameObject>();
     private List<GameObject> spawnedAllies=new List<GameObject>();
     private List<Grid> SpawnedGrids=new List<Grid>();
+    [HideInInspector]
+    public GridSystem.GridController gridController;
     #endregion
     #region Events
     public static GameObjectEvent OnNewAllySpawned = new GameObjectEvent();
@@ -55,6 +57,13 @@ public class CharacterManager : Singleton<CharacterManager>
     public int GetAllyCount()
     {
         return spawnedAllies.Count;
+    }
+    public bool CanAllySpawn()
+    {
+        if (spawnedAllies.Count >= gridController.liberatedGrids.Count)
+            return false;
+        else
+            return true;
     }
     #endregion
 }

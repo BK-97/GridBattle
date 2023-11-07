@@ -19,6 +19,7 @@ namespace GridSystem.UI
         {
             if (spawnPrefab.GetComponent<WarriorController>().warriorData == null)
                 return;
+
             button = GetComponent<Button>();
             spawnCost = spawnPrefab.GetComponent<WarriorController>().warriorData.cost;
             textMesh = GetComponentInChildren<TextMeshProUGUI>();
@@ -26,10 +27,11 @@ namespace GridSystem.UI
         }
         public void InvokeSpawnPrefab()
         {
-            if (ExchangeManager.Instance.UseCurrency(CurrencyType.Coin, spawnCost))
+            if (ExchangeManager.Instance.GetCurrency(CurrencyType.Coin)>= spawnCost && CharacterManager.Instance.CanAllySpawn())
             {
                 var go=PoolingSystem.SpawnObject(spawnPrefab);
                 go.GetComponent<WarriorController>().Initalize(1);
+                ExchangeManager.Instance.UseCurrency(CurrencyType.Coin, spawnCost);
             }
 
         }

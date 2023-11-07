@@ -28,7 +28,7 @@ public class ExchangeManager: Singleton<ExchangeManager>
     }
     private void Start()
     {
-        if (PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, STARTER_COIN) <= STARTER_COIN)
+        if (PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, STARTER_COIN) < STARTER_COIN)
             PlayerPrefs.SetInt(PlayerPrefKeys.CurrentCoin, STARTER_COIN);
 
         currencyDictionary[CurrencyType.Coin] = PlayerPrefs.GetInt(PlayerPrefKeys.CurrentCoin, STARTER_COIN);
