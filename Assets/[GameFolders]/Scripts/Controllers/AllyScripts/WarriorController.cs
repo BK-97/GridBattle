@@ -73,13 +73,13 @@ public class WarriorController : MonoBehaviour
                 closestTarget.TakeDamage(damage);
                 break;
             case CharacterTypes.Archer:
-                rangerAttack.CreateBullet(enemyLayer, damage, Vector3.forward);
+                rangerAttack.CreateBullet(enemyLayer, damage, Vector3.forward,transform.position.x);
                 break;
             case CharacterTypes.TwoHanded:
                 closestTarget.TakeDamage(damage);
                 break;
             case CharacterTypes.Mage:
-                rangerAttack.CreateBullet(enemyLayer, damage, Vector3.forward);
+                rangerAttack.CreateBullet(enemyLayer, damage, Vector3.forward, transform.position.x);
                 break;
             default:
                 break;

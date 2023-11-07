@@ -11,6 +11,8 @@ public class EnemyAnimationController : MonoBehaviour
     private void Start()
     {
         attackController = GetComponentInParent<EnemyAttackController>();
+        animator.applyRootMotion = false;
+
     }
     private void OnEnable()
     {
@@ -55,6 +57,7 @@ public class EnemyAnimationController : MonoBehaviour
     {
         MoveAnim(0);
         animator.Rebind();
+        animator.applyRootMotion = true;
         animator.SetTrigger(AnimKeys.DIE);
 
     }
