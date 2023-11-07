@@ -3,7 +3,7 @@
 Buy Warriors,Place Them to Grids,Defend Against Enemies,Merge And Upgrade!
 ---
 # Links
-https://drive.google.com/file/d/1V0aqzPjGJsoSqJi10WIFd-5GOkKHuPTr/view?usp=sharing
+https://drive.google.com/file/d/1tSWlRZtuE_Eoqu3wyFSL9IPXvehpytCB/view?usp=sharing
 ---
 # Pictures
 Unlock New Grids And Increase Your Income!
