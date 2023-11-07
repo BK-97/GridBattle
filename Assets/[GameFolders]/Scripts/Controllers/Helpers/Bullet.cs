@@ -34,8 +34,13 @@ public class Bullet : MonoBehaviour
         if (moveDirection.z > 0)
             transform.GetChild(0).rotation = Quaternion.Euler(0, -270, 0);
         canMove = true;
+        StartCoroutine(WaitForDemolish());
     }
-
+    IEnumerator WaitForDemolish()
+    {
+        yield return new WaitForSeconds(3);
+        PoolingSystem.ReturnObjectToPool(gameObject);
+    }
     private void DealDamage(GameObject target)
     {
         IDamageable damageableTarget = target.GetComponent<IDamageable>();
