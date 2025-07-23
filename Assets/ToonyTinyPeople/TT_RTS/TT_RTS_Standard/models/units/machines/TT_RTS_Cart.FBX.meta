@@ -1,0 +1,268 @@
+fileFormatVersion: 2
+guid: 883d216e6f21bc6469c84867c3deea7c
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Bolt_lvl1
+  - first:
+      1: 100002
+    second: Bolt_lvl2
+  - first:
+      1: 100004
+    second: Bolt_lvl3
+  - first:
+      1: 100006
+    second: BONE_arch_L
+  - first:
+      1: 100008
+    second: BONE_arch_R
+  - first:
+      1: 100010
+    second: BONE_BASE
+  - first:
+      1: 100012
+    second: BONE_bolt
+  - first:
+      1: 100014
+    second: BONE_BOW
+  - first:
+      1: 100016
+    second: BONE_front
+  - first:
+      1: 100018
+    second: BONE_Platform
+  - first:
+      1: 100020
+    second: BONE_rope
+  - first:
+      1: 100022
+    second: BONE_side
+  - first:
+      1: 100024
+    second: BONE_side 1
+  - first:
+      1: 100026
+    second: BONE_wheel
+  - first:
+      1: 100028
+    second: BONE_wheel 1
+  - first:
+      1: 100030
+    second: BONE_wheel 2
+  - first:
+      1: 100032
+    second: BONE_wheel 3
+  - first:
+      1: 100034
+    second: TT_Ballista_lvl1
+  - first:
+      1: 100036
+    second: TT_Ballista_lvl2
+  - first:
+      1: 100038
+    second: TT_Ballista_lvl3
+  - first:
+      1: 100040
+    second: //RootNode
+  - first:
+      4: 400000
+    second: Bolt_lvl1
+  - first:
+      4: 400002
+    second: Bolt_lvl2
+  - first:
+      4: 400004
+    second: Bolt_lvl3
+  - first:
+      4: 400006
+    second: BONE_arch_L
+  - first:
+      4: 400008
+    second: BONE_arch_R
+  - first:
+      4: 400010
+    second: BONE_BASE
+  - first:
+      4: 400012
+    second: BONE_bolt
+  - first:
+      4: 400014
+    second: BONE_BOW
+  - first:
+      4: 400016
+    second: BONE_front
+  - first:
+      4: 400018
+    second: BONE_Platform
+  - first:
+      4: 400020
+    second: BONE_rope
+  - first:
+      4: 400022
+    second: BONE_side
+  - first:
+      4: 400024
+    second: BONE_side 1
+  - first:
+      4: 400026
+    second: BONE_wheel
+  - first:
+      4: 400028
+    second: BONE_wheel 1
+  - first:
+      4: 400030
+    second: BONE_wheel 2
+  - first:
+      4: 400032
+    second: BONE_wheel 3
+  - first:
+      4: 400034
+    second: TT_Ballista_lvl1
+  - first:
+      4: 400036
+    second: TT_Ballista_lvl2
+  - first:
+      4: 400038
+    second: TT_Ballista_lvl3
+  - first:
+      4: 400040
+    second: //RootNode
+  - first:
+      21: 2100000
+    second: TT_RTS_Units
+  - first:
+      43: 4300000
+    second: TT_Ballista_lvl2
+  - first:
+      43: 4300002
+    second: TT_Ballista_lvl3
+  - first:
+      43: 4300004
+    second: TT_Ballista_lvl1
+  - first:
+      43: 4300006
+    second: Bolt_lvl3
+  - first:
+      43: 4300008
+    second: Bolt_lvl2
+  - first:
+      43: 4300010
+    second: Bolt_lvl1
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Bolt_lvl1
+  - first:
+      137: 13700002
+    second: Bolt_lvl2
+  - first:
+      137: 13700004
+    second: Bolt_lvl3
+  - first:
+      137: 13700006
+    second: TT_Ballista_lvl1
+  - first:
+      137: 13700008
+    second: TT_Ballista_lvl2
+  - first:
+      137: 13700010
+    second: TT_Ballista_lvl3
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TT_RTS_Units
+    second: {fileID: 2100000, guid: dccf8e44ede71db42b49378af93c5fb7, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
