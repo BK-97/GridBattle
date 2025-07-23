@@ -50,9 +50,9 @@ public class PoolingSystem : Singleton<PoolingSystem>
         }
         else
         {
-            spawnableObj.transform.position = spawnPosition;
-            spawnableObj.transform.rotation = spawnRotation;
             spawnableObj.transform.SetParent(parentTransform);
+            spawnableObj.transform.position = spawnPosition;
+            spawnableObj.transform.localRotation = spawnRotation;
             pool.InactiveObjects.Remove(spawnableObj);
             spawnableObj.SetActive(true);
         }
@@ -83,7 +83,6 @@ public class PoolingSystem : Singleton<PoolingSystem>
     public static void ReturnObjectToPool(GameObject obj)
     {
         string goName = obj.name.Substring(0, obj.name.Length - 7);
-
         PooledObjectInfo pool = ObjectPools.Find(p => p.LookupString == goName);
         if (pool == null)
         {
@@ -92,9 +91,15 @@ public class PoolingSystem : Singleton<PoolingSystem>
         else
         {
             obj.SetActive(false);
+
+            obj.transform.SetParent(null);
+            obj.transform.localPosition = Vector3.zero;
+            obj.transform.localRotation = Quaternion.identity;
+
             pool.InactiveObjects.Add(obj);
         }
     }
+
 
     #endregion
     #region Helper

@@ -16,6 +16,11 @@ public class EnemyAnimationController : MonoBehaviour
     }
     private void OnEnable()
     {
+        animator.applyRootMotion = false;
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        transform.localPosition= Vector3.zero;
+        
+        Debug.Log("local rotation=> "+transform.localRotation);
         GameManager.Instance.OnStageLoose.AddListener(CheerAnim);
     }
     private void OnDisable()

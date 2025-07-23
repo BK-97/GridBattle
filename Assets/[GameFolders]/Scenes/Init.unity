@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 1423261071}
   - component: {fileID: 1423261072}
   - component: {fileID: 1423261074}
+  - component: {fileID: 1423261075}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -347,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86dc908d206779649aef74f032dc8f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridController: {fileID: 0}
 --- !u!114 &1423261068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,3 +460,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4baca7f911bf94a4eb28561eab72a9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1423261075
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423261064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9729519a839c574e9da47776020bccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenshotKey: 293
+  screenshotFolder: Screenshots

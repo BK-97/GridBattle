@@ -21,6 +21,7 @@ public class EnemyMovementController : MonoBehaviour
         maxSpeed = speed;
         canMove = true;
     }
+
     #endregion
     #region MoveMethods
     public void Move()
